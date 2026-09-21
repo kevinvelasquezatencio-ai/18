@@ -1,0 +1,2397 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+>
+
+<title>Hola, Heydi </title>
+
+
+<!-- VISTA PREVIA PARA WHATSAPP -->
+
+<meta
+property="og:title"
+content="Hola, Heydi "
+>
+
+<meta
+property="og:description"
+content="Just a little something for you. 🌻"
+>
+
+<meta
+property="og:type"
+content="website"
+>
+
+<meta
+name="theme-color"
+content="#070705"
+>
+
+
+<style>
+
+
+/* ==================================================
+   GENERAL
+================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+
+html,
+body{
+    width:100%;
+    min-height:100%;
+}
+
+
+body{
+
+    min-height:100vh;
+
+    overflow:hidden;
+
+    font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+    color:#f6f0df;
+
+
+    background:
+
+    radial-gradient(
+        circle at 50% 35%,
+        rgba(255,205,70,.10),
+        transparent 30%
+    ),
+
+    radial-gradient(
+        circle at 50% 100%,
+        rgba(173,120,19,.08),
+        transparent 40%
+    ),
+
+    linear-gradient(
+        145deg,
+        #030303,
+        #0b0905 50%,
+        #020202
+    );
+
+}
+
+
+
+/* ==================================================
+   FONDO
+================================================== */
+
+.fondo-luz{
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    background:
+
+    radial-gradient(
+        circle at 50% 42%,
+        rgba(255,208,73,.10),
+        transparent 28%
+    );
+
+    animation:
+    respirarFondo
+    5s ease-in-out infinite;
+
+}
+
+
+@keyframes respirarFondo{
+
+    0%,
+    100%{
+
+        opacity:.45;
+
+    }
+
+    50%{
+
+        opacity:1;
+
+    }
+
+}
+
+
+
+/* ==================================================
+   LÍNEAS ELEGANTES
+================================================== */
+
+.linea{
+
+    position:fixed;
+
+    width:42vw;
+
+    height:1px;
+
+    background:
+
+    linear-gradient(
+        90deg,
+        transparent,
+        rgba(225,185,76,.27),
+        transparent
+    );
+
+    pointer-events:none;
+
+    z-index:0;
+
+}
+
+
+.linea1{
+
+    top:15%;
+
+    left:-9%;
+
+    transform:
+    rotate(-17deg);
+
+}
+
+
+.linea2{
+
+    bottom:16%;
+
+    right:-9%;
+
+    transform:
+    rotate(-17deg);
+
+}
+
+
+
+/* ==================================================
+   PARTÍCULAS
+================================================== */
+
+.particulas{
+
+    position:fixed;
+
+    inset:0;
+
+    overflow:hidden;
+
+    pointer-events:none;
+
+    z-index:1;
+
+}
+
+
+.particula{
+
+    position:absolute;
+
+    bottom:-20px;
+
+    width:3px;
+
+    height:3px;
+
+    border-radius:50%;
+
+    background:#f1c955;
+
+    box-shadow:
+
+    0 0 8px
+    rgba(255,208,75,.8);
+
+    opacity:0;
+
+    animation:
+    subirParticula
+    linear infinite;
+
+}
+
+
+@keyframes subirParticula{
+
+    0%{
+
+        transform:
+        translateY(0)
+        scale(.5);
+
+        opacity:0;
+
+    }
+
+
+    15%{
+
+        opacity:.65;
+
+    }
+
+
+    75%{
+
+        opacity:.25;
+
+    }
+
+
+    100%{
+
+        transform:
+        translateY(-110vh)
+        scale(1.15);
+
+        opacity:0;
+
+    }
+
+}
+
+
+
+/* ==================================================
+   PANTALLAS
+================================================== */
+
+.pantalla{
+
+    position:absolute;
+
+    inset:0;
+
+    width:100%;
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:25px;
+
+    text-align:center;
+
+    z-index:5;
+
+
+    transition:
+
+    opacity 1s ease,
+    transform 1s ease,
+    visibility 1s ease;
+
+}
+
+
+.oculta{
+
+    opacity:0;
+
+    visibility:hidden;
+
+    pointer-events:none;
+
+    transform:
+    scale(1.035);
+
+}
+
+
+
+/* ==================================================
+   INICIO
+================================================== */
+
+.inicio{
+
+    width:min(780px,100%);
+
+}
+
+
+.estrella{
+
+    color:#ddb84f;
+
+    font-size:25px;
+
+    margin-bottom:24px;
+
+    animation:
+    estrellaBrillo
+    2.6s ease-in-out infinite;
+
+}
+
+
+@keyframes estrellaBrillo{
+
+    0%,
+    100%{
+
+        opacity:.4;
+
+        transform:
+        scale(.9);
+
+    }
+
+
+    50%{
+
+        opacity:1;
+
+        transform:
+        scale(1.15);
+
+    }
+
+}
+
+
+.mini-texto{
+
+    color:#c8a34c;
+
+    font-size:10px;
+
+    letter-spacing:5px;
+
+    margin-bottom:22px;
+
+}
+
+
+.titulo{
+
+    font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+
+    font-size:
+    clamp(
+        52px,
+        9vw,
+        94px
+    );
+
+
+    line-height:.98;
+
+    font-weight:400;
+
+    letter-spacing:-2px;
+
+    margin-bottom:24px;
+
+    color:#f7f1e3;
+
+
+    text-shadow:
+
+    0 12px 40px
+    rgba(0,0,0,.85);
+
+}
+
+
+.titulo span{
+
+    color:#e0bb53;
+
+}
+
+
+.ingles{
+
+    font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+    font-style:italic;
+
+    color:#ead89f;
+
+    font-size:
+    clamp(
+        18px,
+        3vw,
+        24px
+    );
+
+    margin-bottom:17px;
+
+}
+
+
+.descripcion{
+
+    max-width:540px;
+
+    margin:
+    0 auto 36px;
+
+    color:#bab3a4;
+
+    font-size:
+    clamp(
+        14px,
+        2vw,
+        17px
+    );
+
+    line-height:1.8;
+
+}
+
+
+
+/* ==================================================
+   BOTÓN PRINCIPAL
+================================================== */
+
+.boton-principal{
+
+    border:
+
+    1px solid
+    rgba(229,192,88,.68);
+
+
+    background:
+
+    linear-gradient(
+        145deg,
+        rgba(196,153,41,.17),
+        rgba(15,14,10,.78)
+    );
+
+
+    color:#f2db94;
+
+    padding:
+    16px 40px;
+
+    border-radius:100px;
+
+    letter-spacing:3px;
+
+    font-size:11px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    backdrop-filter:
+    blur(10px);
+
+
+    box-shadow:
+
+    0 18px 45px
+    rgba(0,0,0,.5),
+
+    inset
+    0 0 20px
+    rgba(255,208,74,.04);
+
+
+    transition:
+    .3s ease;
+
+}
+
+
+.boton-principal:hover{
+
+    transform:
+    translateY(-3px);
+
+    border-color:
+    rgba(245,210,110,.95);
+
+
+    box-shadow:
+
+    0 20px 50px
+    rgba(0,0,0,.6),
+
+    0 0 35px
+    rgba(222,175,52,.10);
+
+}
+
+
+
+/* ==================================================
+   RAMO
+================================================== */
+
+#pantallaRamo{
+
+    overflow:hidden;
+
+}
+
+
+.halo{
+
+    position:absolute;
+
+    width:
+    min(
+        680px,
+        90vw
+    );
+
+    height:
+    min(
+        680px,
+        90vw
+    );
+
+    border-radius:50%;
+
+
+    background:
+
+    radial-gradient(
+        circle,
+        rgba(255,209,67,.18),
+        rgba(200,143,25,.055) 45%,
+        transparent 70%
+    );
+
+
+    filter:
+    blur(15px);
+
+
+    opacity:0;
+
+    transform:
+    scale(.7);
+
+
+    transition:
+    1.7s ease;
+
+}
+
+
+.halo.mostrar{
+
+    opacity:1;
+
+    transform:
+    scale(1);
+
+
+    animation:
+    haloRespira
+    5s ease-in-out infinite;
+
+}
+
+
+@keyframes haloRespira{
+
+    0%,
+    100%{
+
+        transform:
+        scale(.96);
+
+    }
+
+
+    50%{
+
+        transform:
+        scale(1.05);
+
+    }
+
+}
+
+
+
+.contenido-ramo{
+
+    width:min(900px,100%);
+
+    position:relative;
+
+    z-index:4;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+
+
+.ramo{
+
+    width:
+    clamp(
+        320px,
+        51vw,
+        610px
+    );
+
+    max-height:61vh;
+
+    object-fit:contain;
+
+
+    opacity:0;
+
+
+    transform:
+
+    translateY(90px)
+    scale(.74);
+
+
+    filter:
+
+    drop-shadow(
+        0 30px 45px
+        rgba(0,0,0,.9)
+    )
+
+    drop-shadow(
+        0 0 25px
+        rgba(255,208,66,.07)
+    );
+
+
+    transition:
+
+    opacity 1.5s ease,
+
+    transform 1.8s
+    cubic-bezier(
+        .16,
+        .8,
+        .23,
+        1
+    );
+
+}
+
+
+.ramo.mostrar{
+
+    opacity:1;
+
+
+    transform:
+
+    translateY(0)
+    scale(1);
+
+
+    animation:
+
+    flotarRamo
+    5.5s
+    ease-in-out
+    2s infinite;
+
+}
+
+
+@keyframes flotarRamo{
+
+    0%,
+    100%{
+
+        transform:
+
+        translateY(0)
+        rotate(-.3deg);
+
+    }
+
+
+    50%{
+
+        transform:
+
+        translateY(-9px)
+        rotate(.3deg);
+
+    }
+
+}
+
+
+
+/* ==================================================
+   TEXTO DEL RAMO
+================================================== */
+
+.texto-ramo{
+
+    margin-top:-6px;
+
+    opacity:0;
+
+    transform:
+    translateY(18px);
+
+    transition:
+    1s ease;
+
+}
+
+
+.texto-ramo.mostrar{
+
+    opacity:1;
+
+    transform:
+    translateY(0);
+
+}
+
+
+.texto-ramo .sub{
+
+    font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+    font-style:italic;
+
+    color:#ddc476;
+
+
+    font-size:
+    clamp(
+        16px,
+        2.5vw,
+        21px
+    );
+
+
+    margin-bottom:9px;
+
+}
+
+
+.texto-ramo h2{
+
+    font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+
+    font-size:
+    clamp(
+        31px,
+        5vw,
+        52px
+    );
+
+
+    font-weight:400;
+
+    color:#f6f0e1;
+
+    margin-bottom:11px;
+
+}
+
+
+.texto-ramo h2 span{
+
+    color:#dfba51;
+
+}
+
+
+.texto-ramo p{
+
+    color:#aaa395;
+
+    font-size:
+    clamp(
+        13px,
+        2vw,
+        15px
+    );
+
+    line-height:1.7;
+
+}
+
+
+
+/* ==================================================
+   BOTONES
+================================================== */
+
+.acciones{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-wrap:wrap;
+
+    gap:12px;
+
+    margin-top:25px;
+
+
+    opacity:0;
+
+    transform:
+    translateY(18px);
+
+
+    transition:
+    1s ease;
+
+}
+
+
+.acciones.mostrar{
+
+    opacity:1;
+
+    transform:
+    translateY(0);
+
+}
+
+
+.boton-secundario{
+
+    border:
+
+    1px solid
+    rgba(219,181,75,.42);
+
+
+    background:
+
+    rgba(10,10,8,.65);
+
+
+    color:#d7c79b;
+
+
+    padding:
+
+    12px 22px;
+
+
+    border-radius:100px;
+
+    letter-spacing:2px;
+
+    font-size:10px;
+
+    cursor:pointer;
+
+    transition:
+    .3s ease;
+
+    backdrop-filter:
+    blur(8px);
+
+}
+
+
+.boton-secundario:hover{
+
+    color:#f2dd98;
+
+
+    background:
+
+    rgba(204,163,51,.10);
+
+
+    transform:
+    translateY(-2px);
+
+}
+
+
+
+/* ==================================================
+   PÉTALOS
+================================================== */
+
+.petalo{
+
+    position:fixed;
+
+    top:-40px;
+
+    width:17px;
+
+    height:10px;
+
+
+    border-radius:
+
+    100% 0
+    100% 0;
+
+
+    background:
+
+    linear-gradient(
+        145deg,
+        #ffe46b,
+        #d09a1b
+    );
+
+
+    opacity:.8;
+
+    pointer-events:none;
+
+    z-index:3;
+
+
+    animation:
+
+    caerPetalo
+    linear forwards;
+
+}
+
+
+@keyframes caerPetalo{
+
+    0%{
+
+        transform:
+
+        translateY(-30px)
+        translateX(0)
+        rotate(0deg);
+
+        opacity:0;
+
+    }
+
+
+    10%{
+
+        opacity:.8;
+
+    }
+
+
+    100%{
+
+        transform:
+
+        translateY(110vh)
+        translateX(85px)
+        rotate(650deg);
+
+        opacity:0;
+
+    }
+
+}
+
+
+
+/* ==================================================
+   MODALES / TARJETAS
+================================================== */
+
+.modal{
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:25px;
+
+
+    background:
+
+    rgba(0,0,0,.80);
+
+
+    backdrop-filter:
+    blur(15px);
+
+
+    opacity:0;
+
+    visibility:hidden;
+
+    pointer-events:none;
+
+
+    transition:
+    .5s ease;
+
+
+    z-index:50;
+
+}
+
+
+.modal.abierto{
+
+    opacity:1;
+
+    visibility:visible;
+
+    pointer-events:auto;
+
+}
+
+
+
+.tarjeta{
+
+    position:relative;
+
+    width:
+    min(
+        500px,
+        100%
+    );
+
+
+    padding:
+
+    48px
+    35px;
+
+
+    border-radius:26px;
+
+
+    background:
+
+    linear-gradient(
+        145deg,
+        rgba(29,25,15,.98),
+        rgba(7,7,6,.99)
+    );
+
+
+    border:
+
+    1px solid
+    rgba(223,184,75,.38);
+
+
+    box-shadow:
+
+    0 35px 100px
+    rgba(0,0,0,.9),
+
+    inset
+    0 0 40px
+    rgba(224,190,90,.025);
+
+
+    transform:
+
+    translateY(30px)
+    scale(.94);
+
+
+    transition:
+    .5s ease;
+
+}
+
+
+.modal.abierto
+.tarjeta{
+
+    transform:
+
+    translateY(0)
+    scale(1);
+
+}
+
+
+.florcita{
+
+    font-size:40px;
+
+    margin-bottom:19px;
+
+}
+
+
+.tarjeta h3{
+
+    font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+
+    font-size:
+
+    clamp(
+        29px,
+        5vw,
+        41px
+    );
+
+
+    font-weight:400;
+
+    color:#ead18a;
+
+    margin-bottom:20px;
+
+}
+
+
+.tarjeta p{
+
+    color:#bbb4a5;
+
+    font-size:15px;
+
+    line-height:1.9;
+
+    margin-bottom:28px;
+
+}
+
+
+.tarjeta em{
+
+    color:#dfc87f;
+
+}
+
+
+
+/* ==================================================
+   BOTÓN MÚSICA
+================================================== */
+
+#botonMusica{
+
+    position:fixed;
+
+    top:19px;
+
+    right:19px;
+
+    width:45px;
+
+    height:45px;
+
+
+    border-radius:50%;
+
+
+    border:
+
+    1px solid
+    rgba(219,181,75,.36);
+
+
+    background:
+
+    rgba(8,8,7,.65);
+
+
+    color:#e6d18e;
+
+    cursor:pointer;
+
+    backdrop-filter:
+    blur(10px);
+
+
+    opacity:0;
+
+    visibility:hidden;
+
+
+    transition:
+    .4s ease;
+
+
+    z-index:100;
+
+}
+
+
+#botonMusica.visible{
+
+    opacity:1;
+
+    visibility:visible;
+
+}
+
+
+
+/* ==================================================
+   CELULAR
+================================================== */
+
+@media(
+    max-width:600px
+){
+
+    .pantalla{
+
+        padding:
+        20px 16px;
+
+    }
+
+
+    .titulo{
+
+        font-size:
+        clamp(
+            49px,
+            15vw,
+            69px
+        );
+
+    }
+
+
+    .mini-texto{
+
+        letter-spacing:4px;
+
+    }
+
+
+    .ramo{
+
+        width:
+        min(
+            93vw,
+            445px
+        );
+
+        max-height:55vh;
+
+    }
+
+
+    .texto-ramo h2{
+
+        font-size:
+        clamp(
+            29px,
+            8.5vw,
+            40px
+        );
+
+    }
+
+
+    .acciones{
+
+        margin-top:20px;
+
+        gap:9px;
+
+    }
+
+
+    .boton-secundario{
+
+        padding:
+        11px 17px;
+
+        letter-spacing:
+        1.5px;
+
+    }
+
+
+    .tarjeta{
+
+        padding:
+        42px 25px;
+
+    }
+
+}
+
+
+
+/* PANTALLAS PEQUEÑAS */
+
+@media(
+    max-height:730px
+){
+
+    .ramo{
+
+        max-height:48vh;
+
+    }
+
+
+    .acciones{
+
+        margin-top:14px;
+
+    }
+
+
+    .texto-ramo h2{
+
+        font-size:
+        clamp(
+            27px,
+            4vw,
+            39px
+        );
+
+    }
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- FONDO -->
+
+<div class="fondo-luz"></div>
+
+<div class="linea linea1"></div>
+
+<div class="linea linea2"></div>
+
+<div
+class="particulas"
+id="particulas"
+></div>
+
+
+
+<!-- ==================================================
+     PANTALLA DE INICIO
+================================================== -->
+
+<section
+class="pantalla"
+id="pantallaInicio"
+>
+
+
+<div class="inicio">
+
+
+    <div class="estrella">
+        ✦
+    </div>
+
+
+    <div class="mini-texto">
+
+        A LITTLE SURPRISE
+
+    </div>
+
+
+    <h1 class="titulo">
+
+        Hola,
+        <span>
+            Heydi
+        </span>
+        
+
+    </h1>
+
+
+    <div class="ingles">
+
+        Just a little something
+        for you.
+
+    </div>
+
+
+    <p class="descripcion">
+
+        A veces los pequeños detalles
+        son los que le ponen
+        un poquito de color al día.
+
+    </p>
+
+
+    <button
+    class="boton-principal"
+    onclick="abrirSorpresa()"
+    >
+
+        OPEN IT ✦
+
+    </button>
+
+
+</div>
+
+
+</section>
+
+
+
+<!-- ==================================================
+     PANTALLA DEL RAMO
+================================================== -->
+
+<section
+class="pantalla oculta"
+id="pantallaRamo"
+>
+
+
+<div
+class="halo"
+id="halo"
+></div>
+
+
+<div class="contenido-ramo">
+
+
+    <img
+    src="./Ramohey.png"
+    alt="Ramo de flores amarillas"
+    class="ramo"
+    id="ramo"
+    >
+
+
+    <div
+    class="texto-ramo"
+    id="textoRamo"
+    >
+
+
+        <div class="sub">
+
+            A little sunshine 
+
+        </div>
+
+
+        <h2>
+
+            Algo bonito
+            <span>
+                por aquí.
+            </span>
+
+        </h2>
+
+
+        <p>
+
+            Un pequeño detalle
+            para ponerle un poquito
+            de color al día.
+
+        </p>
+
+
+    </div>
+
+
+
+    <div
+    class="acciones"
+    id="acciones"
+    >
+
+
+        <button
+        class="boton-secundario"
+        onclick="abrirDetalle()"
+        >
+
+            ONE MORE THING ✦
+
+        </button>
+
+
+        <button
+        class="boton-secundario"
+        onclick="abrirInspiracion()"
+        >
+
+            A LITTLE NOTE ✨
+
+        </button>
+
+
+    </div>
+
+
+</div>
+
+
+</section>
+
+
+
+<!-- ==================================================
+     TARJETA 1
+================================================== -->
+
+<div
+class="modal"
+id="modalDetalle"
+onclick="cerrarFondoDetalle(event)"
+>
+
+
+<div class="tarjeta">
+
+
+    <div class="florcita">
+
+        🌻18
+
+    </div>
+
+
+    <h3>
+
+        Just because.
+
+    </h3>
+
+
+    <p>
+
+        No hacía falta
+        una ocasión especial.
+
+        <br><br>
+
+        Solo quería dejar
+        algo bonito por aquí.
+
+        
+
+    </p>
+
+
+    <button
+    class="boton-secundario"
+    onclick="cerrarDetalle()"
+    >
+
+        CLOSE
+
+    </button>
+
+
+</div>
+
+
+</div>
+
+
+
+<!-- ==================================================
+     TARJETA 2 - INSPIRADORA
+================================================== -->
+
+<div
+class="modal"
+id="modalInspiracion"
+onclick="cerrarFondoInspiracion(event)"
+>
+
+
+<div class="tarjeta">
+
+
+    <div class="florcita">
+
+        23
+
+    </div>
+
+
+    <h3>
+
+        For brighter days.
+
+    </h3>
+
+
+    <p>
+
+        Que siempre encuentres
+        motivos para seguir creciendo,
+        aprender cosas nuevas
+        y disfrutar también
+        de los pequeños momentos.
+
+        <br><br>
+
+        <em>
+            One step at a time. 
+        </em>
+
+    </p>
+
+
+    <button
+    class="boton-secundario"
+    onclick="cerrarInspiracion()"
+    >
+
+        CLOSE
+
+    </button>
+
+
+</div>
+
+
+</div>
+
+
+
+<!-- ==================================================
+     MÚSICA
+================================================== -->
+
+<audio
+id="musica"
+loop
+preload="auto"
+>
+
+
+<source
+src="./musica.mp3.mp3"
+type="audio/mpeg"
+>
+
+
+</audio>
+
+
+
+<button
+id="botonMusica"
+onclick="controlarMusica()"
+title="Música"
+>
+
+🔊
+
+</button>
+
+
+
+<script>
+
+
+/* ==================================================
+   VARIABLES
+================================================== */
+
+const musica =
+document.getElementById(
+    "musica"
+);
+
+
+let abierto = false;
+
+let fadeMusica;
+
+
+
+/* ==================================================
+   PARTÍCULAS DEL FONDO
+================================================== */
+
+function crearParticulas(){
+
+
+    const contenedor =
+
+    document.getElementById(
+        "particulas"
+    );
+
+
+    for(
+        let i=0;
+        i<30;
+        i++
+    ){
+
+
+        const punto =
+
+        document.createElement(
+            "span"
+        );
+
+
+        punto.className =
+        "particula";
+
+
+        punto.style.left =
+
+        Math.random()*100
+        +"%";
+
+
+        punto.style.animationDuration =
+
+        8
+        +
+        Math.random()*10
+        +"s";
+
+
+        punto.style.animationDelay =
+
+        Math.random()*10
+        +"s";
+
+
+        const tamano =
+
+        2
+        +
+        Math.random()*2.5;
+
+
+        punto.style.width =
+
+        tamano
+        +"px";
+
+
+        punto.style.height =
+
+        tamano
+        +"px";
+
+
+        contenedor.appendChild(
+            punto
+        );
+
+
+    }
+
+
+}
+
+
+crearParticulas();
+
+
+
+/* ==================================================
+   ABRIR SORPRESA
+================================================== */
+
+function abrirSorpresa(){
+
+
+    if(abierto){
+
+        return;
+
+    }
+
+
+    abierto = true;
+
+
+    iniciarMusica();
+
+
+    document
+    .getElementById(
+        "botonMusica"
+    )
+    .classList
+    .add(
+        "visible"
+    );
+
+
+    const inicio =
+
+    document.getElementById(
+        "pantallaInicio"
+    );
+
+
+    const pantallaRamo =
+
+    document.getElementById(
+        "pantallaRamo"
+    );
+
+
+    inicio
+    .classList
+    .add(
+        "oculta"
+    );
+
+
+
+    setTimeout(()=>{
+
+
+        pantallaRamo
+        .classList
+        .remove(
+            "oculta"
+        );
+
+
+    },650);
+
+
+
+    setTimeout(()=>{
+
+
+        document
+        .getElementById(
+            "halo"
+        )
+        .classList
+        .add(
+            "mostrar"
+        );
+
+
+    },950);
+
+
+
+    setTimeout(()=>{
+
+
+        document
+        .getElementById(
+            "ramo"
+        )
+        .classList
+        .add(
+            "mostrar"
+        );
+
+
+    },1150);
+
+
+
+    setTimeout(()=>{
+
+
+        lanzarPetalos();
+
+
+    },1600);
+
+
+
+    setTimeout(()=>{
+
+
+        document
+        .getElementById(
+            "textoRamo"
+        )
+        .classList
+        .add(
+            "mostrar"
+        );
+
+
+    },2450);
+
+
+
+    setTimeout(()=>{
+
+
+        document
+        .getElementById(
+            "acciones"
+        )
+        .classList
+        .add(
+            "mostrar"
+        );
+
+
+    },3250);
+
+
+}
+
+
+
+/* ==================================================
+   MÚSICA
+================================================== */
+
+function iniciarMusica(){
+
+
+    clearInterval(
+        fadeMusica
+    );
+
+
+    musica.currentTime = 0;
+
+
+    musica.volume = 0;
+
+
+    musica.play()
+
+    .then(()=>{
+
+
+        fadeMusica =
+
+        setInterval(()=>{
+
+
+            if(
+                musica.volume
+                <
+                0.34
+            ){
+
+
+                musica.volume =
+
+                Math.min(
+                    musica.volume
+                    +
+                    0.02,
+                    0.35
+                );
+
+
+            }
+
+
+            else{
+
+
+                clearInterval(
+                    fadeMusica
+                );
+
+
+            }
+
+
+        },120);
+
+
+    })
+
+
+    .catch(error=>{
+
+
+        console.log(
+
+            "No se pudo reproducir la música:",
+
+            error
+
+        );
+
+
+    });
+
+
+}
+
+
+
+function controlarMusica(){
+
+
+    const boton =
+
+    document.getElementById(
+        "botonMusica"
+    );
+
+
+    if(
+        musica.paused
+    ){
+
+
+        musica.play();
+
+
+        boton.textContent =
+        "🔊";
+
+
+    }
+
+
+    else{
+
+
+        musica.pause();
+
+
+        boton.textContent =
+        "🔇";
+
+
+    }
+
+
+}
+
+
+
+/* ==================================================
+   PÉTALOS
+================================================== */
+
+function lanzarPetalos(){
+
+
+    for(
+        let i=0;
+        i<24;
+        i++
+    ){
+
+
+        setTimeout(()=>{
+
+
+            crearPetalo();
+
+
+        },i*145);
+
+
+    }
+
+
+}
+
+
+
+function crearPetalo(){
+
+
+    const petalo =
+
+    document.createElement(
+        "div"
+    );
+
+
+    petalo.className =
+    "petalo";
+
+
+    petalo.style.left =
+
+    Math.random()*100
+    +
+    "vw";
+
+
+    petalo.style.animationDuration =
+
+    5
+    +
+    Math.random()*4
+    +
+    "s";
+
+
+    const escala =
+
+    .6
+    +
+    Math.random()*.8;
+
+
+    petalo.style.scale =
+    escala;
+
+
+    document.body
+    .appendChild(
+        petalo
+    );
+
+
+    setTimeout(()=>{
+
+
+        petalo.remove();
+
+
+    },9500);
+
+
+}
+
+
+
+/* ==================================================
+   TARJETA 1
+================================================== */
+
+function abrirDetalle(){
+
+
+    document
+    .getElementById(
+        "modalDetalle"
+    )
+    .classList
+    .add(
+        "abierto"
+    );
+
+
+}
+
+
+
+function cerrarDetalle(){
+
+
+    document
+    .getElementById(
+        "modalDetalle"
+    )
+    .classList
+    .remove(
+        "abierto"
+    );
+
+
+}
+
+
+
+function cerrarFondoDetalle(
+    event
+){
+
+
+    if(
+        event.target.id
+        ===
+        "modalDetalle"
+    ){
+
+
+        cerrarDetalle();
+
+
+    }
+
+
+}
+
+
+
+/* ==================================================
+   TARJETA 2 - INSPIRADORA
+================================================== */
+
+function abrirInspiracion(){
+
+
+    document
+    .getElementById(
+        "modalInspiracion"
+    )
+    .classList
+    .add(
+        "abierto"
+    );
+
+
+}
+
+
+
+function cerrarInspiracion(){
+
+
+    document
+    .getElementById(
+        "modalInspiracion"
+    )
+    .classList
+    .remove(
+        "abierto"
+    );
+
+
+}
+
+
+
+function cerrarFondoInspiracion(
+    event
+){
+
+
+    if(
+        event.target.id
+        ===
+        "modalInspiracion"
+    ){
+
+
+        cerrarInspiracion();
+
+
+    }
+
+
+}
+
+
+
+/* ==================================================
+   TECLA ESC PARA CERRAR TARJETAS
+================================================== */
+
+document.addEventListener(
+
+    "keydown",
+
+    function(event){
+
+
+        if(
+            event.key
+            ===
+            "Escape"
+        ){
+
+
+            cerrarDetalle();
+
+            cerrarInspiracion();
+
+
+        }
+
+
+    }
+
+);
+
+
+</script>
+
+
+</body>
+
+</html>
