@@ -1,2397 +1,1095 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flor para Heydi 🌻</title>
 
-<meta charset="UTF-8">
-
-<meta
-name="viewport"
-content="width=device-width, initial-scale=1.0"
->
-
-<title>Hola, Heydi </title>
-
-
-<!-- VISTA PREVIA PARA WHATSAPP -->
-
-<meta
-property="og:title"
-content="Hola, Heydi "
->
-
-<meta
-property="og:description"
-content="Just a little something for you. 🌻"
->
-
-<meta
-property="og:type"
-content="website"
->
-
-<meta
-name="theme-color"
-content="#070705"
->
-
-
-<style>
-
-
-/* ==================================================
-   GENERAL
-================================================== */
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-
-html,
-body{
-    width:100%;
-    min-height:100%;
-}
-
-
-body{
-
-    min-height:100vh;
-
-    overflow:hidden;
-
-    font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
-
-    color:#f6f0df;
-
-
-    background:
-
-    radial-gradient(
-        circle at 50% 35%,
-        rgba(255,205,70,.10),
-        transparent 30%
-    ),
-
-    radial-gradient(
-        circle at 50% 100%,
-        rgba(173,120,19,.08),
-        transparent 40%
-    ),
-
-    linear-gradient(
-        145deg,
-        #030303,
-        #0b0905 50%,
-        #020202
-    );
-
-}
-
-
-
-/* ==================================================
-   FONDO
-================================================== */
-
-.fondo-luz{
-
-    position:fixed;
-
-    inset:0;
-
-    pointer-events:none;
-
-    background:
-
-    radial-gradient(
-        circle at 50% 42%,
-        rgba(255,208,73,.10),
-        transparent 28%
-    );
-
-    animation:
-    respirarFondo
-    5s ease-in-out infinite;
-
-}
-
-
-@keyframes respirarFondo{
-
-    0%,
-    100%{
-
-        opacity:.45;
-
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
     }
 
-    50%{
+    html{
+      scroll-behavior:smooth;
+    }
 
+    body{
+      min-height:100vh;
+      overflow-x:hidden;
+      font-family:"Segoe UI", Arial, sans-serif;
+      color:#f7f8fb;
+      background:
+        radial-gradient(circle at 20% 15%, rgba(111,166,255,.10), transparent 27%),
+        radial-gradient(circle at 80% 75%, rgba(255,210,72,.07), transparent 30%),
+        linear-gradient(145deg, #020305, #090b10 50%, #020305);
+    }
+
+    .particula{
+      position:fixed;
+      width:3px;
+      height:3px;
+      border-radius:50%;
+      background:#d7e6ff;
+      box-shadow:0 0 8px rgba(160,200,255,.8);
+      pointer-events:none;
+      z-index:-2;
+      opacity:0;
+      animation:brillar 4s ease-in-out infinite;
+    }
+
+    @keyframes brillar{
+      0%,100%{
+        opacity:.08;
+        transform:scale(.6);
+      }
+      50%{
+        opacity:.7;
+        transform:scale(1.3);
+      }
+    }
+
+    .pagina{
+      width:min(900px, calc(100% - 30px));
+      margin:auto;
+      padding:45px 0 85px;
+      text-align:center;
+    }
+
+    .intro{
+      max-width:700px;
+      margin:auto;
+      animation:aparecer 1.2s ease;
+    }
+
+    @keyframes aparecer{
+      from{
+        opacity:0;
+        transform:translateY(20px);
+      }
+      to{
         opacity:1;
-
+        transform:translateY(0);
+      }
     }
 
-}
+    .mini{
+      color:#8ea7cc;
+      font-size:10px;
+      letter-spacing:4px;
+      margin-bottom:18px;
+    }
 
+    .intro h1{
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:clamp(35px, 7vw, 62px);
+      font-weight:400;
+      line-height:1.08;
+      color:#f5f6fa;
+    }
 
+    .intro h1 span{
+      color:#ffe274;
+      text-shadow:0 0 25px rgba(255,221,87,.15);
+    }
 
-/* ==================================================
-   LÍNEAS ELEGANTES
-================================================== */
+    .intro p{
+      margin-top:20px;
+      color:#a9afbb;
+      font-size:clamp(14px, 2vw, 17px);
+      line-height:1.8;
+    }
 
-.linea{
+    .intro strong{
+      color:#d8e7ff;
+    }
 
-    position:fixed;
+    .escena{
+      width:min(560px, 96vw);
+      margin:15px auto 0;
+      position:relative;
+    }
 
-    width:42vw;
+    #jardin{
+      width:100%;
+      height:auto;
+      overflow:visible;
+    }
 
-    height:1px;
+    .macetero{
+      filter:drop-shadow(0 18px 20px rgba(0,0,0,.5));
+    }
 
-    background:
+    #semilla{
+      cursor:pointer;
+      transform-origin:center;
+      animation:semillaFlotando 2s ease-in-out infinite;
+      filter:drop-shadow(0 0 12px rgba(255,205,62,.4));
+    }
 
-    linear-gradient(
-        90deg,
-        transparent,
-        rgba(225,185,76,.27),
-        transparent
-    );
+    @keyframes semillaFlotando{
+      0%,100%{ transform:translateY(0); }
+      50%{ transform:translateY(-9px); }
+    }
 
-    pointer-events:none;
+    #semilla.cayendo{
+      animation:caerSemilla 1.2s cubic-bezier(.5,.05,.85,.2) forwards;
+    }
 
-    z-index:0;
-
-}
-
-
-.linea1{
-
-    top:15%;
-
-    left:-9%;
-
-    transform:
-    rotate(-17deg);
-
-}
-
-
-.linea2{
-
-    bottom:16%;
-
-    right:-9%;
-
-    transform:
-    rotate(-17deg);
-
-}
-
-
-
-/* ==================================================
-   PARTÍCULAS
-================================================== */
-
-.particulas{
-
-    position:fixed;
-
-    inset:0;
-
-    overflow:hidden;
-
-    pointer-events:none;
-
-    z-index:1;
-
-}
-
-
-.particula{
-
-    position:absolute;
-
-    bottom:-20px;
-
-    width:3px;
-
-    height:3px;
-
-    border-radius:50%;
-
-    background:#f1c955;
-
-    box-shadow:
-
-    0 0 8px
-    rgba(255,208,75,.8);
-
-    opacity:0;
-
-    animation:
-    subirParticula
-    linear infinite;
-
-}
-
-
-@keyframes subirParticula{
-
-    0%{
-
-        transform:
-        translateY(0)
-        scale(.5);
-
+    @keyframes caerSemilla{
+      0%{
+        transform:translateY(0) rotate(0deg);
+      }
+      65%{
+        transform:translateY(426px) rotate(290deg);
+      }
+      82%{
+        transform:translateY(441px) rotate(345deg);
+      }
+      100%{
+        transform:translateY(441px) rotate(380deg);
         opacity:0;
-
+      }
     }
 
-
-    15%{
-
-        opacity:.65;
-
+    #tallo{
+      stroke:#4e8a35;
+      stroke-width:15;
+      stroke-linecap:round;
+      fill:none;
+      stroke-dasharray:270;
+      stroke-dashoffset:270;
+      transition:stroke-dashoffset 2.4s ease;
     }
 
-
-    75%{
-
-        opacity:.25;
-
+    #tallo.crecer{
+      stroke-dashoffset:0;
     }
 
+    .hoja{
+      opacity:0;
+      transform:scale(.1);
+      transform-box:fill-box;
+      transform-origin:center;
+      transition:opacity .9s ease, transform .9s cubic-bezier(.2,.8,.3,1.4);
+      cursor:pointer;
+    }
 
-    100%{
+    .hoja.visible{
+      opacity:1;
+      transform:scale(1);
+    }
 
-        transform:
-        translateY(-110vh)
-        scale(1.15);
+    .hoja:hover{
+      filter:drop-shadow(0 0 13px rgba(110,185,70,.5));
+    }
 
+    .petalo{
+      opacity:0;
+      transform:scale(.13);
+      transform-box:fill-box;
+      transform-origin:center;
+      cursor:pointer;
+      transition:
+        opacity .7s ease,
+        transform .7s cubic-bezier(.2,.9,.3,1.35),
+        filter .3s ease;
+    }
+
+    .petalo.visible{
+      opacity:1;
+      transform:scale(1);
+    }
+
+    .petalo.desbloqueado:hover{
+      filter:brightness(1.18) drop-shadow(0 0 15px #ffd62d);
+    }
+
+    .petalo.leido{
+      filter:brightness(1.16) drop-shadow(0 0 10px #ffe47b);
+    }
+
+    #centroGrupo{
+      opacity:0;
+      transform:scale(.1);
+      transform-origin:250px 220px;
+      transition:
+        opacity .9s ease,
+        transform .9s cubic-bezier(.2,.9,.3,1.3);
+      cursor:pointer;
+    }
+
+    #centroGrupo.visible{
+      opacity:1;
+      transform:scale(1);
+    }
+
+    #centroGrupo:hover{
+      filter:drop-shadow(0 0 18px rgba(255,190,30,.55));
+    }
+
+    .texto-centro{
+      pointer-events:none;
+      text-anchor:middle;
+      fill:#f7d76d;
+      font-family:"Segoe UI", Arial, sans-serif;
+      font-weight:600;
+      letter-spacing:.7px;
+    }
+
+    #instruccionSemilla{
+      margin-top:-24px;
+      color:#9da9bc;
+      font-size:11px;
+      letter-spacing:3px;
+      animation:respirarTexto 1.7s ease-in-out infinite;
+    }
+
+    @keyframes respirarTexto{
+      50%{ opacity:.35; }
+    }
+
+    #mensajeFlorecer{
+      opacity:0;
+      margin-top:-8px;
+      color:#d2c992;
+      font-size:clamp(14px, 2vw, 17px);
+      line-height:1.7;
+      transition:opacity 1.3s ease;
+    }
+
+    #mensajeFlorecer.visible{
+      opacity:1;
+    }
+
+    #contador{
+      opacity:0;
+      margin-top:12px;
+      color:#686c75;
+      font-size:11px;
+      letter-spacing:2px;
+      transition:.8s;
+    }
+
+    #contador.visible{
+      opacity:1;
+    }
+
+    #modal{
+      position:fixed;
+      inset:0;
+      z-index:500;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding:20px;
+      background:rgba(0,0,0,.86);
+      backdrop-filter:blur(13px);
+      opacity:0;
+      visibility:hidden;
+      pointer-events:none;
+      transition:.35s ease;
+    }
+
+    #modal.activo{
+      opacity:1;
+      visibility:visible;
+      pointer-events:auto;
+    }
+
+    .modal-contenido{
+      position:relative;
+      width:min(510px, 94vw);
+      padding:48px 32px 37px;
+      border-radius:28px;
+      border:1px solid rgba(157,196,255,.28);
+      background:
+        radial-gradient(circle at 50% 0%, rgba(115,166,255,.12), transparent 45%),
+        linear-gradient(145deg, #11151d, #060709);
+      box-shadow:
+        0 30px 80px rgba(0,0,0,.75),
+        0 0 55px rgba(110,165,255,.07);
+      transform:scale(.88) translateY(25px);
+      transition:.4s ease;
+    }
+
+    #modal.activo .modal-contenido{
+      transform:scale(1) translateY(0);
+    }
+
+    .cerrar{
+      position:absolute;
+      top:13px;
+      right:18px;
+      border:0;
+      background:none;
+      color:#cfe1ff;
+      font-size:31px;
+      cursor:pointer;
+    }
+
+    #modalIcono{
+      font-size:45px;
+    }
+
+    #modalTitulo{
+      margin-top:12px;
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:clamp(25px, 4vw, 32px);
+      font-weight:400;
+      color:#dce8ff;
+    }
+
+    #modalTexto{
+      margin-top:19px;
+      color:#c4c8d0;
+      line-height:1.9;
+      white-space:pre-line;
+      font-size:clamp(14px, 2vw, 16px);
+    }
+
+    #desbloqueoRamo{
+      display:none;
+      max-width:650px;
+      margin:45px auto 0;
+      padding:28px 24px;
+      border:1px solid rgba(185,207,244,.22);
+      border-radius:28px;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255,218,92,.08), transparent 40%),
+        linear-gradient(145deg, rgba(10,11,15,.96), rgba(5,6,9,.96));
+      box-shadow:0 20px 55px rgba(0,0,0,.45);
+      animation:mostrarRamo .8s ease;
+    }
+
+    #desbloqueoRamo.visible{
+      display:block;
+    }
+
+    @keyframes mostrarRamo{
+      from{
         opacity:0;
-
-    }
-
-}
-
-
-
-/* ==================================================
-   PANTALLAS
-================================================== */
-
-.pantalla{
-
-    position:absolute;
-
-    inset:0;
-
-    width:100%;
-
-    min-height:100vh;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    padding:25px;
-
-    text-align:center;
-
-    z-index:5;
-
-
-    transition:
-
-    opacity 1s ease,
-    transform 1s ease,
-    visibility 1s ease;
-
-}
-
-
-.oculta{
-
-    opacity:0;
-
-    visibility:hidden;
-
-    pointer-events:none;
-
-    transform:
-    scale(1.035);
-
-}
-
-
-
-/* ==================================================
-   INICIO
-================================================== */
-
-.inicio{
-
-    width:min(780px,100%);
-
-}
-
-
-.estrella{
-
-    color:#ddb84f;
-
-    font-size:25px;
-
-    margin-bottom:24px;
-
-    animation:
-    estrellaBrillo
-    2.6s ease-in-out infinite;
-
-}
-
-
-@keyframes estrellaBrillo{
-
-    0%,
-    100%{
-
-        opacity:.4;
-
-        transform:
-        scale(.9);
-
-    }
-
-
-    50%{
-
+        transform:translateY(25px);
+      }
+      to{
         opacity:1;
-
-        transform:
-        scale(1.15);
-
+        transform:translateY(0);
+      }
     }
 
-}
-
-
-.mini-texto{
-
-    color:#c8a34c;
-
-    font-size:10px;
-
-    letter-spacing:5px;
-
-    margin-bottom:22px;
-
-}
-
-
-.titulo{
-
-    font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-
-    font-size:
-    clamp(
-        52px,
-        9vw,
-        94px
-    );
-
-
-    line-height:.98;
-
-    font-weight:400;
-
-    letter-spacing:-2px;
-
-    margin-bottom:24px;
-
-    color:#f7f1e3;
-
-
-    text-shadow:
-
-    0 12px 40px
-    rgba(0,0,0,.85);
-
-}
-
-
-.titulo span{
-
-    color:#e0bb53;
-
-}
-
-
-.ingles{
-
-    font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-    font-style:italic;
-
-    color:#ead89f;
-
-    font-size:
-    clamp(
-        18px,
-        3vw,
-        24px
-    );
-
-    margin-bottom:17px;
-
-}
-
-
-.descripcion{
-
-    max-width:540px;
-
-    margin:
-    0 auto 36px;
-
-    color:#bab3a4;
-
-    font-size:
-    clamp(
-        14px,
-        2vw,
-        17px
-    );
-
-    line-height:1.8;
-
-}
-
-
-
-/* ==================================================
-   BOTÓN PRINCIPAL
-================================================== */
-
-.boton-principal{
-
-    border:
-
-    1px solid
-    rgba(229,192,88,.68);
-
-
-    background:
-
-    linear-gradient(
-        145deg,
-        rgba(196,153,41,.17),
-        rgba(15,14,10,.78)
-    );
-
-
-    color:#f2db94;
-
-    padding:
-    16px 40px;
-
-    border-radius:100px;
-
-    letter-spacing:3px;
-
-    font-size:11px;
-
-    font-weight:bold;
-
-    cursor:pointer;
-
-    backdrop-filter:
-    blur(10px);
-
-
-    box-shadow:
-
-    0 18px 45px
-    rgba(0,0,0,.5),
-
-    inset
-    0 0 20px
-    rgba(255,208,74,.04);
-
-
-    transition:
-    .3s ease;
-
-}
-
-
-.boton-principal:hover{
-
-    transform:
-    translateY(-3px);
-
-    border-color:
-    rgba(245,210,110,.95);
-
-
-    box-shadow:
-
-    0 20px 50px
-    rgba(0,0,0,.6),
-
-    0 0 35px
-    rgba(222,175,52,.10);
-
-}
-
-
-
-/* ==================================================
-   RAMO
-================================================== */
-
-#pantallaRamo{
-
-    overflow:hidden;
-
-}
-
-
-.halo{
-
-    position:absolute;
-
-    width:
-    min(
-        680px,
-        90vw
-    );
-
-    height:
-    min(
-        680px,
-        90vw
-    );
-
-    border-radius:50%;
-
-
-    background:
-
-    radial-gradient(
-        circle,
-        rgba(255,209,67,.18),
-        rgba(200,143,25,.055) 45%,
-        transparent 70%
-    );
-
-
-    filter:
-    blur(15px);
-
-
-    opacity:0;
-
-    transform:
-    scale(.7);
-
-
-    transition:
-    1.7s ease;
-
-}
-
-
-.halo.mostrar{
-
-    opacity:1;
-
-    transform:
-    scale(1);
-
-
-    animation:
-    haloRespira
-    5s ease-in-out infinite;
-
-}
-
-
-@keyframes haloRespira{
-
-    0%,
-    100%{
-
-        transform:
-        scale(.96);
-
+    #desbloqueoRamo .mini{
+      margin-bottom:12px;
     }
 
-
-    50%{
-
-        transform:
-        scale(1.05);
-
+    #desbloqueoRamo h2{
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:clamp(28px, 5vw, 42px);
+      font-weight:400;
+      color:#f7f7fb;
+      line-height:1.15;
     }
 
-}
-
-
-
-.contenido-ramo{
-
-    width:min(900px,100%);
-
-    position:relative;
-
-    z-index:4;
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:center;
-
-    align-items:center;
-
-}
-
-
-
-.ramo{
-
-    width:
-    clamp(
-        320px,
-        51vw,
-        610px
-    );
-
-    max-height:61vh;
-
-    object-fit:contain;
-
-
-    opacity:0;
-
-
-    transform:
-
-    translateY(90px)
-    scale(.74);
-
-
-    filter:
-
-    drop-shadow(
-        0 30px 45px
-        rgba(0,0,0,.9)
-    )
-
-    drop-shadow(
-        0 0 25px
-        rgba(255,208,66,.07)
-    );
-
-
-    transition:
-
-    opacity 1.5s ease,
-
-    transform 1.8s
-    cubic-bezier(
-        .16,
-        .8,
-        .23,
-        1
-    );
-
-}
-
-
-.ramo.mostrar{
-
-    opacity:1;
-
-
-    transform:
-
-    translateY(0)
-    scale(1);
-
-
-    animation:
-
-    flotarRamo
-    5.5s
-    ease-in-out
-    2s infinite;
-
-}
-
-
-@keyframes flotarRamo{
-
-    0%,
-    100%{
-
-        transform:
-
-        translateY(0)
-        rotate(-.3deg);
-
+    #desbloqueoRamo h2 span{
+      color:#ffd76b;
     }
 
-
-    50%{
-
-        transform:
-
-        translateY(-9px)
-        rotate(.3deg);
-
+    #desbloqueoRamo p{
+      margin-top:16px;
+      color:#a8afbb;
+      line-height:1.8;
+      font-size:clamp(14px, 2vw, 16px);
     }
 
-}
-
-
-
-/* ==================================================
-   TEXTO DEL RAMO
-================================================== */
-
-.texto-ramo{
-
-    margin-top:-6px;
-
-    opacity:0;
-
-    transform:
-    translateY(18px);
-
-    transition:
-    1s ease;
-
-}
-
-
-.texto-ramo.mostrar{
-
-    opacity:1;
-
-    transform:
-    translateY(0);
-
-}
-
-
-.texto-ramo .sub{
-
-    font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-    font-style:italic;
-
-    color:#ddc476;
-
-
-    font-size:
-    clamp(
-        16px,
-        2.5vw,
-        21px
-    );
-
-
-    margin-bottom:9px;
-
-}
-
-
-.texto-ramo h2{
-
-    font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-
-    font-size:
-    clamp(
-        31px,
-        5vw,
-        52px
-    );
-
-
-    font-weight:400;
-
-    color:#f6f0e1;
-
-    margin-bottom:11px;
-
-}
-
-
-.texto-ramo h2 span{
-
-    color:#dfba51;
-
-}
-
-
-.texto-ramo p{
-
-    color:#aaa395;
-
-    font-size:
-    clamp(
-        13px,
-        2vw,
-        15px
-    );
-
-    line-height:1.7;
-
-}
-
-
-
-/* ==================================================
-   BOTONES
-================================================== */
-
-.acciones{
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    flex-wrap:wrap;
-
-    gap:12px;
-
-    margin-top:25px;
-
-
-    opacity:0;
-
-    transform:
-    translateY(18px);
-
-
-    transition:
-    1s ease;
-
-}
-
-
-.acciones.mostrar{
-
-    opacity:1;
-
-    transform:
-    translateY(0);
-
-}
-
-
-.boton-secundario{
-
-    border:
-
-    1px solid
-    rgba(219,181,75,.42);
-
-
-    background:
-
-    rgba(10,10,8,.65);
-
-
-    color:#d7c79b;
-
-
-    padding:
-
-    12px 22px;
-
-
-    border-radius:100px;
-
-    letter-spacing:2px;
-
-    font-size:10px;
-
-    cursor:pointer;
-
-    transition:
-    .3s ease;
-
-    backdrop-filter:
-    blur(8px);
-
-}
-
-
-.boton-secundario:hover{
-
-    color:#f2dd98;
-
-
-    background:
-
-    rgba(204,163,51,.10);
-
-
-    transform:
-    translateY(-2px);
-
-}
-
-
-
-/* ==================================================
-   PÉTALOS
-================================================== */
-
-.petalo{
-
-    position:fixed;
-
-    top:-40px;
-
-    width:17px;
-
-    height:10px;
-
-
-    border-radius:
-
-    100% 0
-    100% 0;
-
-
-    background:
-
-    linear-gradient(
-        145deg,
-        #ffe46b,
-        #d09a1b
-    );
-
-
-    opacity:.8;
-
-    pointer-events:none;
-
-    z-index:3;
-
-
-    animation:
-
-    caerPetalo
-    linear forwards;
-
-}
-
-
-@keyframes caerPetalo{
-
-    0%{
-
-        transform:
-
-        translateY(-30px)
-        translateX(0)
-        rotate(0deg);
-
+    .btn-ramo{
+      margin-top:24px;
+      border:1px solid rgba(185,207,244,.35);
+      border-radius:100px;
+      padding:12px 24px;
+      background:rgba(9,11,16,.8);
+      color:#d6e4fc;
+      font-size:11px;
+      letter-spacing:2px;
+      cursor:pointer;
+      transition:.3s;
+    }
+
+    .btn-ramo:hover{
+      transform:translateY(-3px);
+      border-color:rgba(205,224,255,.75);
+      color:white;
+    }
+
+    #ramoContenido{
+      display:none;
+      max-width:650px;
+      margin:35px auto 0;
+      padding:28px;
+      border:1px solid rgba(220,180,190,.20);
+      border-radius:28px;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(245,165,180,.08), transparent 40%),
+        linear-gradient(145deg, rgba(18,16,19,.92), rgba(7,7,9,.96));
+      box-shadow:0 25px 70px rgba(0,0,0,.5);
+      animation:mostrarRamo .8s ease;
+    }
+
+    #ramoContenido.visible{
+      display:block;
+    }
+
+    #ramoContenido h3{
+      color:#f5d4da;
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:clamp(25px, 5vw, 38px);
+      font-weight:400;
+    }
+
+    .imagen-contenedor{
+      position:relative;
+      width:min(460px, 100%);
+      margin:25px auto 0;
+    }
+
+    #imagenRamo{
+      display:block;
+      width:100%;
+      border-radius:23px;
+      border:1px solid rgba(255,205,215,.18);
+      box-shadow:0 22px 60px rgba(0,0,0,.55);
+    }
+
+    #abeja{
+      position:absolute;
+      top:15%;
+      right:13%;
+      z-index:20;
+      font-size:clamp(34px, 7vw, 55px);
+      cursor:pointer;
+      user-select:none;
+      filter:drop-shadow(0 4px 7px rgba(0,0,0,.4));
+      animation:abejaFlotar 1.4s ease-in-out infinite;
+    }
+
+    @keyframes abejaFlotar{
+      0%,100%{
+        transform:translate(0,0) rotate(-8deg);
+      }
+      50%{
+        transform:translate(-8px,-12px) rotate(8deg);
+      }
+    }
+
+    #abeja.volando{
+      animation:salirVolando 3.8s cubic-bezier(.25,.7,.5,1) forwards;
+      pointer-events:none;
+    }
+
+    @keyframes salirVolando{
+      0%{
+        transform:translate(0,0) rotate(0deg) scale(1);
+        opacity:1;
+      }
+      18%{
+        transform:translate(-12px,-10px) rotate(-8deg) scale(1.05);
+        opacity:1;
+      }
+      38%{
+        transform:translate(35px,-45px) rotate(12deg) scale(1.02);
+        opacity:1;
+      }
+      58%{
+        transform:translate(85px,-95px) rotate(18deg) scale(.95);
+        opacity:1;
+      }
+      78%{
+        transform:translate(170px,-180px) rotate(25deg) scale(.78);
+        opacity:.9;
+      }
+      100%{
+        transform:translate(310px,-300px) rotate(38deg) scale(.45);
         opacity:0;
-
+      }
     }
 
-
-    10%{
-
-        opacity:.8;
-
+    #mensajeAbeja{
+      margin-top:24px;
+      color:#c6c9d0;
+      font-size:clamp(14px, 2vw, 16px);
+      line-height:1.75;
     }
 
-
-    100%{
-
-        transform:
-
-        translateY(110vh)
-        translateX(85px)
-        rotate(650deg);
-
-        opacity:0;
-
+    #mensajeAbeja strong{
+      color:#f5d0d8;
     }
 
-}
-
-
-
-/* ==================================================
-   MODALES / TARJETAS
-================================================== */
-
-.modal{
-
-    position:fixed;
-
-    inset:0;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    padding:25px;
-
-
-    background:
-
-    rgba(0,0,0,.80);
-
-
-    backdrop-filter:
-    blur(15px);
-
-
-    opacity:0;
-
-    visibility:hidden;
-
-    pointer-events:none;
-
-
-    transition:
-    .5s ease;
-
-
-    z-index:50;
-
-}
-
-
-.modal.abierto{
-
-    opacity:1;
-
-    visibility:visible;
-
-    pointer-events:auto;
-
-}
-
-
-
-.tarjeta{
-
-    position:relative;
-
-    width:
-    min(
-        500px,
-        100%
-    );
-
-
-    padding:
-
-    48px
-    35px;
-
-
-    border-radius:26px;
-
-
-    background:
-
-    linear-gradient(
-        145deg,
-        rgba(29,25,15,.98),
-        rgba(7,7,6,.99)
-    );
-
-
-    border:
-
-    1px solid
-    rgba(223,184,75,.38);
-
-
-    box-shadow:
-
-    0 35px 100px
-    rgba(0,0,0,.9),
-
-    inset
-    0 0 40px
-    rgba(224,190,90,.025);
-
-
-    transform:
-
-    translateY(30px)
-    scale(.94);
-
-
-    transition:
-    .5s ease;
-
-}
-
-
-.modal.abierto
-.tarjeta{
-
-    transform:
-
-    translateY(0)
-    scale(1);
-
-}
-
-
-.florcita{
-
-    font-size:40px;
-
-    margin-bottom:19px;
-
-}
-
-
-.tarjeta h3{
-
-    font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-
-    font-size:
-
-    clamp(
-        29px,
-        5vw,
-        41px
-    );
-
-
-    font-weight:400;
-
-    color:#ead18a;
-
-    margin-bottom:20px;
-
-}
-
-
-.tarjeta p{
-
-    color:#bbb4a5;
-
-    font-size:15px;
-
-    line-height:1.9;
-
-    margin-bottom:28px;
-
-}
-
-
-.tarjeta em{
-
-    color:#dfc87f;
-
-}
-
-
-
-/* ==================================================
-   BOTÓN MÚSICA
-================================================== */
-
-#botonMusica{
-
-    position:fixed;
-
-    top:19px;
-
-    right:19px;
-
-    width:45px;
-
-    height:45px;
-
-
-    border-radius:50%;
-
-
-    border:
-
-    1px solid
-    rgba(219,181,75,.36);
-
-
-    background:
-
-    rgba(8,8,7,.65);
-
-
-    color:#e6d18e;
-
-    cursor:pointer;
-
-    backdrop-filter:
-    blur(10px);
-
-
-    opacity:0;
-
-    visibility:hidden;
-
-
-    transition:
-    .4s ease;
-
-
-    z-index:100;
-
-}
-
-
-#botonMusica.visible{
-
-    opacity:1;
-
-    visibility:visible;
-
-}
-
-
-
-/* ==================================================
-   CELULAR
-================================================== */
-
-@media(
-    max-width:600px
-){
-
-    .pantalla{
-
-        padding:
-        20px 16px;
-
+    #resultadoAbeja{
+      margin-top:20px;
+      color:#d8e7ff;
+      font-size:16px;
+      min-height:28px;
+      opacity:0;
+      transition:.6s;
     }
 
-
-    .titulo{
-
-        font-size:
-        clamp(
-            49px,
-            15vw,
-            69px
-        );
-
+    #resultadoAbeja.visible{
+      opacity:1;
     }
 
+    @media(max-width:600px){
+      .pagina{
+        width:calc(100% - 22px);
+        padding-top:30px;
+      }
 
-    .mini-texto{
+      .intro p{
+        max-width:350px;
+        margin-left:auto;
+        margin-right:auto;
+      }
 
-        letter-spacing:4px;
+      .modal-contenido{
+        padding:44px 23px 30px;
+      }
 
+      #ramoContenido,
+      #desbloqueoRamo{
+        padding:24px 16px;
+      }
     }
-
-
-    .ramo{
-
-        width:
-        min(
-            93vw,
-            445px
-        );
-
-        max-height:55vh;
-
-    }
-
-
-    .texto-ramo h2{
-
-        font-size:
-        clamp(
-            29px,
-            8.5vw,
-            40px
-        );
-
-    }
-
-
-    .acciones{
-
-        margin-top:20px;
-
-        gap:9px;
-
-    }
-
-
-    .boton-secundario{
-
-        padding:
-        11px 17px;
-
-        letter-spacing:
-        1.5px;
-
-    }
-
-
-    .tarjeta{
-
-        padding:
-        42px 25px;
-
-    }
-
-}
-
-
-
-/* PANTALLAS PEQUEÑAS */
-
-@media(
-    max-height:730px
-){
-
-    .ramo{
-
-        max-height:48vh;
-
-    }
-
-
-    .acciones{
-
-        margin-top:14px;
-
-    }
-
-
-    .texto-ramo h2{
-
-        font-size:
-        clamp(
-            27px,
-            4vw,
-            39px
-        );
-
-    }
-
-}
-
-
-</style>
-
+  </style>
 </head>
-
-
 <body>
 
+  <main class="pagina">
 
-<!-- FONDO -->
+    <section class="intro">
+      <div class="mini">Holiii, que gusto verte por aqui</div>
 
-<div class="fondo-luz"></div>
+      <h1>
+        Oye... tus flores amarillas
+        <span>desaparecieron jaja </span>
+      </h1>
 
-<div class="linea linea1"></div>
+      <p>
+        Pero no te preocupes...<br>
+        <strong>he creado para que no te sientas triste, si!</strong><br><br>
+        Presiona la semilla y deja que haga lo suyo 
+      </p>
+    </section>
 
-<div class="linea linea2"></div>
+    <section class="escena">
+      <svg id="jardin" viewBox="0 0 500 650" xmlns="http://www.w3.org/2000/svg">
 
-<div
-class="particulas"
-id="particulas"
-></div>
+        <g class="macetero">
+          <ellipse cx="250" cy="625" rx="100" ry="16" fill="rgba(0,0,0,.38)"/>
+          <path d="M165 520 L335 520 L312 625 Q250 645 188 625 Z" fill="url(#macetaGradiente)"/>
+          <rect x="151" y="505" width="198" height="35" rx="13" fill="#bd6d33"/>
+          <ellipse cx="250" cy="508" rx="85" ry="13" fill="#29170e"/>
+        </g>
 
+        <path id="tallo" d="M250 510 C248 450, 255 370, 250 282"/>
 
+        <g class="hoja" id="hoja1" onclick="abrirHoja(1)">
+          <path d="M246 420 C205 376, 150 377, 135 410 C171 440, 211 455, 246 430 Z" fill="url(#hojaGradiente)"/>
+          <path d="M240 423 C204 415, 175 408, 145 409" fill="none" stroke="#37651e" stroke-width="3"/>
+        </g>
 
-<!-- ==================================================
-     PANTALLA DE INICIO
-================================================== -->
+        <g class="hoja" id="hoja2" onclick="abrirHoja(2)">
+          <path d="M254 374 C290 330, 345 331, 365 363 C334 400, 292 411, 254 389 Z" fill="url(#hojaGradiente2)"/>
+          <path d="M260 381 C297 367, 329 361, 356 363" fill="none" stroke="#37651e" stroke-width="3"/>
+        </g>
 
-<section
-class="pantalla"
-id="pantallaInicio"
->
+        <g id="florCompleta">
 
+          <g transform="rotate(0 250 220)">
+            <ellipse class="petalo" data-petalo="1" cx="250" cy="112" rx="34" ry="93" fill="url(#petaloGradiente)" onclick="abrirPetalo(1)"/>
+          </g>
+          <g transform="rotate(30 250 220)">
+            <ellipse class="petalo" data-petalo="2" cx="250" cy="112" rx="34" ry="93" fill="url(#petaloGradiente)" onclick="abrirPetalo(2)"/>
+          </g>
+          <g transform="rotate(60 250 220)">
+            <ellipse class="petalo" data-petalo="3" cx="250" cy="112" rx="34" ry="93" fill="url(#petaloGradiente)" onclick="abrirPetalo(3)"/>
+          </g>
+          <g transform="rotate(90 250 220)">
+            <ellipse class="petalo" data-petalo="4" cx="250" cy="112" rx="34" ry="93" fill="url(#petaloGradiente)" onclick="abrirPetalo(4)"/>
+          </g>
+          <g transform="rotate(120 250 220)">
+            <ellipse class="petalo" data-petalo="5" cx="250" cy="112" rx="34" ry="93" fill="url(#petaloGradiente)" onclick="abrirPetalo(5)"/>
+          </g>
+          <g transform="rotate(150 250 220)">
+            <ellipse class="petalo" data-petalo="6" cx="250" cy="112" rx="34" ry="93" fill="url(#petaloGradiente)" onclick="abrirPetalo(6)"/>
+          </g>
+          <g transform="rotate(180 250 220)">
+            <ellipse class="petalo" data-petalo="7" cx="250" cy="112" rx="34" ry="93" fill="url(#petaloGradiente)" onclick="abrirPetalo(7)"/>
+          </g>
+          <g transform="rotate(210 250 220)">
+            <ellipse class="petalo" data-petalo="8" cx="250" cy="112" rx="34" ry="93" fill="url(#petaloGradiente)" onclick="abrirPetalo(8)"/>
+          </g>
+          <g transform="rotate(240 250 220)">
+            <ellipse class="petalo" data-petalo="9" cx="250" cy="112" rx="34" ry="93" fill="url(#petaloGradiente)" onclick="abrirPetalo(9)"/>
+          </g>
+          <g transform="rotate(270 250 220)">
+            <ellipse class="petalo" data-petalo="10" cx="250" cy="112" rx="34" ry="93" fill="url(#petaloGradiente)" onclick="abrirPetalo(10)"/>
+          </g>
+          <g transform="rotate(300 250 220)">
+            <ellipse class="petalo" data-petalo="11" cx="250" cy="112" rx="34" ry="93" fill="url(#petaloGradiente)" onclick="abrirPetalo(11)"/>
+          </g>
+          <g transform="rotate(330 250 220)">
+            <ellipse class="petalo" data-petalo="12" cx="250" cy="112" rx="34" ry="93" fill="url(#petaloGradiente)" onclick="abrirPetalo(12)"/>
+          </g>
 
-<div class="inicio">
+          <g id="centroGrupo" onclick="abrirCentro()">
+            <circle cx="250" cy="220" r="91" fill="url(#centroGradiente)" stroke="#88500d" stroke-width="7"/>
+            <circle cx="250" cy="220" r="75" fill="url(#semillasCentro)"/>
+            <text class="texto-centro" x="250" y="207" font-size="15">FOR YOU</text>
+            <text class="texto-centro" x="250" y="232" font-size="15">HEYDI</text>
+            <text class="texto-centro" x="250" y="256" font-size="18">✦</text>
+          </g>
 
+        </g>
 
-    <div class="estrella">
-        ✦
-    </div>
+        <g id="semilla" onclick="plantarSemilla()">
+          <ellipse cx="250" cy="65" rx="14" ry="23" fill="url(#semillaGradiente)" transform="rotate(-20 250 65)"/>
+          <path d="M245 49 C253 56, 255 68, 252 82" stroke="rgba(255,255,255,.22)" stroke-width="3" fill="none"/>
+        </g>
 
+        <defs>
+          <linearGradient id="petaloGradiente" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#fff375"/>
+            <stop offset="48%" stop-color="#ffd326"/>
+            <stop offset="100%" stop-color="#f29b00"/>
+          </linearGradient>
 
-    <div class="mini-texto">
+          <radialGradient id="centroGradiente">
+            <stop offset="0%" stop-color="#75420b"/>
+            <stop offset="70%" stop-color="#492406"/>
+            <stop offset="100%" stop-color="#281002"/>
+          </radialGradient>
 
-        A LITTLE SURPRISE
+          <pattern id="semillasCentro" width="11" height="11" patternUnits="userSpaceOnUse">
+            <circle cx="3" cy="3" r="2.2" fill="#2b1203"/>
+            <circle cx="8" cy="8" r="1.8" fill="#9b6417"/>
+          </pattern>
 
-    </div>
+          <linearGradient id="hojaGradiente" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#82b844"/>
+            <stop offset="100%" stop-color="#275c18"/>
+          </linearGradient>
 
+          <linearGradient id="hojaGradiente2" x1="1" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#82b844"/>
+            <stop offset="100%" stop-color="#275c18"/>
+          </linearGradient>
 
-    <h1 class="titulo">
+          <linearGradient id="macetaGradiente" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#da8441"/>
+            <stop offset="50%" stop-color="#a75526"/>
+            <stop offset="100%" stop-color="#663119"/>
+          </linearGradient>
 
-        Hola,
-        <span>
-            Heydi
-        </span>
-        
+          <linearGradient id="semillaGradiente" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#dfae58"/>
+            <stop offset="50%" stop-color="#795125"/>
+            <stop offset="100%" stop-color="#33200e"/>
+          </linearGradient>
+        </defs>
+      </svg>
 
-    </h1>
+      <p id="instruccionSemilla">✦ PRESIONA LA SEMILLA ✦</p>
 
+      <p id="mensajeFlorecer">
+        🌻 Cada pétalo guarda una pequeña frase para ti.<br>
+        Presiona cualquiera para descubrirla 😌
+      </p>
 
-    <div class="ingles">
+      <p id="contador">0 de 12 pétalos descubiertos</p>
+    </section>
 
-        Just a little something
-        for you.
+    <section id="desbloqueoRamo">
+      <div class="mini">YOU DID IT ✦</div>
 
-    </div>
+      <h2>
+        Terminasteee <span>los 12 pétalos </span>
+      </h2>
 
+      <p>
+        Ya viste todas las frases del girasol <br>
+        pero espera... todavía queda otro detallito por aquí <br><br>
+        Mira abajito jj
+      </p>
 
-    <p class="descripcion">
+      <button class="btn-ramo" onclick="mostrarRamo()">
+        VER EL RAMO 
+      </button>
+    </section>
 
-        A veces los pequeños detalles
-        son los que le ponen
-        un poquito de color al día.
+    <section id="ramoContenido">
+      <h3>Un pequeño ramo para ti 🌹</h3>
 
-    </p>
+      <div class="imagen-contenedor">
+        <img id="imagenRamo" src="Ramoflor.png.png" alt="Ramo de flores para Heydi">
 
-
-    <button
-    class="boton-principal"
-    onclick="abrirSorpresa()"
-    >
-
-        OPEN IT ✦
-
-    </button>
-
-
-</div>
-
-
-</section>
-
-
-
-<!-- ==================================================
-     PANTALLA DEL RAMO
-================================================== -->
-
-<section
-class="pantalla oculta"
-id="pantallaRamo"
->
-
-
-<div
-class="halo"
-id="halo"
-></div>
-
-
-<div class="contenido-ramo">
-
-
-    <img
-    src="./Ramohey.png"
-    alt="Ramo de flores amarillas"
-    class="ramo"
-    id="ramo"
-    >
-
-
-    <div
-    class="texto-ramo"
-    id="textoRamo"
-    >
-
-
-        <div class="sub">
-
-            A little sunshine 
-
+        <div id="abeja" onclick="espantarAbeja()" title="Espanta a la abeja">
+          🐝
         </div>
+      </div>
 
+      <div id="mensajeAbeja">
+        <strong>Hey, little bee... not today 🐝</strong><br><br>
+        oyee, espanta a esa abeja antes de que se robe la flor jaja 😄
+      </div>
 
-        <h2>
+      <div id="resultadoAbeja"></div>
+    </section>
 
-            Algo bonito
-            <span>
-                por aquí.
-            </span>
+  </main>
 
-        </h2>
-
-
-        <p>
-
-            Un pequeño detalle
-            para ponerle un poquito
-            de color al día.
-
-        </p>
-
-
+  <div id="modal">
+    <div class="modal-contenido">
+      <button class="cerrar" onclick="cerrarModal()">×</button>
+      <div id="modalIcono">✨</div>
+      <h2 id="modalTitulo">Heydi</h2>
+      <p id="modalTexto"></p>
     </div>
-
-
-
-    <div
-    class="acciones"
-    id="acciones"
-    >
-
-
-        <button
-        class="boton-secundario"
-        onclick="abrirDetalle()"
-        >
-
-            ONE MORE THING ✦
-
-        </button>
-
-
-        <button
-        class="boton-secundario"
-        onclick="abrirInspiracion()"
-        >
-
-            A LITTLE NOTE ✨
-
-        </button>
-
-
-    </div>
-
-
-</div>
-
-
-</section>
-
-
-
-<!-- ==================================================
-     TARJETA 1
-================================================== -->
-
-<div
-class="modal"
-id="modalDetalle"
-onclick="cerrarFondoDetalle(event)"
->
-
-
-<div class="tarjeta">
-
-
-    <div class="florcita">
-
-        🌻18
-
-    </div>
-
-
-    <h3>
-
-        Just because.
-
-    </h3>
-
-
-    <p>
-
-        No hacía falta
-        una ocasión especial.
-
-        <br><br>
-
-        Solo quería dejar
-        algo bonito por aquí.
-
-        
-
-    </p>
-
-
-    <button
-    class="boton-secundario"
-    onclick="cerrarDetalle()"
-    >
-
-        CLOSE
-
-    </button>
-
-
-</div>
-
-
-</div>
-
-
-
-<!-- ==================================================
-     TARJETA 2 - INSPIRADORA
-================================================== -->
-
-<div
-class="modal"
-id="modalInspiracion"
-onclick="cerrarFondoInspiracion(event)"
->
-
-
-<div class="tarjeta">
-
-
-    <div class="florcita">
-
-        23
-
-    </div>
-
-
-    <h3>
-
-        For brighter days.
-
-    </h3>
-
-
-    <p>
-
-        Que siempre encuentres
-        motivos para seguir creciendo,
-        aprender cosas nuevas
-        y disfrutar también
-        de los pequeños momentos.
-
-        <br><br>
-
-        <em>
-            One step at a time. 
-        </em>
-
-    </p>
-
-
-    <button
-    class="boton-secundario"
-    onclick="cerrarInspiracion()"
-    >
-
-        CLOSE
-
-    </button>
-
-
-</div>
-
-
-</div>
-
-
-
-<!-- ==================================================
-     MÚSICA
-================================================== -->
-
-<audio
-id="musica"
-loop
-preload="auto"
->
-
-
-<source
-src="./musica.mp3.mp3"
-type="audio/mpeg"
->
-
-
-</audio>
-
-
-
-<button
-id="botonMusica"
-onclick="controlarMusica()"
-title="Música"
->
-
-🔊
-
-</button>
-
-
-
-<script>
-
-
-/* ==================================================
-   VARIABLES
-================================================== */
-
-const musica =
-document.getElementById(
-    "musica"
-);
-
-
-let abierto = false;
-
-let fadeMusica;
-
-
-
-/* ==================================================
-   PARTÍCULAS DEL FONDO
-================================================== */
-
-function crearParticulas(){
-
-
-    const contenedor =
-
-    document.getElementById(
-        "particulas"
-    );
-
-
-    for(
-        let i=0;
-        i<30;
-        i++
-    ){
-
-
-        const punto =
-
-        document.createElement(
-            "span"
-        );
-
-
-        punto.className =
-        "particula";
-
-
-        punto.style.left =
-
-        Math.random()*100
-        +"%";
-
-
-        punto.style.animationDuration =
-
-        8
-        +
-        Math.random()*10
-        +"s";
-
-
-        punto.style.animationDelay =
-
-        Math.random()*10
-        +"s";
-
-
-        const tamano =
-
-        2
-        +
-        Math.random()*2.5;
-
-
-        punto.style.width =
-
-        tamano
-        +"px";
-
-
-        punto.style.height =
-
-        tamano
-        +"px";
-
-
-        contenedor.appendChild(
-            punto
-        );
-
-
+  </div>
+
+  <script>
+    const mensajesPetalos = {
+      1:{
+        icono:"",
+        titulo:"Keep going",
+        texto:`A veces ir despacio
+también es avanzar.
+
+No importa si hoy
+solo puedes dar un pequeño paso.
+
+Sigue adelante ✨`
+      },
+      2:{
+        icono:"",
+        titulo:"A little reminder",
+        texto:`No tienes que tener
+todo resuelto hoy.
+
+Hay cosas que se entienden
+con un poquito más de tiempo 😌`
+      },
+      3:{
+        icono:"",
+        titulo:"For the hard days",
+        texto:`Un día difícil
+no define todo tu camino.
+
+Mañana también puede
+traer algo diferente 🌙`
+      },
+      4:{
+        icono:"",
+        titulo:"Take a break",
+        texto:`Está bien detenerte
+un momento.
+
+Descansar también
+forma parte de seguir adelante 🤍`
+      },
+      5:{
+        icono:"",
+        titulo:"Good days",
+        texto:`Si hoy tienes
+una razón para sonreír,
+
+disfrútala mucho.
+
+Los días bonitos
+también merecen quedarse un rato ☀️`
+      },
+      6:{
+        icono:"",
+        titulo:"One step at a time",
+        texto:`No necesitas correr.
+
+Cada persona tiene
+su propio ritmo.
+
+Un paso pequeño
+también cuenta `
+      },
+      7:{
+        icono:"",
+        titulo:"Breathe",
+        texto:`Respira un poquito.
+
+No todo tiene que pasar
+al mismo tiempo.
+
+Take your time ✨`
+      },
+      8:{
+        icono:"",
+        titulo:"Still growing",
+        texto:`Incluso cuando
+no lo notas,
+
+sigues aprendiendo
+y sigues creciendo 🌼`
+      },
+      9:{
+        icono:"",
+        titulo:"Tu propio ritmo",
+        texto:`No te compares
+con el camino de los demás.
+
+Cada historia
+tiene su propio tiempo ⏳`
+      },
+      10:{
+        icono:"",
+        titulo:"Something good",
+        texto:`Ojalá hoy encuentres
+algo bonito,
+
+aunque sea algo pequeño.
+
+A veces eso
+es suficiente ✨`
+      },
+      11:{
+        icono:"",
+        titulo:"Keep your light",
+        texto:`Sigue cuidando
+lo bonito que hay en ti.
+
+Incluso en los días
+en los que tú misma
+no lo notes ☀️`
+      },
+      12:{
+        icono:"",
+        titulo:"Last one",
+        texto:`Llegaste al último pétalo jaja 😄
+
+Este pequeño detalle
+solo quería dejarte
+un poquito de ánimo
+
+y quizá
+sacarte una sonrisa.
+
+Keep going, Heydi ✨`
+      }
+    };
+
+    const mensajesHojas = {
+      1:{
+        icono:"🍃",
+        titulo:"No todo se ve",
+        texto:`Las cosas bonitas
+también necesitan raíces,
+tiempo y paciencia.
+
+No todo el crecimiento
+se puede ver desde afuera 🍃`
+      },
+      2:{
+        icono:"",
+        titulo:"Sigue creciendo",
+        texto:`No tienes que convertirte
+en todo lo que quieres ser
+de un día para otro.
+
+Sigue aprendiendo.
+
+Lo demás llega
+poco a poco 🌱`
+      }
+    };
+
+    let plantado = false;
+    let florecido = false;
+    let abejaEspantada = false;
+    let ramoDesbloqueado = false;
+    const petalosLeidos = new Set();
+
+    function plantarSemilla(){
+      if(plantado) return;
+
+      plantado = true;
+
+      const semilla = document.getElementById("semilla");
+      const instruccion = document.getElementById("instruccionSemilla");
+
+      semilla.classList.add("cayendo");
+      instruccion.style.opacity = "0";
+
+      setTimeout(()=>{
+        document.getElementById("tallo").classList.add("crecer");
+      },1200);
+
+      setTimeout(()=>{
+        document.getElementById("hoja1").classList.add("visible");
+      },2300);
+
+      setTimeout(()=>{
+        document.getElementById("hoja2").classList.add("visible");
+      },2900);
+
+      setTimeout(()=>{
+        florecer();
+      },3600);
     }
 
+    function florecer(){
+      const petalos = document.querySelectorAll(".petalo");
 
-}
+      petalos.forEach((petalo,index)=>{
+        setTimeout(()=>{
+          petalo.classList.add("visible");
+        }, index * 145);
+      });
 
+      setTimeout(()=>{
+        document.getElementById("centroGrupo").classList.add("visible");
+      },1450);
 
-crearParticulas();
+      setTimeout(()=>{
+        petalos.forEach(petalo=>{
+          petalo.classList.add("desbloqueado");
+        });
 
+        florecido = true;
 
-
-/* ==================================================
-   ABRIR SORPRESA
-================================================== */
-
-function abrirSorpresa(){
-
-
-    if(abierto){
-
-        return;
-
+        document.getElementById("mensajeFlorecer").classList.add("visible");
+        document.getElementById("contador").classList.add("visible");
+      },2200);
     }
 
+    function abrirPetalo(numero){
+      if(!florecido) return;
 
-    abierto = true;
+      const datos = mensajesPetalos[numero];
 
+      mostrarModal(datos.icono, datos.titulo, datos.texto);
 
-    iniciarMusica();
+      petalosLeidos.add(numero);
 
+      const petalo = document.querySelector(`[data-petalo="${numero}"]`);
+      petalo.classList.add("leido");
 
-    document
-    .getElementById(
-        "botonMusica"
-    )
-    .classList
-    .add(
-        "visible"
-    );
-
-
-    const inicio =
-
-    document.getElementById(
-        "pantallaInicio"
-    );
-
-
-    const pantallaRamo =
-
-    document.getElementById(
-        "pantallaRamo"
-    );
-
-
-    inicio
-    .classList
-    .add(
-        "oculta"
-    );
-
-
-
-    setTimeout(()=>{
-
-
-        pantallaRamo
-        .classList
-        .remove(
-            "oculta"
-        );
-
-
-    },650);
-
-
-
-    setTimeout(()=>{
-
-
-        document
-        .getElementById(
-            "halo"
-        )
-        .classList
-        .add(
-            "mostrar"
-        );
-
-
-    },950);
-
-
-
-    setTimeout(()=>{
-
-
-        document
-        .getElementById(
-            "ramo"
-        )
-        .classList
-        .add(
-            "mostrar"
-        );
-
-
-    },1150);
-
-
-
-    setTimeout(()=>{
-
-
-        lanzarPetalos();
-
-
-    },1600);
-
-
-
-    setTimeout(()=>{
-
-
-        document
-        .getElementById(
-            "textoRamo"
-        )
-        .classList
-        .add(
-            "mostrar"
-        );
-
-
-    },2450);
-
-
-
-    setTimeout(()=>{
-
-
-        document
-        .getElementById(
-            "acciones"
-        )
-        .classList
-        .add(
-            "mostrar"
-        );
-
-
-    },3250);
-
-
-}
-
-
-
-/* ==================================================
-   MÚSICA
-================================================== */
-
-function iniciarMusica(){
-
-
-    clearInterval(
-        fadeMusica
-    );
-
-
-    musica.currentTime = 0;
-
-
-    musica.volume = 0;
-
-
-    musica.play()
-
-    .then(()=>{
-
-
-        fadeMusica =
-
-        setInterval(()=>{
-
-
-            if(
-                musica.volume
-                <
-                0.34
-            ){
-
-
-                musica.volume =
-
-                Math.min(
-                    musica.volume
-                    +
-                    0.02,
-                    0.35
-                );
-
-
-            }
-
-
-            else{
-
-
-                clearInterval(
-                    fadeMusica
-                );
-
-
-            }
-
-
-        },120);
-
-
-    })
-
-
-    .catch(error=>{
-
-
-        console.log(
-
-            "No se pudo reproducir la música:",
-
-            error
-
-        );
-
-
-    });
-
-
-}
-
-
-
-function controlarMusica(){
-
-
-    const boton =
-
-    document.getElementById(
-        "botonMusica"
-    );
-
-
-    if(
-        musica.paused
-    ){
-
-
-        musica.play();
-
-
-        boton.textContent =
-        "🔊";
-
-
+      actualizarContador();
     }
 
+    function actualizarContador(){
+      const cantidad = petalosLeidos.size;
+      document.getElementById("contador").textContent = cantidad + " de 12 pétalos descubiertos";
 
-    else{
+      if(cantidad === 12 && !ramoDesbloqueado){
+        ramoDesbloqueado = true;
 
-
-        musica.pause();
-
-
-        boton.textContent =
-        "🔇";
-
-
-    }
-
-
-}
-
-
-
-/* ==================================================
-   PÉTALOS
-================================================== */
-
-function lanzarPetalos(){
-
-
-    for(
-        let i=0;
-        i<24;
-        i++
-    ){
-
+        const zona = document.getElementById("desbloqueoRamo");
+        zona.classList.add("visible");
 
         setTimeout(()=>{
-
-
-            crearPetalo();
-
-
-        },i*145);
-
-
+          zona.scrollIntoView({
+            behavior:"smooth",
+            block:"center"
+          });
+        },300);
+      }
     }
 
+    function abrirHoja(numero){
+      if(!florecido) return;
 
-}
-
-
-
-function crearPetalo(){
-
-
-    const petalo =
-
-    document.createElement(
-        "div"
-    );
-
-
-    petalo.className =
-    "petalo";
-
-
-    petalo.style.left =
-
-    Math.random()*100
-    +
-    "vw";
-
-
-    petalo.style.animationDuration =
-
-    5
-    +
-    Math.random()*4
-    +
-    "s";
-
-
-    const escala =
-
-    .6
-    +
-    Math.random()*.8;
-
-
-    petalo.style.scale =
-    escala;
-
-
-    document.body
-    .appendChild(
-        petalo
-    );
-
-
-    setTimeout(()=>{
-
-
-        petalo.remove();
-
-
-    },9500);
-
-
-}
-
-
-
-/* ==================================================
-   TARJETA 1
-================================================== */
-
-function abrirDetalle(){
-
-
-    document
-    .getElementById(
-        "modalDetalle"
-    )
-    .classList
-    .add(
-        "abierto"
-    );
-
-
-}
-
-
-
-function cerrarDetalle(){
-
-
-    document
-    .getElementById(
-        "modalDetalle"
-    )
-    .classList
-    .remove(
-        "abierto"
-    );
-
-
-}
-
-
-
-function cerrarFondoDetalle(
-    event
-){
-
-
-    if(
-        event.target.id
-        ===
-        "modalDetalle"
-    ){
-
-
-        cerrarDetalle();
-
-
+      const datos = mensajesHojas[numero];
+      mostrarModal(datos.icono, datos.titulo, datos.texto);
     }
 
+    function abrirCentro(){
+      if(!florecido) return;
 
-}
+      mostrarModal(
+        "🌻",
+        "Para ti, Heydi",
+        `Un pequeño girasol,
+unas cuantas frases
+y un poquito de buena vibra 😌
 
+Nada demasiado complicado jaja
 
-
-/* ==================================================
-   TARJETA 2 - INSPIRADORA
-================================================== */
-
-function abrirInspiracion(){
-
-
-    document
-    .getElementById(
-        "modalInspiracion"
-    )
-    .classList
-    .add(
-        "abierto"
-    );
-
-
-}
-
-
-
-function cerrarInspiracion(){
-
-
-    document
-    .getElementById(
-        "modalInspiracion"
-    )
-    .classList
-    .remove(
-        "abierto"
-    );
-
-
-}
-
-
-
-function cerrarFondoInspiracion(
-    event
-){
-
-
-    if(
-        event.target.id
-        ===
-        "modalInspiracion"
-    ){
-
-
-        cerrarInspiracion();
-
-
+Solo un pequeño detalle
+para recordarte
+que sigas adelante ✨`
+      );
     }
 
-
-}
-
-
-
-/* ==================================================
-   TECLA ESC PARA CERRAR TARJETAS
-================================================== */
-
-document.addEventListener(
-
-    "keydown",
-
-    function(event){
-
-
-        if(
-            event.key
-            ===
-            "Escape"
-        ){
-
-
-            cerrarDetalle();
-
-            cerrarInspiracion();
-
-
-        }
-
-
+    function mostrarModal(icono, titulo, texto){
+      document.getElementById("modalIcono").textContent = icono;
+      document.getElementById("modalTitulo").textContent = titulo;
+      document.getElementById("modalTexto").textContent = texto;
+      document.getElementById("modal").classList.add("activo");
     }
 
-);
+    function cerrarModal(){
+      document.getElementById("modal").classList.remove("activo");
+    }
 
+    function mostrarRamo(){
+      const ramo = document.getElementById("ramoContenido");
+      ramo.classList.add("visible");
 
-</script>
+      setTimeout(()=>{
+        ramo.scrollIntoView({
+          behavior:"smooth",
+          block:"center"
+        });
+      },200);
+    }
 
+    function espantarAbeja(){
+      if(abejaEspantada) return;
 
+      abejaEspantada = true;
+
+      const abeja = document.getElementById("abeja");
+      const resultado = document.getElementById("resultadoAbeja");
+
+      abeja.classList.add("volando");
+
+      setTimeout(()=>{
+        resultado.innerHTML = `good job 😌<br>la flor está a salvo 🌹`;
+        resultado.classList.add("visible");
+      },2600);
+    }
+
+    document.getElementById("modal").addEventListener("click", function(event){
+      if(event.target === this){
+        cerrarModal();
+      }
+    });
+
+    document.addEventListener("keydown", function(event){
+      if(event.key === "Escape"){
+        cerrarModal();
+      }
+    });
+
+    for(let i=0; i<34; i++){
+      const particula = document.createElement("span");
+      particula.className = "particula";
+
+      const tamaño = Math.random() * 3 + 1;
+      particula.style.width = tamaño + "px";
+      particula.style.height = tamaño + "px";
+      particula.style.left = Math.random() * 100 + "%";
+      particula.style.top = Math.random() * 100 + "%";
+      particula.style.animationDelay = Math.random() * 4 + "s";
+      particula.style.animationDuration = (Math.random() * 3 + 2.5) + "s";
+
+      document.body.appendChild(particula);
+    }
+  </script>
 </body>
-
 </html>
