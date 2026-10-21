@@ -5,11 +5,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Heydi </title>
+<title>Heydi</title>
 
 <meta name="robots" content="noindex, nofollow, noarchive">
 
 <style>
+
+/* =========================================================
+   GENERAL
+========================================================= */
 
 *{
     margin:0;
@@ -25,7 +29,10 @@ body{
     min-height:100vh;
     overflow-x:hidden;
 
-    font-family:"Segoe UI", Arial, sans-serif;
+    font-family:
+    "Segoe UI",
+    Arial,
+    sans-serif;
 
     color:#f5f5f5;
 
@@ -50,7 +57,7 @@ body{
 
 
 /* =========================================================
-   PARTÍCULAS
+   PARTÍCULAS GENERALES
 ========================================================= */
 
 .particula{
@@ -91,8 +98,751 @@ body{
 
 
 /* =========================================================
-   CONTENEDOR
+   PANTALLA DE ACCESO
 ========================================================= */
+
+#pantallaAcceso{
+    position:fixed;
+
+    inset:0;
+
+    z-index:9999;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    padding:20px;
+
+    overflow:hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 38%,
+            rgba(173,125,23,.16),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 15% 80%,
+            rgba(255,167,38,.08),
+            transparent 27%
+        ),
+        linear-gradient(
+            145deg,
+            #030303,
+            #0b0907 48%,
+            #020202
+        );
+
+    transition:
+        opacity .9s ease,
+        visibility .9s ease;
+}
+
+#pantallaAcceso.ocultar{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+}
+
+
+/* =========================================================
+   LÍNEAS DORADAS DEL FONDO
+========================================================= */
+
+.linea-fondo{
+    position:absolute;
+
+    width:700px;
+    height:110px;
+
+    border-radius:100%;
+
+    border-top:
+        2px solid
+        rgba(230,159,54,.20);
+
+    transform:rotate(-25deg);
+
+    filter:blur(.2px);
+
+    pointer-events:none;
+}
+
+.linea1{
+    top:12%;
+    left:-180px;
+}
+
+.linea2{
+    bottom:8%;
+    right:-220px;
+
+    transform:rotate(-28deg);
+}
+
+.linea3{
+    top:45%;
+    right:-400px;
+
+    opacity:.35;
+
+    transform:rotate(-20deg);
+}
+
+
+/* =========================================================
+   HOLA HEYDI FONDO
+========================================================= */
+
+.nombre-fondo{
+    position:absolute;
+
+    top:8%;
+
+    width:100%;
+
+    text-align:center;
+
+    pointer-events:none;
+}
+
+.nombre-fondo small{
+    display:block;
+
+    color:#9b8967;
+
+    font-size:9px;
+
+    letter-spacing:6px;
+
+    margin-bottom:10px;
+}
+
+.nombre-fondo h1{
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-weight:400;
+
+    font-size:
+        clamp(
+            40px,
+            8vw,
+            70px
+        );
+
+    color:#f3f3f3;
+
+    opacity:.93;
+}
+
+.nombre-fondo h1 span{
+    color:#eebd45;
+
+    text-shadow:
+        0 0 30px
+        rgba(238,189,69,.18);
+}
+
+
+/* =========================================================
+   TARJETA GLASS
+========================================================= */
+
+.login-card{
+    position:relative;
+
+    z-index:10;
+
+    width:min(
+        470px,
+        94vw
+    );
+
+    padding:
+        36px 30px
+        31px;
+
+    margin-top:80px;
+
+    text-align:center;
+
+    border-radius:30px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.20);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.09),
+            rgba(255,255,255,.025)
+        );
+
+    box-shadow:
+        0 35px 90px
+        rgba(0,0,0,.65),
+        inset 0 1px 0
+        rgba(255,255,255,.12);
+
+    backdrop-filter:
+        blur(18px);
+
+    -webkit-backdrop-filter:
+        blur(18px);
+
+    overflow:hidden;
+
+    animation:
+        aparecerLogin 1s ease;
+}
+
+@keyframes aparecerLogin{
+
+    from{
+        opacity:0;
+        transform:
+            translateY(24px)
+            scale(.97);
+    }
+
+    to{
+        opacity:1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* BRILLO SUPERIOR */
+
+.login-card::before{
+    content:"";
+
+    position:absolute;
+
+    top:-100px;
+    left:50%;
+
+    transform:
+        translateX(-50%);
+
+    width:250px;
+    height:180px;
+
+    border-radius:50%;
+
+    background:
+        rgba(240,180,50,.12);
+
+    filter:
+        blur(60px);
+
+    pointer-events:none;
+}
+
+
+/* =========================================================
+   ICONO LLAVE
+========================================================= */
+
+.key-box{
+    position:relative;
+
+    width:52px;
+    height:52px;
+
+    margin:
+        0 auto
+        17px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:16px;
+
+    border:
+        1px solid
+        rgba(231,192,74,.30);
+
+    background:
+        rgba(222,177,48,.06);
+
+    color:#e8c745;
+
+    font-size:22px;
+
+    box-shadow:
+        0 0 26px
+        rgba(226,184,48,.12);
+}
+
+
+/* =========================================================
+   TEXTOS LOGIN
+========================================================= */
+
+.login-card h2{
+    font-size:
+        clamp(
+            26px,
+            5vw,
+            34px
+        );
+
+    font-weight:650;
+
+    color:#f3f3f3;
+
+    letter-spacing:-.5px;
+}
+
+.login-card h2 span{
+    color:#e8c745;
+}
+
+.login-card .subtitulo{
+    margin-top:9px;
+
+    color:#8d8d8d;
+
+    font-size:12px;
+
+    line-height:1.6;
+}
+
+
+/* =========================================================
+   OTP
+========================================================= */
+
+.otp{
+    display:flex;
+
+    justify-content:center;
+
+    gap:16px;
+
+    margin-top:30px;
+}
+
+.otp input{
+    width:67px;
+    height:72px;
+
+    border-radius:17px;
+
+    outline:none;
+
+    border:
+        1px solid
+        rgba(226,190,67,.35);
+
+    background:
+        rgba(7,7,7,.66);
+
+    color:#ffffff;
+
+    text-align:center;
+
+    font-size:27px;
+
+    font-weight:600;
+
+    caret-color:#eac746;
+
+    box-shadow:
+        inset 0 0 20px
+        rgba(0,0,0,.38);
+
+    transition:
+        .25s ease;
+}
+
+.otp input:focus{
+    border-color:#eac746;
+
+    box-shadow:
+        0 0 20px
+        rgba(234,199,70,.12),
+        inset 0 0 20px
+        rgba(0,0,0,.45);
+
+    transform:
+        translateY(-2px);
+}
+
+
+/* =========================================================
+   BOTÓN VERIFICAR
+========================================================= */
+
+.verificar{
+    width:min(
+        290px,
+        100%
+    );
+
+    height:50px;
+
+    margin-top:30px;
+
+    border:0;
+
+    border-radius:13px;
+
+    cursor:pointer;
+
+    font-size:12px;
+
+    font-weight:700;
+
+    letter-spacing:.7px;
+
+    color:#17130a;
+
+    background:
+        linear-gradient(
+            90deg,
+            #d7b221,
+            #f2d742
+        );
+
+    box-shadow:
+        0 10px 30px
+        rgba(205,170,25,.12);
+
+    transition:
+        .3s ease;
+}
+
+.verificar:hover{
+    transform:
+        translateY(-2px);
+
+    filter:
+        brightness(1.08);
+}
+
+.verificar:disabled{
+    cursor:default;
+
+    transform:none;
+}
+
+
+/* =========================================================
+   MENSAJE ESTADO
+========================================================= */
+
+.estado{
+    min-height:30px;
+
+    margin-top:18px;
+
+    color:#888;
+
+    font-size:12px;
+
+    line-height:1.5;
+}
+
+
+/* =========================================================
+   ANIMACIÓN VERIFICANDO
+========================================================= */
+
+.verificando .otp input{
+    animation:
+        girarNumero
+        .7s ease-in-out infinite alternate;
+}
+
+.verificando .otp input:nth-child(2){
+    animation-delay:.15s;
+}
+
+@keyframes girarNumero{
+
+    from{
+        transform:
+            rotate(-7deg)
+            translateY(-2px);
+    }
+
+    to{
+        transform:
+            rotate(7deg)
+            translateY(3px);
+    }
+}
+
+.spinner{
+    width:17px;
+    height:17px;
+
+    display:inline-block;
+
+    margin-right:8px;
+
+    vertical-align:middle;
+
+    border-radius:50%;
+
+    border:
+        2px solid
+        rgba(20,20,20,.25);
+
+    border-top-color:#18150c;
+
+    animation:
+        spin .7s linear infinite;
+}
+
+@keyframes spin{
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.login-card.error{
+    border-color:
+        rgba(255,77,77,.52);
+
+    box-shadow:
+        0 30px 90px
+        rgba(0,0,0,.65),
+        0 0 40px
+        rgba(255,60,60,.06);
+
+    animation:
+        errorShake .45s ease;
+}
+
+.login-card.error .otp input{
+    border-color:#d95151;
+
+    color:#ff8585;
+}
+
+.login-card.error .key-box{
+    color:#ff6565;
+
+    border-color:
+        rgba(255,80,80,.35);
+
+    box-shadow:
+        0 0 25px
+        rgba(255,60,60,.10);
+}
+
+@keyframes errorShake{
+
+    0%,100%{
+        transform:translateX(0);
+    }
+
+    25%{
+        transform:translateX(-8px);
+    }
+
+    50%{
+        transform:translateX(8px);
+    }
+
+    75%{
+        transform:translateX(-4px);
+    }
+}
+
+
+/* =========================================================
+   ÉXITO VERDE
+========================================================= */
+
+.login-card.correcto{
+    border-color:
+        rgba(0,235,143,.40);
+
+    background:
+        radial-gradient(
+            circle at 50% 30%,
+            rgba(0,220,130,.13),
+            transparent 43%
+        ),
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.075),
+            rgba(255,255,255,.025)
+        );
+
+    box-shadow:
+        0 35px 90px
+        rgba(0,0,0,.65),
+        0 0 55px
+        rgba(0,220,125,.08);
+}
+
+.login-card.correcto .key-box{
+    color:#00df84;
+
+    border-color:
+        rgba(0,230,135,.35);
+
+    background:
+        rgba(0,210,120,.06);
+
+    box-shadow:
+        0 0 30px
+        rgba(0,220,125,.12);
+}
+
+
+/* CHECK */
+
+.check-container{
+    display:none;
+
+    margin:
+        26px auto
+        7px;
+
+    width:110px;
+    height:110px;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    border:
+        2px solid
+        rgba(0,220,125,.54);
+
+    box-shadow:
+        0 0 45px
+        rgba(0,220,125,.10);
+
+    animation:
+        aparecerCheck .6s ease;
+}
+
+.check-container.visible{
+    display:flex;
+}
+
+.check{
+    width:54px;
+    height:54px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:15px;
+
+    border:
+        2px solid
+        #00d77d;
+
+    color:#ffffff;
+
+    background:
+        #111;
+
+    font-size:29px;
+
+    box-shadow:
+        0 0 20px
+        rgba(0,220,125,.18);
+}
+
+@keyframes aparecerCheck{
+
+    from{
+        opacity:0;
+        transform:scale(.55);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+.exito-texto{
+    display:none;
+
+    margin-top:18px;
+}
+
+.exito-texto.visible{
+    display:block;
+
+    animation:
+        fadeUp .6s ease;
+}
+
+.exito-texto h3{
+    color:#f0f0f0;
+
+    font-size:23px;
+}
+
+.exito-texto h3 span{
+    color:#00d77d;
+}
+
+.exito-texto p{
+    margin-top:8px;
+
+    color:#828282;
+
+    font-size:11px;
+}
+
+@keyframes fadeUp{
+
+    from{
+        opacity:0;
+        transform:translateY(10px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+
+/* =========================================================
+   PÁGINA PRINCIPAL
+========================================================= */
+
+#contenidoPrincipal{
+    opacity:0;
+
+    transition:
+        opacity 1s ease;
+}
+
+#contenidoPrincipal.visible{
+    opacity:1;
+}
 
 .contenedor{
     position:relative;
@@ -113,7 +863,7 @@ body{
 
 
 /* =========================================================
-   ENTRADA SUPERIOR
+   PORTADA PRINCIPAL
 ========================================================= */
 
 .hero{
@@ -131,22 +881,6 @@ body{
     padding:
         30px 15px
         55px;
-
-    animation:
-        aparecer 1.1s ease;
-}
-
-@keyframes aparecer{
-
-    from{
-        opacity:0;
-        transform:translateY(20px);
-    }
-
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
 }
 
 .vol{
@@ -181,10 +915,6 @@ body{
 
 .hero h1 span{
     color:#f4d36d;
-
-    text-shadow:
-        0 0 28px
-        rgba(246,215,107,.15);
 }
 
 .hero p{
@@ -248,7 +978,7 @@ body{
 
 
 /* =========================================================
-   SECCIÓN DE DETALLES
+   DETALLES
 ========================================================= */
 
 .detalles{
@@ -305,7 +1035,7 @@ body{
 
 
 /* =========================================================
-   BOTONES PEQUEÑOS
+   BOTONES PRINCIPALES
 ========================================================= */
 
 .opciones{
@@ -360,8 +1090,7 @@ body{
 }
 
 .opcion:hover{
-    transform:
-        translateY(-3px);
+    transform:translateY(-3px);
 
     border-color:
         rgba(246,215,107,.34);
@@ -610,10 +1339,6 @@ body{
     cursor:pointer;
 }
 
-.cerrar:hover{
-    color:#fff;
-}
-
 .modal-mini{
     color:#8b8060;
 
@@ -702,7 +1427,7 @@ body{
 
 
 /* =========================================================
-   HOW ARE YOU
+   MOODS
 ========================================================= */
 
 .moods{
@@ -776,22 +1501,6 @@ body{
 
 #respuestaMood.visible{
     display:block;
-
-    animation:
-        mostrarRespuesta .5s ease;
-}
-
-@keyframes mostrarRespuesta{
-
-    from{
-        opacity:0;
-        transform:translateY(10px);
-    }
-
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
 }
 
 
@@ -845,6 +1554,23 @@ body{
 
 @media(max-width:550px){
 
+    .nombre-fondo{
+        top:7%;
+    }
+
+    .login-card{
+        margin-top:80px;
+
+        padding:
+            31px 18px
+            27px;
+    }
+
+    .otp input{
+        width:62px;
+        height:67px;
+    }
+
     .contenedor{
         width:
             calc(100% - 20px);
@@ -868,21 +1594,6 @@ body{
             11px 14px;
     }
 
-    .icono{
-        width:32px;
-        height:32px;
-
-        font-size:16px;
-    }
-
-    .opcion-texto strong{
-        font-size:10px;
-    }
-
-    .opcion-texto small{
-        font-size:9px;
-    }
-
     .modal-caja{
         padding:
             37px 18px
@@ -892,6 +1603,7 @@ body{
 }
 
 </style>
+
 </head>
 
 
@@ -907,11 +1619,157 @@ id="musica"
 loop
 preload="auto"
 >
+
     <source
         src="musica.mp3.mp3"
         type="audio/mpeg"
     >
+
 </audio>
+
+
+
+<!-- =========================================================
+     PANTALLA CONTRASEÑA
+========================================================= -->
+
+<section id="pantallaAcceso">
+
+
+    <div class="linea-fondo linea1"></div>
+    <div class="linea-fondo linea2"></div>
+    <div class="linea-fondo linea3"></div>
+
+
+    <div class="nombre-fondo">
+
+        <small>
+            A LITTLE SPACE
+        </small>
+
+        <h1>
+            Hola, <span>Heydi</span>
+        </h1>
+
+    </div>
+
+
+
+    <div
+    class="login-card"
+    id="loginCard"
+    >
+
+
+        <div
+        class="key-box"
+        id="keyBox"
+        >
+            🔑
+        </div>
+
+
+        <div id="contenidoLogin">
+
+
+            <h2>
+                Enter <span>Code</span>
+            </h2>
+
+
+            <p class="subtitulo">
+
+                Ingresa el pequeño código
+                para continuar.
+
+            </p>
+
+
+
+            <div class="otp">
+
+                <input
+                    id="digito1"
+                    type="tel"
+                    inputmode="numeric"
+                    maxlength="1"
+                    autocomplete="off"
+                >
+
+                <input
+                    id="digito2"
+                    type="tel"
+                    inputmode="numeric"
+                    maxlength="1"
+                    autocomplete="off"
+                >
+
+            </div>
+
+
+
+            <button
+            class="verificar"
+            id="btnVerificar"
+            onclick="verificarCodigo()"
+            >
+                VERIFY CODE
+            </button>
+
+
+            <div
+            class="estado"
+            id="estado"
+            >
+                Digita los 2 números.
+            </div>
+
+
+        </div>
+
+
+
+        <!-- CHECK CORRECTO -->
+
+        <div
+        class="check-container"
+        id="checkContainer"
+        >
+
+            <div class="check">
+                ✓
+            </div>
+
+        </div>
+
+
+        <div
+        class="exito-texto"
+        id="exitoTexto"
+        >
+
+            <h3>
+                Access <span>Granted</span>
+            </h3>
+
+            <p>
+                Código correcto. Todo listo.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     CONTENIDO PRINCIPAL
+========================================================= -->
+
+<div id="contenidoPrincipal">
 
 
 <button
@@ -924,27 +1782,22 @@ title="Música"
 
 
 
-<!-- =========================================================
-     PÁGINA
-========================================================= -->
-
 <main class="contenedor">
 
 
-    <!-- =====================================================
-         ENTRADA
-    ====================================================== -->
+    <!-- PORTADA -->
 
     <section class="hero">
 
+
         <div class="vol">
-         18
+            VOL. 01 ✦
         </div>
 
 
         <h1>
             Hola,
-            <span>Heydi </span>
+            <span>Heydi</span>
         </h1>
 
 
@@ -960,7 +1813,7 @@ title="Música"
 
             <br>
 
-            pero mientras tanto te dejamos
+            pero mientras tanto dejamos
             unos pequeños detalles por aquí.
 
         </p>
@@ -975,18 +1828,18 @@ title="Música"
             ↓
         </div>
 
+
     </section>
 
 
 
-    <!-- =====================================================
-         DETALLES
-    ====================================================== -->
+    <!-- DETALLES -->
 
     <section class="detalles">
 
 
         <div class="titulo-seccion">
+
 
             <div class="mini">
                 A LITTLE SOMETHING
@@ -995,7 +1848,7 @@ title="Música"
 
             <h2>
                 Pequeños detalles
-                <span>.</span>
+                <span>✦</span>
             </h2>
 
 
@@ -1003,6 +1856,7 @@ title="Música"
                 Hay algunas cositas
                 esperando por aquí.
             </p>
+
 
         </div>
 
@@ -1117,15 +1971,15 @@ title="Música"
 
         </div>
 
+
     </section>
 
 
 
-    <!-- =====================================================
-         PRÓXIMA ACTUALIZACIÓN
-    ====================================================== -->
+    <!-- FINAL -->
 
     <section class="final">
+
 
         <div class="mini">
             NEXT UPDATE ✦
@@ -1133,13 +1987,18 @@ title="Música"
 
 
         <h3>
+
             Algo nuevo
             <span>está en camino.</span>
+
         </h3>
 
 
         <p>
-            nos vemos pronto...
+
+            Estamos trabajando
+            en algo nuevo para este espacio...
+
         </p>
 
 
@@ -1147,10 +2006,14 @@ title="Música"
             COMING SOON
         </div>
 
+
     </section>
 
 
 </main>
+
+
+</div>
 
 
 
@@ -1163,63 +2026,69 @@ class="modal"
 id="modalMood"
 >
 
-    <div class="modal-caja">
-
-        <button
-        class="cerrar"
-        onclick="cerrarModal('modalMood')"
-        >
-        ×
-        </button>
+<div class="modal-caja">
 
 
-        <div class="modal-mini">
-            HOW ARE YOU TODAY?
-        </div>
+<button
+class="cerrar"
+onclick="cerrarModal('modalMood')"
+>
+×
+</button>
 
 
-        <h2>
-            ¿Cómo estás hoy? 
-        </h2>
+<div class="modal-mini">
+HOW ARE YOU TODAY?
+</div>
 
 
-        <p class="modal-descripcion">
-            Elige la que más se acerque
-            a cómo estuvo tu día.
-        </p>
+<h2>
+¿Cómo estás hoy? ☀️
+</h2>
 
 
-        <div class="moods">
+<p class="modal-descripcion">
 
-            <button
-            class="mood"
-            onclick="responderMood('bien')"
-            >
-                😊 Bien
-            </button>
+Elige la que más se acerque
+a cómo estuvo tu día.
+
+</p>
 
 
-            <button
-            class="mood"
-            onclick="responderMood('mal')"
-            >
-                😕 Un poco mal
-            </button>
+<div class="moods">
 
 
-            <button
-            class="mood"
-            onclick="responderMood('cansada')"
-            >
-                😴 Cansada
-            </button>
-
-        </div>
+<button
+class="mood"
+onclick="responderMood('bien')"
+>
+😊 Bien
+</button>
 
 
-        <div id="respuestaMood"></div>
+<button
+class="mood"
+onclick="responderMood('mal')"
+>
+😕 Un poco mal
+</button>
 
-    </div>
+
+<button
+class="mood"
+onclick="responderMood('cansada')"
+>
+😴 Cansada
+</button>
+
+
+</div>
+
+
+<div id="respuestaMood"></div>
+
+
+</div>
 
 </div>
 
@@ -1234,47 +2103,48 @@ class="modal"
 id="modalFlor"
 >
 
-    <div class="modal-caja">
+<div class="modal-caja">
 
 
-        <button
-        class="cerrar"
-        onclick="cerrarModal('modalFlor')"
-        >
-        ×
-        </button>
+<button
+class="cerrar"
+onclick="cerrarModal('modalFlor')"
+>
+×
+</button>
 
 
-        <div class="modal-mini">
-            A LITTLE FLOWER
-        </div>
+<div class="modal-mini">
+A LITTLE FLOWER
+</div>
 
 
-        <h2>
-            Una flor amarilla 
-        </h2>
+<h2>
+Una flor amarilla 🌻
+</h2>
 
 
-        <img
-        class="imagen-modal"
-        src="floramarilla.png"
-        alt="Flor amarilla"
-        >
+<img
+class="imagen-modal"
+src="floramarilla.png"
+alt="Flor amarilla"
+>
 
 
-        <div class="frase-modal">
+<div class="frase-modal">
 
-            
-            y que haces ? <span>..</span>
+Para ti,
 
-            <br>
+<br>
 
-            me cuentas por what
+por esforzarte cada día.
 
-        </div>
+<span>🌻</span>
+
+</div>
 
 
-    </div>
+</div>
 
 </div>
 
@@ -1289,54 +2159,369 @@ class="modal"
 id="modalAbrazo"
 >
 
-    <div class="modal-caja">
+<div class="modal-caja">
 
 
-        <button
-        class="cerrar"
-        onclick="cerrarModal('modalAbrazo')"
-        >
-        ×
-        </button>
+<button
+class="cerrar"
+onclick="cerrarModal('modalAbrazo')"
+>
+×
+</button>
 
 
-        <div class="modal-mini">
-            A LITTLE HUG
-        </div>
+<div class="modal-mini">
+A LITTLE HUG
+</div>
 
 
-        <h2>
-            Un pequeño abrazo 🤗
-        </h2>
+<h2>
+Un pequeño abrazo 🤍
+</h2>
 
 
-        <img
-        class="imagen-modal"
-        src="abrazo.png.png"
-        alt="Un pequeño abrazo"
-        >
+<img
+class="imagen-modal"
+src="abrazo.png.png"
+alt="Un pequeño abrazo"
+>
 
 
-        <div class="frase-modal">
+<div class="frase-modal">
 
-            Por si el día estuvo
-            un poco pesado,
+Por si el día estuvo
+un poco pesado,
 
-            <br>
+<br>
 
-            aquí tienes un abrazito.
-            <span>🤗</span>
+aquí tienes un abrazito.
 
-        </div>
+<span>🤍</span>
+
+</div>
 
 
-    </div>
+</div>
 
 </div>
 
 
 
 <script>
+
+
+/* =========================================================
+   CONTRASEÑA
+========================================================= */
+
+const CONTRASENA = "18";
+
+const digito1 =
+document.getElementById("digito1");
+
+const digito2 =
+document.getElementById("digito2");
+
+const loginCard =
+document.getElementById("loginCard");
+
+const btnVerificar =
+document.getElementById("btnVerificar");
+
+const estado =
+document.getElementById("estado");
+
+const contenidoLogin =
+document.getElementById("contenidoLogin");
+
+const checkContainer =
+document.getElementById("checkContainer");
+
+const exitoTexto =
+document.getElementById("exitoTexto");
+
+
+
+/* SOLO NÚMEROS */
+
+function limpiarNumero(input){
+
+    input.value =
+    input.value.replace(/\D/g,"");
+
+}
+
+
+/* PASAR AUTOMÁTICAMENTE AL SIGUIENTE */
+
+digito1.addEventListener(
+"input",
+function(){
+
+    limpiarNumero(this);
+
+    if(this.value.length === 1){
+
+        digito2.focus();
+
+    }
+
+}
+);
+
+
+digito2.addEventListener(
+"input",
+function(){
+
+    limpiarNumero(this);
+
+    if(
+        digito1.value &&
+        digito2.value
+    ){
+
+        btnVerificar.focus();
+
+    }
+
+}
+);
+
+
+/* RETROCEDER */
+
+digito2.addEventListener(
+"keydown",
+function(event){
+
+    if(
+        event.key === "Backspace" &&
+        this.value === ""
+    ){
+
+        digito1.focus();
+
+    }
+
+}
+);
+
+
+/* ENTER */
+
+document.addEventListener(
+"keydown",
+function(event){
+
+    if(
+        event.key === "Enter" &&
+        !document
+        .getElementById("pantallaAcceso")
+        .classList
+        .contains("ocultar")
+    ){
+
+        verificarCodigo();
+
+    }
+
+}
+);
+
+
+
+function verificarCodigo(){
+
+    const codigo =
+    digito1.value +
+    digito2.value;
+
+
+    /* VACÍO */
+
+    if(codigo.length < 2){
+
+        estado.textContent =
+        "Completa los 2 números.";
+
+        return;
+
+    }
+
+
+    /* EMPIEZA ANIMACIÓN */
+
+    loginCard.classList.remove("error");
+
+    loginCard.classList.add("verificando");
+
+
+    digito1.disabled = true;
+    digito2.disabled = true;
+
+    btnVerificar.disabled = true;
+
+
+    btnVerificar.innerHTML = `
+
+        <span class="spinner"></span>
+        VERIFYING...
+
+    `;
+
+
+    estado.textContent =
+    "Verificando código...";
+
+
+    /* ESPERA PARA QUE SE VEA LA ANIMACIÓN */
+
+    setTimeout(()=>{
+
+
+        loginCard
+        .classList
+        .remove("verificando");
+
+
+        /* CORRECTO */
+
+        if(codigo === CONTRASENA){
+
+
+            mostrarCorrecto();
+
+
+        }
+
+
+        /* INCORRECTO */
+
+        else{
+
+
+            mostrarError();
+
+
+        }
+
+
+    },1700);
+
+}
+
+
+
+/* =========================================================
+   CÓDIGO CORRECTO
+========================================================= */
+
+function mostrarCorrecto(){
+
+    loginCard
+    .classList
+    .add("correcto");
+
+
+    contenidoLogin.style.display =
+    "none";
+
+
+    checkContainer
+    .classList
+    .add("visible");
+
+
+    exitoTexto
+    .classList
+    .add("visible");
+
+
+    /* MÚSICA */
+
+    iniciarMusica();
+
+
+    /* ENTRAR AL SITIO */
+
+    setTimeout(()=>{
+
+
+        document
+        .getElementById("pantallaAcceso")
+        .classList
+        .add("ocultar");
+
+
+        document
+        .getElementById("contenidoPrincipal")
+        .classList
+        .add("visible");
+
+
+        window.scrollTo({
+            top:0,
+            behavior:"instant"
+        });
+
+
+    },2200);
+
+}
+
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+function mostrarError(){
+
+    loginCard
+    .classList
+    .add("error");
+
+
+    estado.innerHTML = `
+
+        Código incorrecto.
+        <br>
+        Inténtalo otra vez.
+
+    `;
+
+
+    btnVerificar.textContent =
+    "TRY AGAIN";
+
+
+    digito1.disabled = false;
+    digito2.disabled = false;
+
+    btnVerificar.disabled = false;
+
+
+    setTimeout(()=>{
+
+        digito1.value = "";
+        digito2.value = "";
+
+        digito1.focus();
+
+    },350);
+
+
+    setTimeout(()=>{
+
+        loginCard
+        .classList
+        .remove("error");
+
+    },900);
+
+}
+
 
 
 /* =========================================================
@@ -1352,52 +2537,28 @@ document.getElementById("controlMusica");
 let musicaIniciada = false;
 
 
-musica.volume = 0.38;
+musica.volume = .38;
 
-
-/*
-   Como ya no tenemos OPEN,
-   la música comienza con
-   el primer toque/click.
-*/
 
 function iniciarMusica(){
-
-    if(musicaIniciada){
-        return;
-    }
-
 
     musica.play()
     .then(()=>{
 
         musicaIniciada = true;
 
-        botonMusica.textContent = "♫";
+        botonMusica.textContent =
+        "♫";
 
     })
     .catch(()=>{
 
-        botonMusica.textContent = "♪";
+        botonMusica.textContent =
+        "♪";
 
     });
 
 }
-
-
-document.addEventListener(
-    "click",
-    iniciarMusica,
-    { once:true }
-);
-
-
-document.addEventListener(
-    "touchstart",
-    iniciarMusica,
-    { once:true }
-);
-
 
 
 function toggleMusica(event){
@@ -1407,20 +2568,21 @@ function toggleMusica(event){
 
     if(musica.paused){
 
-        musica.play()
-        .then(()=>{
+        musica.play();
 
-            musicaIniciada = true;
+        musicaIniciada = true;
 
-            botonMusica.textContent = "♫";
+        botonMusica.textContent =
+        "♫";
 
-        });
+    }
 
-    }else{
+    else{
 
         musica.pause();
 
-        botonMusica.textContent = "♪";
+        botonMusica.textContent =
+        "♪";
 
     }
 
@@ -1454,7 +2616,7 @@ function cerrarModal(id){
 
 
 /* =========================================================
-   RESPUESTAS
+   HOW ARE YOU
 ========================================================= */
 
 function responderMood(tipo){
@@ -1469,12 +2631,13 @@ function responderMood(tipo){
 
         respuesta.innerHTML = `
 
-            Qué bien, me alegro 
+            Qué bien, me alegro 😄
+
             <br><br>
 
             Ojalá tu día siga así
             y encuentres más razones
-            para sonreír 
+            para sonreír ✨
 
         `;
 
@@ -1487,6 +2650,7 @@ function responderMood(tipo){
 
             Vamos...
             la vida a veces se pone así.
+
             <br><br>
 
             No todos los días
@@ -1495,7 +2659,7 @@ function responderMood(tipo){
             <br>
 
             Respira un poco
-            y sigue a tu ritmo 
+            y sigue a tu ritmo 🤍
 
         `;
 
@@ -1507,7 +2671,8 @@ function responderMood(tipo){
         respuesta.innerHTML = `
 
             Entonces hoy toca
-            bajar un poquito el ritmo 
+            bajar un poquito el ritmo 😌
+
             <br><br>
 
             Descansar también cuenta.
@@ -1515,7 +2680,7 @@ function responderMood(tipo){
             <br>
 
             Mañana se vuelve
-            a intentar 
+            a intentar ✨
 
         `;
 
@@ -1531,7 +2696,7 @@ function responderMood(tipo){
 
 
 /* =========================================================
-   CERRAR TOCANDO FUERA
+   CERRAR MODAL TOCANDO AFUERA
 ========================================================= */
 
 document
@@ -1539,18 +2704,18 @@ document
 .forEach(modal=>{
 
     modal.addEventListener(
-        "click",
-        function(event){
+    "click",
+    function(event){
 
-            if(event.target === modal){
+        if(event.target === modal){
 
-                modal
-                .classList
-                .remove("activo");
-
-            }
+            modal
+            .classList
+            .remove("activo");
 
         }
+
+    }
     );
 
 });
@@ -1562,26 +2727,26 @@ document
 ========================================================= */
 
 document.addEventListener(
-    "keydown",
-    function(event){
+"keydown",
+function(event){
 
-        if(event.key === "Escape"){
+    if(event.key === "Escape"){
 
-            document
-            .querySelectorAll(
-                ".modal.activo"
-            )
-            .forEach(modal=>{
+        document
+        .querySelectorAll(
+            ".modal.activo"
+        )
+        .forEach(modal=>{
 
-                modal
-                .classList
-                .remove("activo");
+            modal
+            .classList
+            .remove("activo");
 
-            });
-
-        }
+        });
 
     }
+
+}
 );
 
 
@@ -1591,9 +2756,9 @@ document.addEventListener(
 ========================================================= */
 
 for(
-    let i=0;
-    i<35;
-    i++
+let i=0;
+i<35;
+i++
 ){
 
     const p =
@@ -1611,22 +2776,17 @@ for(
     p.style.width =
     size+"px";
 
-
     p.style.height =
     size+"px";
-
 
     p.style.left =
     Math.random()*100+"%";
 
-
     p.style.top =
     Math.random()*100+"%";
 
-
     p.style.animationDelay =
     Math.random()*5+"s";
-
 
     p.style.animationDuration =
     (Math.random()*3+3)+"s";
@@ -1636,6 +2796,25 @@ for(
     .appendChild(p);
 
 }
+
+
+/* =========================================================
+   FOCUS AL ABRIR
+========================================================= */
+
+window.addEventListener(
+"load",
+()=>{
+
+    setTimeout(()=>{
+
+        digito1.focus();
+
+    },700);
+
+}
+);
+
 
 </script>
 
