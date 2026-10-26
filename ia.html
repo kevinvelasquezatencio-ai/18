@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>A Little Company</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+
+    padding:30px 18px 65px;
+
+    font-family:"Segoe UI",Arial,sans-serif;
+
+    color:#eee;
+
+    background:
+        radial-gradient(circle at 50% 8%,rgba(235,203,105,.08),transparent 30%),
+        linear-gradient(145deg,#030303,#080808,#020202);
+}
+
+.contenedor{
+    width:min(560px,100%);
+    margin:auto;
+}
+
+.volver{
+    color:#84795c;
+
+    font-size:11px;
+
+    text-decoration:none;
+}
+
+.encabezado{
+    margin-top:55px;
+
+    text-align:center;
+}
+
+.mini{
+    color:#867957;
+
+    font-size:9px;
+
+    letter-spacing:4px;
+}
+
+h1{
+    margin-top:13px;
+
+    font-family:Georgia,"Times New Roman",serif;
+
+    font-weight:400;
+
+    font-size:clamp(37px,8vw,52px);
+}
+
+h1 span{
+    color:#efd06b;
+}
+
+.intro{
+    max-width:470px;
+
+    margin:22px auto 0;
+
+    color:#929292;
+
+    line-height:1.9;
+
+    font-size:13px;
+}
+
+.pregunta{
+    margin-top:55px;
+
+    text-align:center;
+
+    font-family:Georgia,"Times New Roman",serif;
+
+    font-size:26px;
+}
+
+.estados{
+    margin-top:25px;
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:10px;
+}
+
+.estado{
+    min-height:58px;
+
+    padding:10px;
+
+    border-radius:16px;
+
+    border:1px solid rgba(255,255,255,.09);
+
+    background:rgba(255,255,255,.025);
+
+    color:#d0d0d0;
+
+    cursor:pointer;
+
+    transition:.25s;
+}
+
+.estado:hover{
+    transform:translateY(-2px);
+
+    border-color:
+        rgba(239,208,107,.35);
+}
+
+.respuesta{
+    display:none;
+
+    margin-top:30px;
+
+    padding:26px 21px;
+
+    text-align:center;
+
+    border-radius:21px;
+
+    border:1px solid rgba(239,208,107,.12);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.035),
+            rgba(255,255,255,.015)
+        );
+}
+
+.respuesta.visible{
+    display:block;
+
+    animation:aparecer .5s ease;
+}
+
+@keyframes aparecer{
+
+    from{
+        opacity:0;
+        transform:translateY(8px);
+    }
+
+    to{
+        opacity:1;
+        transform:none;
+    }
+
+}
+
+#mensaje{
+    color:#d0d0d0;
+
+    line-height:1.9;
+
+    font-size:14px;
+}
+
+.botones{
+    margin-top:21px;
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:10px;
+
+    flex-wrap:wrap;
+}
+
+.accion{
+    padding:10px 15px;
+
+    border-radius:100px;
+
+    border:1px solid rgba(239,208,107,.22);
+
+    background:rgba(239,208,107,.05);
+
+    color:#dfcb85;
+
+    cursor:pointer;
+
+    font-size:11px;
+}
+
+.nota{
+    margin-top:14px;
+
+    color:#616161;
+
+    font-size:9px;
+}
+
+@media(max-width:450px){
+
+    .estados{
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+<div class="contenedor">
+
+<a
+    href="inicio.html"
+    class="volver"
+>
+    ← Volver
+</a>
+
+
+<section class="encabezado">
+
+<div class="mini">
+    A LITTLE COMPANY ✦
+</div>
+
+<h1>
+    Hola, <span>Heydi</span>
+</h1>
+
+<div class="intro">
+
+    Este es un pequeño espacio
+    para esos momentos
+    en los que quizá necesites
+    leer algo bonito,
+    bajar un poquito el ritmo
+    o simplemente quedarte aquí un momento.
+
+</div>
+
+</section>
+
+
+<div class="pregunta">
+    ¿Cómo estás hoy?
+</div>
+
+
+<div class="estados">
+
+<button class="estado" onclick="elegir('bien')">
+😊 Estoy bien
+</button>
+
+<button class="estado" onclick="elegir('triste')">
+😔 Estoy triste
+</button>
+
+<button class="estado" onclick="elegir('cansada')">
+😴 Estoy cansada
+</button>
+
+<button class="estado" onclick="elegir('preocupada')">
+😟 Estoy preocupada
+</button>
+
+<button class="estado" onclick="elegir('molesta')">
+😤 Estoy molesta
+</button>
+
+<button class="estado" onclick="elegir('maldia')">
+🌧️ Tuve un mal día
+</button>
+
+<button class="estado" onclick="elegir('apoyo')">
+🫂 Necesito apoyo
+</button>
+
+<button class="estado" onclick="elegir('motivacion')">
+✨ Necesito motivación
+</button>
+
+</div>
+
+
+<div
+    class="respuesta"
+    id="respuesta"
+>
+
+<div id="mensaje"></div>
+
+
+<div class="botones">
+
+<button
+    class="accion"
+    onclick="hablar()"
+>
+    🔊 Escuchar
+</button>
+
+<button
+    class="accion"
+    onclick="otroMensaje()"
+>
+    ✨ Otro mensaje
+</button>
+
+</div>
+
+
+<div class="nota">
+    Puedes leerlo o escucharlo cuando quieras.
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+if(
+    sessionStorage.getItem("accesoHeydi")
+    !== "si"
+){
+    location.href =
+    "index.html";
+}
+
+
+const mensajes = {
+
+bien:[
+
+"Me alegra saber que hoy estás bien, Heydi. Disfruta este momento y guarda un poquito de esa tranquilidad para ti. Ojalá el resto del día también te deje razones para sonreír. 🤍",
+
+"Qué bonito saber que estás bien. A veces no necesitamos que ocurra algo extraordinario; sentir tranquilidad también es algo que vale mucho.",
+
+"Entonces disfruta este ratito. Pon una canción que te guste, sonríe un poquito y sigue haciendo espacio para las cosas que te hacen feliz. ✨"
+
+],
+
+
+triste:[
+
+"Heydi, si hoy estás triste, no necesitas fingir que todo está bien. Date permiso para sentirlo y ve despacio. Espero que poco a poco el corazón se sienta más ligero. 🤍",
+
+"Hay días en los que cuesta un poquito más sonreír. No tienes que resolverlo todo ahora. Respira, cuídate y recuerda que un momento difícil no define todo tu camino.",
+
+"Si hoy el corazón está pesado, trátate con paciencia. No te exijas sentirte bien inmediatamente. A veces también necesitamos tiempo."
+
+],
+
+
+cansada:[
+
+"Si hoy estás cansada, quizá tu cuerpo solamente está pidiendo una pausa. Descansar no significa rendirse. También es una manera de cuidarte para poder continuar. 🤍",
+
+"No tienes que poder con todo al mismo tiempo. Baja un poquito el ritmo, respira y date permiso de descansar.",
+
+"Has hecho suficiente por hoy. Mañana puedes continuar. Por ahora intenta regalarte un poquito de tranquilidad."
+
+],
+
+
+preocupada:[
+
+"Cuando tienes muchas cosas en la cabeza, todo puede sentirse más grande. Intenta pensar solamente en lo siguiente que sí puedes hacer. Una cosa a la vez.",
+
+"No necesitas solucionar todo hoy. Respira un poquito y separa lo que puedes controlar de aquello que todavía no depende de ti.",
+
+"Si algo te preocupa demasiado, intenta escribirlo y ordenarlo paso a paso. A veces sacar las cosas de nuestra cabeza ayuda bastante."
+
+],
+
+
+molesta:[
+
+"Está bien sentirte molesta. Solo intenta darte unos minutos antes de responder o tomar una decisión. A veces un poquito de distancia permite ver todo con más claridad.",
+
+"Lo que sientes importa, pero no necesitas resolverlo mientras todavía tienes toda esa emoción encima. Respira y date tu espacio.",
+
+"Quizá ahora necesitas silencio, caminar un poquito o simplemente alejarte unos minutos de lo que pasó. Después podrás verlo con más calma."
+
+],
+
+
+maldia:[
+
+"Siento que hoy haya sido uno de esos días. Pero un día difícil no decide cómo será mañana. Déjalo terminar y cuídate un poquito esta noche. 🤍",
+
+"Hay días que simplemente no salen como esperamos. No tienes que convertirlo en un buen día a la fuerza. Descansa y mañana tendrás otra oportunidad.",
+
+"Si hoy muchas cosas salieron mal, recuerda que mañana empieza otro día. Lo de hoy no define todo tu camino."
+
+],
+
+
+apoyo:[
+
+"Por si hoy necesitabas escucharlo: no tienes que ser fuerte todo el tiempo. También puedes descansar, sentir, equivocarte y comenzar otra vez. 🤍",
+
+"Heydi, intenta tratarte con la misma paciencia que tendrías con alguien a quien quieres mucho. Tú también mereces comprensión y tranquilidad.",
+
+"Que este pequeño espacio te recuerde algo: no tienes que tener todo resuelto ahora. Ve paso a paso y cuídate durante el proceso."
+
+],
+
+
+motivacion:[
+
+"Todo lo que haces poco a poco también cuenta. Sigue aprendiendo, creciendo y construyendo tus metas. No necesitas llegar rápido; simplemente continúa avanzando. ✨",
+
+"Quizá todavía falte bastante para algunos de tus sueños, pero eso no significa que estés lejos. Cada pequeño paso también está construyendo tu camino.",
+
+"Confía en Dios, sigue haciendo tu parte y no abandones aquello que realmente deseas para tu vida. Las cosas importantes también necesitan tiempo. 🤍"
+
+]
+
+};
+
+
+let estadoActual = "";
+let mensajeActual = "";
+let ultimo = -1;
+
+
+function elegir(tipo){
+
+    estadoActual = tipo;
+
+    mostrarMensaje();
+
+}
+
+
+function mostrarMensaje(){
+
+    const lista =
+    mensajes[estadoActual];
+
+
+    let indice =
+    Math.floor(
+        Math.random() *
+        lista.length
+    );
+
+
+    if(
+        indice === ultimo &&
+        lista.length > 1
+    ){
+
+        indice =
+        (indice + 1) %
+        lista.length;
+
+    }
+
+
+    ultimo =
+    indice;
+
+
+    mensajeActual =
+    lista[indice];
+
+
+    document
+    .getElementById("mensaje")
+    .textContent =
+    mensajeActual;
+
+
+    document
+    .getElementById("respuesta")
+    .classList
+    .add("visible");
+
+}
+
+
+function otroMensaje(){
+
+    speechSynthesis.cancel();
+
+    mostrarMensaje();
+
+}
+
+
+/* VOZ */
+
+let voces = [];
+
+
+function cargarVoces(){
+
+    voces =
+    speechSynthesis.getVoices();
+
+}
+
+
+cargarVoces();
+
+
+speechSynthesis.onvoiceschanged =
+cargarVoces;
+
+
+function elegirVoz(){
+
+    const esp =
+    voces.filter(v =>
+        v.lang &&
+        v.lang
+        .toLowerCase()
+        .startsWith("es")
+    );
+
+
+    const preferidas = [
+        "Dalia",
+        "Elvira",
+        "Helena",
+        "Laura",
+        "Sabina",
+        "Paulina",
+        "Google español"
+    ];
+
+
+    for(
+        const nombre
+        of preferidas
+    ){
+
+        const voz =
+        esp.find(v =>
+            v.name
+            .toLowerCase()
+            .includes(
+                nombre.toLowerCase()
+            )
+        );
+
+
+        if(voz){
+            return voz;
+        }
+
+    }
+
+
+    return esp[0] || voces[0];
+
+}
+
+
+function hablar(){
+
+    if(!mensajeActual){
+        return;
+    }
+
+
+    speechSynthesis.cancel();
+
+
+    const lectura =
+    new SpeechSynthesisUtterance(
+        mensajeActual
+    );
+
+
+    const voz =
+    elegirVoz();
+
+
+    if(voz){
+
+        lectura.voice =
+        voz;
+
+        lectura.lang =
+        voz.lang;
+
+    }
+
+    else{
+
+        lectura.lang =
+        "es-ES";
+
+    }
+
+
+    lectura.rate =
+    .90;
+
+    lectura.pitch =
+    1.03;
+
+    lectura.volume =
+    1;
+
+
+    speechSynthesis.speak(
+        lectura
+    );
+
+}
+
+</script>
+
+</body>
+</html>

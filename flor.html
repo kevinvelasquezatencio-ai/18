@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Una flor para ti</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:25px;
+
+    font-family:"Segoe UI",Arial,sans-serif;
+
+    color:#eee;
+
+    background:
+        radial-gradient(circle at 50% 20%,rgba(244,208,100,.10),transparent 35%),
+        linear-gradient(145deg,#030303,#090909,#020202);
+}
+
+.caja{
+    width:min(500px,100%);
+    text-align:center;
+}
+
+.volver{
+    display:inline-block;
+
+    margin-bottom:30px;
+
+    color:#887c5d;
+
+    text-decoration:none;
+
+    font-size:11px;
+}
+
+.mini{
+    color:#897b57;
+    font-size:9px;
+    letter-spacing:4px;
+}
+
+h1{
+    margin-top:13px;
+
+    font-family:Georgia,"Times New Roman",serif;
+
+    font-size:clamp(34px,7vw,44px);
+
+    font-weight:400;
+}
+
+h1 span{
+    color:#f1ce68;
+}
+
+img{
+    width:min(370px,100%);
+
+    margin-top:30px;
+
+    border-radius:25px;
+
+    border:1px solid rgba(255,255,255,.09);
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.65);
+}
+
+.mensaje{
+    margin-top:28px;
+
+    color:#aaa;
+
+    line-height:1.9;
+
+    font-size:14px;
+}
+
+.mensaje strong{
+    color:#ead27c;
+    font-weight:500;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="caja">
+
+<a
+    href="inicio.html"
+    class="volver"
+>
+    ← Volver
+</a>
+
+
+<div class="mini">
+    A LITTLE FLOWER ✦
+</div>
+
+
+<h1>
+    Una flor para <span>ti</span> 🌻
+</h1>
+
+
+<img
+    src="floramarilla.png"
+    alt="Una flor para Heydi"
+>
+
+
+<div class="mensaje">
+
+    No hace falta una fecha especial
+    para recibir un pequeño detalle.
+
+    <br><br>
+
+    <strong>
+        Esta es para ti, Heydi. 🌻
+    </strong>
+
+</div>
+
+</div>
+
+
+<script>
+
+if(
+    sessionStorage.getItem("accesoHeydi")
+    !== "si"
+){
+    location.href =
+    "index.html";
+}
+
+</script>
+
+</body>
+</html>

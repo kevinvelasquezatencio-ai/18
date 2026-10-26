@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Hola, Heydi</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+
+    font-family:"Segoe UI",Arial,sans-serif;
+
+    color:#f5f5f5;
+
+    background:
+        radial-gradient(circle at 20% 10%,rgba(245,211,109,.08),transparent 30%),
+        radial-gradient(circle at 80% 80%,rgba(190,210,255,.035),transparent 30%),
+        linear-gradient(145deg,#020202,#0b0b0b,#020202);
+}
+
+.contenedor{
+    width:min(700px,calc(100% - 28px));
+    margin:auto;
+    padding:55px 0 85px;
+}
+
+.portada{
+    min-height:78vh;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+}
+
+.vol{
+    color:#8d8060;
+    font-size:9px;
+    letter-spacing:5px;
+    margin-bottom:20px;
+}
+
+.portada h1{
+    font-family:Georgia,"Times New Roman",serif;
+
+    font-size:clamp(45px,9vw,72px);
+
+    font-weight:400;
+}
+
+.portada h1 span{
+    color:#f1cf68;
+}
+
+.portada p{
+    max-width:500px;
+
+    margin-top:24px;
+
+    color:#9a9a9a;
+
+    font-size:14px;
+    line-height:1.9;
+}
+
+.flecha-abajo{
+    margin-top:42px;
+    color:#c6aa55;
+    font-size:20px;
+
+    animation:bajar 1.6s infinite;
+}
+
+@keyframes bajar{
+
+    50%{
+        transform:translateY(8px);
+    }
+
+}
+
+.titulo{
+    text-align:center;
+    margin-bottom:38px;
+}
+
+.titulo small{
+    color:#887a58;
+    letter-spacing:4px;
+    font-size:9px;
+}
+
+.titulo h2{
+    margin-top:13px;
+
+    font-family:Georgia,"Times New Roman",serif;
+
+    font-size:clamp(30px,6vw,40px);
+
+    font-weight:400;
+}
+
+.titulo h2 span{
+    color:#f1cf68;
+}
+
+.opciones{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:13px;
+}
+
+.tarjeta{
+    width:min(420px,100%);
+    min-height:72px;
+
+    padding:14px 17px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:15px;
+
+    text-decoration:none;
+    color:#eee;
+
+    border-radius:18px;
+
+    border:1px solid rgba(255,255,255,.09);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.045),
+            rgba(255,255,255,.012)
+        );
+
+    transition:.3s ease;
+}
+
+.tarjeta:hover{
+    transform:translateY(-4px);
+    border-color:rgba(241,207,104,.38);
+}
+
+.izquierda{
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+.icono{
+    width:43px;
+    height:43px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    flex-shrink:0;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.045);
+
+    font-size:21px;
+}
+
+.texto strong{
+    display:block;
+
+    font-size:12px;
+    letter-spacing:1px;
+}
+
+.texto span{
+    display:block;
+
+    margin-top:5px;
+
+    color:#777;
+
+    font-size:10px;
+}
+
+.siguiente{
+    color:#9d884b;
+    font-size:22px;
+}
+
+.final{
+    margin-top:90px;
+
+    padding-top:45px;
+
+    border-top:1px solid rgba(255,255,255,.07);
+
+    text-align:center;
+}
+
+.final small{
+    color:#82775a;
+
+    font-size:9px;
+
+    letter-spacing:4px;
+}
+
+.final p{
+    margin-top:17px;
+
+    color:#737373;
+
+    font-size:12px;
+
+    line-height:1.8;
+}
+
+#musicaBtn{
+    position:fixed;
+
+    right:15px;
+    bottom:15px;
+
+    z-index:50;
+
+    width:42px;
+    height:42px;
+
+    border-radius:50%;
+
+    border:1px solid rgba(241,207,104,.20);
+
+    background:rgba(5,5,5,.88);
+
+    color:#dfc56d;
+
+    cursor:pointer;
+}
+
+@media(max-width:520px){
+
+    .contenedor{
+        padding-top:25px;
+    }
+
+    .portada{
+        min-height:87vh;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+<audio
+    id="musica"
+    loop
+    preload="auto"
+>
+    <source
+        src="musica.mp3.mp3"
+        type="audio/mpeg"
+    >
+</audio>
+
+
+<button
+    id="musicaBtn"
+    onclick="toggleMusica()"
+>
+♪
+</button>
+
+
+<main class="contenedor">
+
+
+<section class="portada">
+
+    <div class="vol">
+        A LITTLE SPACE ✦
+    </div>
+
+    <h1>
+        Hola, <span>Heydi</span>
+    </h1>
+
+    <p>
+
+        Dejé algunas pequeñas cosas
+        esperando por aquí.
+
+        <br><br>
+
+        Puedes mirar con calma,
+        entrar en la que quieras
+        y quedarte un ratito.
+
+    </p>
+
+    <div class="flecha-abajo">
+        ↓
+    </div>
+
+</section>
+
+
+
+<section>
+
+<div class="titulo">
+
+    <small>
+        JUST FOR YOU
+    </small>
+
+    <h2>
+        Pequeños detalles
+        <span>✦</span>
+    </h2>
+
+</div>
+
+
+<div class="opciones">
+
+
+<a
+    href="flor.html"
+    class="tarjeta"
+>
+
+    <div class="izquierda">
+
+        <div class="icono">
+            🌻
+        </div>
+
+        <div class="texto">
+
+            <strong>
+                UNA FLOR PARA TI
+            </strong>
+
+            <span>
+                Un pequeño detalle
+            </span>
+
+        </div>
+
+    </div>
+
+    <div class="siguiente">
+        ›
+    </div>
+
+</a>
+
+
+
+<a
+    href="abrazo.html"
+    class="tarjeta"
+>
+
+    <div class="izquierda">
+
+        <div class="icono">
+            🤍
+        </div>
+
+        <div class="texto">
+
+            <strong>
+                UN ABRAZO
+            </strong>
+
+            <span>
+                Por si hoy hace falta uno
+            </span>
+
+        </div>
+
+    </div>
+
+    <div class="siguiente">
+        ›
+    </div>
+
+</a>
+
+
+
+<a
+    href="frase.html"
+    class="tarjeta"
+>
+
+    <div class="izquierda">
+
+        <div class="icono">
+            ✨
+        </div>
+
+        <div class="texto">
+
+            <strong>
+                UN MENSAJE PARA TI
+            </strong>
+
+            <span>
+                Para seguir adelante
+            </span>
+
+        </div>
+
+    </div>
+
+    <div class="siguiente">
+        ›
+    </div>
+
+</a>
+
+
+
+<a
+    href="ia.html"
+    class="tarjeta"
+>
+
+    <div class="izquierda">
+
+        <div class="icono">
+            🎧
+        </div>
+
+        <div class="texto">
+
+            <strong>
+                A LITTLE COMPANY
+            </strong>
+
+            <span>
+                ¿Cómo estás hoy?
+            </span>
+
+        </div>
+
+    </div>
+
+    <div class="siguiente">
+        ›
+    </div>
+
+</a>
+
+
+
+<a
+    href="video.html"
+    class="tarjeta"
+>
+
+    <div class="izquierda">
+
+        <div class="icono">
+            🐶
+        </div>
+
+        <div class="texto">
+
+            <strong>
+                ONE LAST LITTLE THING
+            </strong>
+
+            <span>
+                Un último detallito 🌻
+            </span>
+
+        </div>
+
+    </div>
+
+    <div class="siguiente">
+        ›
+    </div>
+
+</a>
+
+
+</div>
+
+</section>
+
+
+
+<section class="final">
+
+    <small>
+        TAKE YOUR TIME ✦
+    </small>
+
+    <p>
+        No tienes que verlo todo de una vez.<br>
+        Este pequeño espacio seguirá aquí.
+    </p>
+
+</section>
+
+
+</main>
+
+
+<script>
+
+if(
+    sessionStorage.getItem(
+        "accesoHeydi"
+    ) !== "si"
+){
+    window.location.href =
+    "index.html";
+}
+
+
+const musica =
+document.getElementById("musica");
+
+const musicaBtn =
+document.getElementById("musicaBtn");
+
+
+musica.volume = .32;
+
+
+function iniciarMusica(){
+
+    musica.play()
+    .then(()=>{
+
+        musicaBtn.textContent =
+        "♫";
+
+    })
+    .catch(()=>{});
+
+}
+
+
+function toggleMusica(){
+
+    if(musica.paused){
+
+        musica.play();
+
+        musicaBtn.textContent =
+        "♫";
+
+    }
+
+    else{
+
+        musica.pause();
+
+        musicaBtn.textContent =
+        "♪";
+
+    }
+
+}
+
+
+document.addEventListener(
+"click",
+()=>{
+
+    if(musica.paused){
+
+        iniciarMusica();
+
+    }
+
+},
+{once:true}
+);
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Un último detalle</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+
+    padding:
+        30px 18px
+        70px;
+
+    font-family:"Segoe UI",Arial,sans-serif;
+
+    color:#eee;
+
+    background:
+        radial-gradient(circle at 50% 15%,rgba(240,205,100,.10),transparent 30%),
+        linear-gradient(145deg,#030303,#090909,#020202);
+}
+
+
+.contenedor{
+    width:min(600px,100%);
+
+    margin:auto;
+
+    text-align:center;
+}
+
+
+.volver{
+    display:block;
+
+    text-align:left;
+
+    color:#877b5c;
+
+    text-decoration:none;
+
+    font-size:11px;
+}
+
+
+.encabezado{
+    margin-top:55px;
+}
+
+
+.mini{
+    color:#887b59;
+
+    font-size:9px;
+
+    letter-spacing:4px;
+}
+
+
+h1{
+    margin-top:13px;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(
+            33px,
+            7vw,
+            46px
+        );
+
+    font-weight:400;
+}
+
+
+h1 span{
+    color:#f1cf68;
+}
+
+
+.descripcion{
+    margin-top:14px;
+
+    color:#777;
+
+    font-size:12px;
+}
+
+
+/* VIDEO */
+
+.video-contenedor{
+    width:min(
+        420px,
+        100%
+    );
+
+    margin:
+        32px auto
+        0;
+
+    padding:5px;
+
+    border-radius:25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(241,207,104,.22),
+            rgba(255,255,255,.04)
+        );
+
+    box-shadow:
+        0 30px 80px
+        rgba(0,0,0,.65);
+}
+
+
+video{
+    width:100%;
+
+    display:block;
+
+    border-radius:20px;
+
+    background:#000;
+}
+
+
+/* MENSAJE */
+
+.mensaje{
+    max-width:510px;
+
+    margin:
+        35px auto
+        0;
+
+    padding:
+        28px 22px;
+
+    border-radius:22px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    background:
+        rgba(255,255,255,.02);
+
+    color:#bbb;
+
+    font-size:14px;
+
+    line-height:2;
+}
+
+
+.mensaje strong{
+    color:#efd174;
+
+    font-weight:500;
+}
+
+
+.firma{
+    margin-top:26px;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    color:#eee;
+
+    font-size:17px;
+}
+
+
+.takecare{
+    margin-top:10px;
+
+    color:#71664e;
+
+    font-size:9px;
+
+    letter-spacing:4px;
+}
+
+
+#musicaBtn{
+    position:fixed;
+
+    right:15px;
+    bottom:15px;
+
+    width:42px;
+    height:42px;
+
+    border-radius:50%;
+
+    border:
+        1px solid
+        rgba(241,207,104,.20);
+
+    background:
+        rgba(5,5,5,.90);
+
+    color:#dfc56d;
+
+    cursor:pointer;
+}
+
+
+@media(max-width:500px){
+
+    .encabezado{
+        margin-top:38px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<audio
+    id="musica"
+    loop
+    preload="auto"
+>
+
+    <source
+        src="musica.mp3.mp3"
+        type="audio/mpeg"
+    >
+
+</audio>
+
+
+<button
+    id="musicaBtn"
+    onclick="toggleMusica()"
+>
+♪
+</button>
+
+
+<div class="contenedor">
+
+
+<a
+    href="inicio.html"
+    class="volver"
+>
+    ← Volver
+</a>
+
+
+<section class="encabezado">
+
+<div class="mini">
+    ONE LAST LITTLE THING ✦
+</div>
+
+
+<h1>
+    Un último <span>detallito</span> 🌻
+</h1>
+
+
+<div class="descripcion">
+    Solo quería dejar esto por aquí.
+</div>
+
+</section>
+
+
+
+<div class="video-contenedor">
+
+<video
+    id="video"
+    controls
+    playsinline
+    preload="metadata"
+>
+
+    <source
+        src="video.mp4.mp4"
+        type="video/mp4"
+    >
+
+    Tu navegador no puede reproducir este vídeo.
+
+</video>
+
+</div>
+
+
+
+<div class="mensaje">
+
+    <strong>
+        Espero que estés muy bien, Heydi.
+    </strong>
+
+    <br><br>
+
+    Que sigas encontrando motivos para sonreír,
+    que Dios cuide cada paso que des
+    y que nunca te falten fuerzas
+    para seguir construyendo
+    todo aquello que sueñas.
+
+    <br><br>
+
+    <strong>
+        Y sobre todo, sé muy feliz. 🤍
+    </strong>
+
+</div>
+
+
+<div class="firma">
+    Atte. Keven
+</div>
+
+
+<div class="takecare">
+    TAKE CARE ✦
+</div>
+
+
+</div>
+
+
+<script>
+
+if(
+    sessionStorage.getItem("accesoHeydi")
+    !== "si"
+){
+    location.href =
+    "index.html";
+}
+
+
+const musica =
+document.getElementById("musica");
+
+const video =
+document.getElementById("video");
+
+const musicaBtn =
+document.getElementById("musicaBtn");
+
+
+let musicaEstaba =
+false;
+
+
+musica.volume =
+.30;
+
+
+function toggleMusica(){
+
+    if(musica.paused){
+
+        musica.play();
+
+        musicaBtn.textContent =
+        "♫";
+
+    }
+
+    else{
+
+        musica.pause();
+
+        musicaBtn.textContent =
+        "♪";
+
+    }
+
+}
+
+
+/* AL REPRODUCIR VIDEO */
+
+video.addEventListener(
+"play",
+()=>{
+
+    musicaEstaba =
+    !musica.paused;
+
+
+    musica.pause();
+
+    musicaBtn.textContent =
+    "♪";
+
+});
+
+
+/* AL PAUSAR */
+
+video.addEventListener(
+"pause",
+()=>{
+
+    if(
+        musicaEstaba &&
+        !video.ended
+    ){
+
+        musica.play()
+        .catch(()=>{});
+
+        musicaBtn.textContent =
+        "♫";
+
+    }
+
+});
+
+
+/* AL TERMINAR */
+
+video.addEventListener(
+"ended",
+()=>{
+
+    if(musicaEstaba){
+
+        musica.play()
+        .catch(()=>{});
+
+        musicaBtn.textContent =
+        "♫";
+
+    }
+
+});
+
+
+/* PRIMER TOQUE */
+
+document.addEventListener(
+"click",
+()=>{
+
+    if(
+        musica.paused &&
+        video.paused
+    ){
+
+        musica.play()
+        .then(()=>{
+
+            musicaBtn.textContent =
+            "♫";
+
+        })
+        .catch(()=>{});
+
+    }
+
+},
+{once:true}
+);
+
+</script>
+
+</body>
+</html>
