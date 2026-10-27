@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+>
 
 <title>Hola, Heydi</title>
 
 <style>
+
+/* =========================================================
+   GENERAL
+========================================================= */
 
 *{
     margin:0;
@@ -21,129 +30,437 @@ html{
 body{
     min-height:100vh;
 
-    font-family:"Segoe UI",Arial,sans-serif;
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
 
     color:#f5f5f5;
 
     background:
-        radial-gradient(circle at 20% 10%,rgba(245,211,109,.08),transparent 30%),
-        radial-gradient(circle at 80% 80%,rgba(190,210,255,.035),transparent 30%),
-        linear-gradient(145deg,#020202,#0b0b0b,#020202);
+        radial-gradient(
+            circle at 20% 10%,
+            rgba(245,211,109,.08),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(190,210,255,.035),
+            transparent 30%
+        ),
+
+        linear-gradient(
+            145deg,
+            #020202,
+            #0b0b0b,
+            #020202
+        );
 }
+
+
+/* =========================================================
+   CONTENEDOR
+========================================================= */
 
 .contenedor{
-    width:min(700px,calc(100% - 28px));
+    width:
+        min(
+            700px,
+            calc(100% - 28px)
+        );
+
     margin:auto;
-    padding:55px 0 85px;
+
+    padding:
+        55px 0
+        85px;
 }
 
+
+/* =========================================================
+   PORTADA
+========================================================= */
+
 .portada{
-    min-height:78vh;
+    min-height:100vh;
 
     display:flex;
+
     flex-direction:column;
+
     justify-content:center;
+
     align-items:center;
 
     text-align:center;
+
+    padding:
+        45px 0
+        55px;
 }
+
 
 .vol{
     color:#8d8060;
+
     font-size:9px;
+
     letter-spacing:5px;
+
     margin-bottom:20px;
 }
 
-.portada h1{
-    font-family:Georgia,"Times New Roman",serif;
 
-    font-size:clamp(45px,9vw,72px);
+.portada h1{
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(
+            45px,
+            9vw,
+            72px
+        );
 
     font-weight:400;
 }
 
+
 .portada h1 span{
     color:#f1cf68;
+
+    text-shadow:
+        0 0 30px
+        rgba(241,207,104,.12);
 }
 
-.portada p{
-    max-width:500px;
 
-    margin-top:24px;
+/* =========================================================
+   SALUDO
+========================================================= */
 
-    color:#9a9a9a;
+.saludo-principal{
+    max-width:520px;
 
-    font-size:14px;
+    margin:
+        26px auto
+        0;
+
+    color:#aaa;
+
+    font-size:15px;
+
     line-height:1.9;
 }
 
+
+/* =========================================================
+   THE STARRY NIGHT
+========================================================= */
+
+.starry-section{
+    width:100%;
+
+    max-width:680px;
+
+    margin:
+        55px auto
+        0;
+
+    text-align:center;
+}
+
+
+.starry-mini{
+    margin-bottom:16px;
+
+    color:#c3a455;
+
+    font-size:9px;
+
+    letter-spacing:5px;
+}
+
+
+.starry-section h2{
+    margin:
+        0 0
+        24px;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(
+            31px,
+            6vw,
+            48px
+        );
+
+    font-weight:400;
+
+    letter-spacing:1px;
+
+    color:#f3f0e8;
+}
+
+
+.starry-section h2 span{
+    color:#e8c568;
+
+    text-shadow:
+        0 0 25px
+        rgba(232,197,104,.14);
+}
+
+
+/* =========================================================
+   MARCO DE LA IMAGEN
+========================================================= */
+
+.starry-frame{
+    position:relative;
+
+    width:100%;
+
+    overflow:hidden;
+
+    border:
+        1px solid
+        rgba(209,171,74,.60);
+
+    border-radius:5px;
+
+    background:#030712;
+
+    box-shadow:
+        0 25px 70px
+        rgba(0,0,0,.68),
+
+        0 0 45px
+        rgba(35,75,130,.10);
+}
+
+
+/* =========================================================
+   IMAGEN
+========================================================= */
+
+.starry-image{
+    display:block;
+
+    width:100%;
+
+    height:auto;
+
+    object-fit:cover;
+
+    filter:
+        brightness(.78)
+        contrast(1.07)
+        saturate(.94);
+
+    transition:
+        transform 6s ease,
+        filter 1s ease;
+}
+
+
+.starry-frame:hover
+.starry-image{
+    transform:
+        scale(1.025);
+
+    filter:
+        brightness(.84)
+        contrast(1.08)
+        saturate(1);
+}
+
+
+/* =========================================================
+   SOMBRA SOBRE IMAGEN
+========================================================= */
+
+.starry-overlay{
+    position:absolute;
+
+    inset:0;
+
+    pointer-events:none;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,.08),
+            transparent 45%,
+            rgba(0,0,0,.19)
+        );
+}
+
+
+/* =========================================================
+   DATOS DE LA OBRA
+========================================================= */
+
+.starry-info{
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:15px;
+
+    margin-top:13px;
+
+    color:#8f7b4f;
+
+    font-size:8px;
+
+    letter-spacing:1.7px;
+}
+
+
+/* =========================================================
+   MENSAJE DESPUÉS
+========================================================= */
+
+.mensaje-sonrisa{
+    max-width:520px;
+
+    margin:
+        38px auto
+        0;
+
+    color:#aaa;
+
+    font-size:14px;
+
+    line-height:1.9;
+}
+
+
+/* =========================================================
+   FLECHA
+========================================================= */
+
 .flecha-abajo{
-    margin-top:42px;
+    margin-top:37px;
+
     color:#c6aa55;
+
     font-size:20px;
 
-    animation:bajar 1.6s infinite;
+    animation:
+        bajar 1.6s infinite;
 }
+
 
 @keyframes bajar{
 
     50%{
-        transform:translateY(8px);
+        transform:
+            translateY(8px);
     }
 
 }
 
+
+/* =========================================================
+   TÍTULO DE BOTONES
+========================================================= */
+
 .titulo{
     text-align:center;
+
     margin-bottom:38px;
 }
 
+
 .titulo small{
     color:#887a58;
+
     letter-spacing:4px;
+
     font-size:9px;
 }
+
 
 .titulo h2{
     margin-top:13px;
 
-    font-family:Georgia,"Times New Roman",serif;
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
 
-    font-size:clamp(30px,6vw,40px);
+    font-size:
+        clamp(
+            30px,
+            6vw,
+            40px
+        );
 
     font-weight:400;
 }
+
 
 .titulo h2 span{
     color:#f1cf68;
 }
 
+
+/* =========================================================
+   OPCIONES
+========================================================= */
+
 .opciones{
     display:flex;
+
     flex-direction:column;
+
     align-items:center;
+
     gap:13px;
 }
 
+
 .tarjeta{
-    width:min(420px,100%);
+    width:
+        min(
+            420px,
+            100%
+        );
+
     min-height:72px;
 
-    padding:14px 17px;
+    padding:
+        14px
+        17px;
 
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
 
     gap:15px;
 
     text-decoration:none;
+
     color:#eee;
 
     border-radius:18px;
 
-    border:1px solid rgba(255,255,255,.09);
+    border:
+        1px solid
+        rgba(255,255,255,.09);
 
     background:
         linear-gradient(
@@ -152,43 +469,67 @@ body{
             rgba(255,255,255,.012)
         );
 
-    transition:.3s ease;
+    transition:
+        .3s ease;
 }
 
+
 .tarjeta:hover{
-    transform:translateY(-4px);
-    border-color:rgba(241,207,104,.38);
+    transform:
+        translateY(-4px);
+
+    border-color:
+        rgba(241,207,104,.38);
 }
+
+
+/* =========================================================
+   ICONOS
+========================================================= */
 
 .izquierda{
     display:flex;
+
     align-items:center;
+
     gap:14px;
 }
+
 
 .icono{
     width:43px;
     height:43px;
 
     display:flex;
+
     align-items:center;
+
     justify-content:center;
 
     flex-shrink:0;
 
     border-radius:50%;
 
-    background:rgba(255,255,255,.045);
+    background:
+        rgba(255,255,255,.045);
 
     font-size:21px;
 }
+
+
+.texto{
+    text-align:left;
+}
+
 
 .texto strong{
     display:block;
 
     font-size:12px;
+
     letter-spacing:1px;
 }
+
 
 .texto span{
     display:block;
@@ -200,20 +541,30 @@ body{
     font-size:10px;
 }
 
+
 .siguiente{
     color:#9d884b;
+
     font-size:22px;
 }
+
+
+/* =========================================================
+   FINAL
+========================================================= */
 
 .final{
     margin-top:90px;
 
     padding-top:45px;
 
-    border-top:1px solid rgba(255,255,255,.07);
+    border-top:
+        1px solid
+        rgba(255,255,255,.07);
 
     text-align:center;
 }
+
 
 .final small{
     color:#82775a;
@@ -222,6 +573,7 @@ body{
 
     letter-spacing:4px;
 }
+
 
 .final p{
     margin-top:17px;
@@ -232,6 +584,11 @@ body{
 
     line-height:1.8;
 }
+
+
+/* =========================================================
+   MÚSICA
+========================================================= */
 
 #musicaBtn{
     position:fixed;
@@ -246,289 +603,572 @@ body{
 
     border-radius:50%;
 
-    border:1px solid rgba(241,207,104,.20);
+    border:
+        1px solid
+        rgba(241,207,104,.20);
 
-    background:rgba(5,5,5,.88);
+    background:
+        rgba(5,5,5,.88);
 
     color:#dfc56d;
 
     cursor:pointer;
 }
 
-@media(max-width:520px){
+
+/* =========================================================
+   CELULAR
+========================================================= */
+
+@media(max-width:550px){
 
     .contenedor{
         padding-top:25px;
     }
 
+
     .portada{
-        min-height:87vh;
+        min-height:auto;
+
+        padding-top:70px;
+
+        padding-bottom:60px;
+    }
+
+
+    .starry-section{
+        margin-top:43px;
+    }
+
+
+    .starry-mini{
+        font-size:7px;
+
+        letter-spacing:3px;
+    }
+
+
+    .starry-section h2{
+        font-size:
+            clamp(
+                29px,
+                9vw,
+                41px
+            );
+    }
+
+
+    .starry-info{
+        font-size:6.5px;
+
+        letter-spacing:.6px;
+    }
+
+
+    .mensaje-sonrisa{
+        margin-top:30px;
+
+        font-size:13px;
+    }
+
+
+    .tarjeta{
+        width:100%;
     }
 
 }
 
 </style>
+
 </head>
 
 
 <body>
 
+
+<!-- =========================================================
+     MÚSICA
+========================================================= -->
+
 <audio
-    id="musica"
-    loop
-    preload="auto"
+id="musica"
+loop
+preload="auto"
 >
+
     <source
-        src="musica2.mp3.mp3"
-        type="audio/mpeg"
+    src="musica.mp3.mp3"
+    type="audio/mpeg"
     >
+
 </audio>
 
 
 <button
-    id="musicaBtn"
-    onclick="toggleMusica()"
+id="musicaBtn"
+onclick="toggleMusica()"
+title="Música"
 >
 ♪
 </button>
 
 
+
+<!-- =========================================================
+     CONTENIDO
+========================================================= -->
+
 <main class="contenedor">
 
 
+<!-- =========================================================
+     PORTADA
+========================================================= -->
+
 <section class="portada">
 
+
     <div class="vol">
+
         A LITTLE SPACE ✦
+
     </div>
+
+
 
     <h1>
-        Hola, <span>Heydi</span>
+
+        Hola,
+        <span>Heydi</span>
+
     </h1>
 
-<p>
 
-    Qué gusto saber que pasaste por aquí.
 
-    <br><br>
+    <p class="saludo-principal">
 
-    Estoy trabajando poco a poco en este espacio,
-    pero mientras tanto te dejé algunos pequeños detalles.
+        Qué gusto saber
+        que pasaste por aquí.
 
-    <br><br>
+    </p>
 
-    Espero que alguno de ellos
-    logre sacarte una sonrisa. 🤍
 
-</p>
+
+    <!-- =====================================================
+         THE STARRY NIGHT
+    ====================================================== -->
+
+    <div class="starry-section">
+
+
+        <div class="starry-mini">
+
+            ✦ A LITTLE DETAIL FOR YOU ✦
+
+        </div>
+
+
+
+        <h2>
+
+            Starry
+            <span> Night</span>
+
+        </h2>
+
+
+
+        <div class="starry-frame">
+
+
+            <img
+            src="noche-estrellada.png"
+            alt="The Starry Night"
+            class="starry-image"
+            >
+
+
+            <div class="starry-overlay"></div>
+
+
+        </div>
+
+
+
+        <div class="starry-info">
+
+
+            <span>
+
+                Recuerdalo...
+
+            </span>
+
+
+            <span>
+
+                El cielo está lleno de estrellas, pero ninguna brilla como tus ojos.
+
+            </span>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <p class="mensaje-sonrisa">
+
+        Espero que alguno
+        de estos pequeños detalles
+        logre sacarte una sonrisa. 🤍
+
+    </p>
+
+
 
     <div class="flecha-abajo">
+
         ↓
+
     </div>
+
 
 </section>
 
 
+
+<!-- =========================================================
+     BOTONES
+========================================================= -->
 
 <section>
 
-<div class="titulo">
 
-    <small>
-        JUST FOR YOU
-    </small>
-
-    <h2>
-        Pequeños detalles
-        <span>✦</span>
-    </h2>
-
-</div>
+    <div class="titulo">
 
 
-<div class="opciones">
+        <small>
+
+            JUST FOR YOU
+
+        </small>
 
 
-<a
-    href="flor.html"
-    class="tarjeta"
->
+        <h2>
 
-    <div class="izquierda">
+            Pequeños detalles
+            <span>✦</span>
 
-        <div class="icono">
-            🌻
-        </div>
+        </h2>
 
-        <div class="texto">
-
-            <strong>
-                UNA FLOR PARA TI
-            </strong>
-
-            <span>
-                Un pequeño detalle
-            </span>
-
-        </div>
 
     </div>
 
-    <div class="siguiente">
-        ›
+
+
+    <div class="opciones">
+
+
+        <!-- FLOR -->
+
+        <a
+        href="flor.html"
+        class="tarjeta"
+        >
+
+
+            <div class="izquierda">
+
+
+                <div class="icono">
+
+                    🌻
+
+                </div>
+
+
+
+                <div class="texto">
+
+
+                    <strong>
+
+                        UNA FLOR PARA TI
+
+                    </strong>
+
+
+                    <span>
+
+                        Un pequeño detalle
+
+                    </span>
+
+
+                </div>
+
+
+            </div>
+
+
+            <div class="siguiente">
+
+                ›
+
+            </div>
+
+
+        </a>
+
+
+
+        <!-- ABRAZO -->
+
+        <a
+        href="abrazo.html"
+        class="tarjeta"
+        >
+
+
+            <div class="izquierda">
+
+
+                <div class="icono">
+
+                    🤍
+
+                </div>
+
+
+
+                <div class="texto">
+
+
+                    <strong>
+
+                        UN ABRAZO
+
+                    </strong>
+
+
+                    <span>
+
+                        Por si hoy hace falta uno
+
+                    </span>
+
+
+                </div>
+
+
+            </div>
+
+
+            <div class="siguiente">
+
+                ›
+
+            </div>
+
+
+        </a>
+
+
+
+        <!-- MENSAJE -->
+
+        <a
+        href="frase.html"
+        class="tarjeta"
+        >
+
+
+            <div class="izquierda">
+
+
+                <div class="icono">
+
+                    ✨
+
+                </div>
+
+
+
+                <div class="texto">
+
+
+                    <strong>
+
+                        UN MENSAJE PARA TI
+
+                    </strong>
+
+
+                    <span>
+
+                        Para seguir adelante
+
+                    </span>
+
+
+                </div>
+
+
+            </div>
+
+
+            <div class="siguiente">
+
+                ›
+
+            </div>
+
+
+        </a>
+
+
+
+        <!-- COMPAÑÍA -->
+
+        <a
+        href="ia.html"
+        class="tarjeta"
+        >
+
+
+            <div class="izquierda">
+
+
+                <div class="icono">
+
+                    🎧
+
+                </div>
+
+
+
+                <div class="texto">
+
+
+                    <strong>
+
+                        A LITTLE COMPANY
+
+                    </strong>
+
+
+                    <span>
+
+                        ¿Cómo estás hoy?
+
+                    </span>
+
+
+                </div>
+
+
+            </div>
+
+
+            <div class="siguiente">
+
+                ›
+
+            </div>
+
+
+        </a>
+
+
+
+        <!-- VIDEO -->
+
+        <a
+        href="video.html"
+        class="tarjeta"
+        >
+
+
+            <div class="izquierda">
+
+
+                <div class="icono">
+
+                    🐶
+
+                </div>
+
+
+
+                <div class="texto">
+
+
+                    <strong>
+
+                        ONE LAST LITTLE THING
+
+                    </strong>
+
+
+                    <span>
+
+                        Un último detallito 🌻
+
+                    </span>
+
+
+                </div>
+
+
+            </div>
+
+
+            <div class="siguiente">
+
+                ›
+
+            </div>
+
+
+        </a>
+
+
     </div>
 
-</a>
-
-
-
-<a
-    href="abrazo.html"
-    class="tarjeta"
->
-
-    <div class="izquierda">
-
-        <div class="icono">
-            🤍
-        </div>
-
-        <div class="texto">
-
-            <strong>
-                UN ABRAZO
-            </strong>
-
-            <span>
-                Por si hoy hace falta uno
-            </span>
-
-        </div>
-
-    </div>
-
-    <div class="siguiente">
-        ›
-    </div>
-
-</a>
-
-
-
-<a
-    href="frase.html"
-    class="tarjeta"
->
-
-    <div class="izquierda">
-
-        <div class="icono">
-            ✨
-        </div>
-
-        <div class="texto">
-
-            <strong>
-                UN MENSAJE PARA TI
-            </strong>
-
-            <span>
-                Para seguir adelante
-            </span>
-
-        </div>
-
-    </div>
-
-    <div class="siguiente">
-        ›
-    </div>
-
-</a>
-
-
-
-<a
-    href="ia.html"
-    class="tarjeta"
->
-
-    <div class="izquierda">
-
-        <div class="icono">
-            🎧
-        </div>
-
-        <div class="texto">
-
-            <strong>
-                A LITTLE COMPANY
-            </strong>
-
-            <span>
-                ¿Cómo estás hoy?
-            </span>
-
-        </div>
-
-    </div>
-
-    <div class="siguiente">
-        ›
-    </div>
-
-</a>
-
-
-
-<a
-    href="video.html"
-    class="tarjeta"
->
-
-    <div class="izquierda">
-
-        <div class="icono">
-            🐶
-        </div>
-
-        <div class="texto">
-
-            <strong>
-                ONE LAST LITTLE THING
-            </strong>
-
-            <span>
-                Un último detallito 🌻
-            </span>
-
-        </div>
-
-    </div>
-
-    <div class="siguiente">
-        ›
-    </div>
-
-</a>
-
-
-</div>
 
 </section>
 
 
 
+<!-- =========================================================
+     FINAL
+========================================================= -->
+
 <section class="final">
 
+
     <small>
+
         TAKE YOUR TIME ✦
+
     </small>
 
+
     <p>
-        No tienes que verlo todo de una vez.<br>
-        Este pequeño espacio seguirá aquí.
+
+        No tienes que verlo todo
+        de una vez.
+
+        <br>
+
+        Este pequeño espacio
+        seguirá aquí.
+
     </p>
+
 
 </section>
 
@@ -536,80 +1176,146 @@ body{
 </main>
 
 
+
 <script>
+
+/* =========================================================
+   PROTEGER INICIO
+========================================================= */
 
 if(
     sessionStorage.getItem(
         "accesoHeydi"
-    ) !== "si"
+    )
+    !==
+    "si"
 ){
+
     window.location.href =
     "index.html";
+
 }
 
 
+
+/* =========================================================
+   MÚSICA
+========================================================= */
+
 const musica =
-document.getElementById("musica");
+document.getElementById(
+    "musica"
+);
+
 
 const musicaBtn =
-document.getElementById("musicaBtn");
+document.getElementById(
+    "musicaBtn"
+);
 
 
-musica.volume = .32;
+musica.volume =
+.32;
+
 
 
 function iniciarMusica(){
 
-    musica.play()
+
+    musica
+    .play()
+
     .then(()=>{
+
 
         musicaBtn.textContent =
         "♫";
 
+
     })
-    .catch(()=>{});
+
+    .catch(()=>{
+
+
+        musicaBtn.textContent =
+        "♪";
+
+
+    });
+
 
 }
 
 
+
 function toggleMusica(){
 
-    if(musica.paused){
+
+    if(
+        musica.paused
+    ){
+
 
         musica.play();
 
+
         musicaBtn.textContent =
         "♫";
+
 
     }
 
     else{
 
+
         musica.pause();
+
 
         musicaBtn.textContent =
         "♪";
 
+
     }
+
 
 }
 
 
+
+/* =========================================================
+   PRIMER TOQUE
+========================================================= */
+
 document.addEventListener(
-"click",
-()=>{
 
-    if(musica.paused){
+    "click",
 
-        iniciarMusica();
+    ()=>{
 
+
+        if(
+            musica.paused
+        ){
+
+
+            iniciarMusica();
+
+
+        }
+
+
+    },
+
+    {
+        once:true
     }
 
-},
-{once:true}
 );
 
 </script>
 
+
 </body>
+
 </html>
+
