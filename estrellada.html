@@ -1,0 +1,386 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Noche estrellada · Heydi ♡</title>
+
+<script>
+if(sessionStorage.getItem("accesoHeydi")!=="si"){
+  location.replace("index.html");
+}
+</script>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  min-height:100vh;
+  background:linear-gradient(160deg,#080d19,#141e34,#090f1d);
+  color:#fff6e7;
+  font-family:Georgia,serif;
+  overflow-x:hidden;
+}
+
+.contenedor{
+  width:min(1050px,100%);
+  margin:auto;
+  padding:22px 15px 65px;
+}
+
+.volver{
+  display:inline-block;
+  padding:11px 19px;
+  border-radius:30px;
+  color:#efe7d9;
+  text-decoration:none;
+  border:1px solid #ffffff35;
+  background:#ffffff12;
+  font-family:Arial,sans-serif;
+  font-size:13px;
+  backdrop-filter:blur(12px);
+}
+
+header{
+  text-align:center;
+  margin:30px auto;
+}
+
+header small{
+  letter-spacing:4px;
+  color:#c2c9d6;
+  font-family:Arial,sans-serif;
+  font-size:10px;
+}
+
+header h1{
+  margin:14px 0;
+  font-size:clamp(38px,7vw,69px);
+  font-weight:400;
+}
+
+header p{
+  color:#c7cbda;
+  font-size:15px;
+}
+
+/* IMAGEN ORIGINAL */
+
+.escena{
+  position:relative;
+  width:100%;
+  overflow:hidden;
+  border-radius:23px;
+  background:#101728;
+  border:1px solid #ffffff35;
+  box-shadow:0 25px 65px #0009;
+  isolation:isolate;
+}
+
+.imagen-original{
+  display:block;
+  width:100%;
+  height:auto;
+  object-fit:contain;
+  transition:filter 1.8s ease,transform 7s ease;
+}
+
+/* SOLO EFECTOS ENCIMA DE LA IMAGEN */
+
+.escena.activa .imagen-original{
+  filter:brightness(1.07) saturate(1.13);
+  animation:respirar 9s ease-in-out infinite alternate;
+}
+
+@keyframes respirar{
+  from{transform:scale(1);}
+  to{transform:scale(1.035);}
+}
+
+/* BRILLO SUAVE */
+
+.resplandor{
+  position:absolute;
+  inset:0;
+  opacity:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 72% 29%,
+      #fff4bc24,transparent 24%),
+    radial-gradient(circle at 27% 21%,
+      #fff8d819,transparent 30%);
+  transition:opacity 1.5s;
+  mix-blend-mode:screen;
+}
+
+.escena.activa .resplandor{
+  opacity:1;
+  animation:pulsar 5s ease-in-out infinite alternate;
+}
+
+@keyframes pulsar{
+  from{opacity:.25;}
+  to{opacity:.85;}
+}
+
+/* ESTRELLITAS SOBRE LA PINTURA */
+
+.estrellas{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  overflow:hidden;
+}
+
+.estrella{
+  position:absolute;
+  width:3px;
+  height:3px;
+  border-radius:50%;
+  background:#fff5c9;
+  box-shadow:0 0 10px 3px #fff2bd80;
+  opacity:0;
+}
+
+.escena.activa .estrella{
+  animation:brillo 3.5s ease-in-out infinite;
+  animation-delay:var(--delay);
+}
+
+@keyframes brillo{
+  0%,100%{
+    opacity:0;
+    transform:scale(.5);
+  }
+  50%{
+    opacity:.95;
+    transform:scale(1.4);
+  }
+}
+
+/* ESTRELLAS FUGACES */
+
+.fugaz{
+  position:absolute;
+  width:75px;
+  height:2px;
+  pointer-events:none;
+  background:linear-gradient(
+    90deg,transparent,#fff8d9
+  );
+  border-radius:50px;
+  opacity:0;
+  transform:rotate(-35deg);
+}
+
+.escena.activa .fugaz{
+  animation:pasar 8s linear infinite;
+  animation-delay:var(--delay);
+}
+
+@keyframes pasar{
+  0%,55%{
+    opacity:0;
+    translate:0 0;
+  }
+  58%{opacity:.8;}
+  66%{
+    opacity:0;
+    translate:140px 95px;
+  }
+  100%{opacity:0;}
+}
+
+/* CONTROLES */
+
+.controles{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:12px;
+  margin:26px auto;
+}
+
+.controles button{
+  border-radius:30px;
+  padding:13px 21px;
+  font-size:13px;
+  font-family:Arial,sans-serif;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.encender{
+  border:1px solid #c4c6a7;
+  background:#dce2c8;
+  color:#33452f;
+}
+
+.apagar{
+  border:1px solid #ffffff50;
+  background:#ffffff15;
+  color:#f0eada;
+}
+
+.controles button:hover{
+  transform:translateY(-3px);
+}
+
+.controles button:focus-visible,
+.volver:focus-visible{
+  outline:3px solid #dce2c8;
+  outline-offset:3px;
+}
+
+.frase{
+  max-width:680px;
+  margin:20px auto;
+  padding:26px;
+  text-align:center;
+  background:#ffffff0d;
+  border:1px solid #ffffff21;
+  border-radius:24px;
+}
+
+.frase p{
+  font-size:clamp(15px,3vw,19px);
+  font-style:italic;
+  line-height:1.9;
+  color:#ede9e3;
+}
+
+.frase small{
+  display:block;
+  margin-top:15px;
+  font-family:Arial,sans-serif;
+  color:#b7bcae;
+}
+
+@media(max-width:600px){
+  .contenedor{padding:15px 10px 40px;}
+  header{margin:25px auto;}
+  .escena{border-radius:15px;}
+  .controles button{font-size:12px;padding:12px 15px;}
+}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation:none!important;
+    transition:none!important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<main class="contenedor">
+
+<a href="inicio.html" class="volver">
+  ← Volver al inicio
+</a>
+
+<header>
+  <small>A LITTLE PEACE FOR YOU</small>
+  <h1>Noche estrellada ♡</h1>
+  <p>Un pequeño rincón de calma para Heydi.</p>
+</header>
+
+<section class="escena" id="escena">
+
+  <!-- TU IMAGEN ORIGINAL -->
+
+  <img
+    class="imagen-original"
+    src="noche-estrellada.png"
+    alt="La noche estrellada"
+    id="imagen"
+  >
+
+  <div class="resplandor"></div>
+
+  <div class="estrellas" id="estrellas"></div>
+
+</section>
+
+<div class="controles">
+
+  <button class="encender" id="encender">
+    ✦ Dar vida al cielo
+  </button>
+
+  <button class="apagar" id="apagar">
+    ☾ Dejar el cielo tranquilo
+  </button>
+
+</div>
+
+<section class="frase">
+  <p>
+    Que encuentres tranquilidad incluso
+    en los días más difíciles, y que nunca
+    te falten motivos para seguir brillando
+  </p>
+  <small>Para Heydi ♡</small>
+</section>
+
+</main>
+
+<script>
+const escena=document.getElementById("escena");
+const estrellas=document.getElementById("estrellas");
+const encender=document.getElementById("encender");
+const apagar=document.getElementById("apagar");
+
+/* ESTRELLAS DE BRILLO */
+
+for(let i=0;i<24;i++){
+  const estrella=document.createElement("span");
+
+  estrella.className="estrella";
+  estrella.style.left=(5+Math.random()*90)+"%";
+  estrella.style.top=(5+Math.random()*62)+"%";
+
+  estrella.style.setProperty(
+    "--delay",(Math.random()*5)+"s"
+  );
+
+  estrellas.appendChild(estrella);
+}
+
+/* ESTRELLAS FUGACES */
+
+for(let i=0;i<3;i++){
+  const fugaz=document.createElement("span");
+
+  fugaz.className="fugaz";
+  fugaz.style.left=(5+Math.random()*55)+"%";
+  fugaz.style.top=(5+Math.random()*40)+"%";
+
+  fugaz.style.setProperty(
+    "--delay",(i*2.6)+"s"
+  );
+
+  estrellas.appendChild(fugaz);
+}
+
+/* ACTIVAR MOVIMIENTO */
+
+encender.addEventListener("click",()=>{
+  escena.classList.add("activa");
+});
+
+/* DETENER MOVIMIENTO */
+
+apagar.addEventListener("click",()=>{
+  escena.classList.remove("activa");
+});
+</script>
+
+</body>
+</html>

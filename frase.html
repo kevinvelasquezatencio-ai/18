@@ -1,0 +1,1473 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#efe3d2">
+<title>Mensajes para Heydi ♡</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+<script>
+/* Acceso protegido: igual que las otras páginas */
+if (sessionStorage.getItem("accesoHeydi") !== "si") {
+  location.replace("index.html");
+}
+</script>
+
+<style>
+:root {
+  --verde:#526c43;
+  --oliva:#859b71;
+  --beige:#e9d6bc;
+  --crema:#fffaf1;
+  --texto:#766e61;
+}
+
+* {
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body {
+  min-height:100vh;
+  min-height:100svh;
+  font-family:"DM Sans",sans-serif;
+  color:var(--verde);
+  overflow-x:hidden;
+  background:
+    radial-gradient(
+      ellipse at 50% 20%,
+      #fffaf2 0%,
+      #f5e9d9 55%,
+      #dfc7a9 100%
+    );
+}
+
+button, a {
+  font:inherit;
+}
+
+button {
+  cursor:pointer;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline:3px solid #789461;
+  outline-offset:4px;
+}
+
+/* FONDO */
+
+.fondo {
+  position:fixed;
+  inset:0;
+  overflow:hidden;
+  pointer-events:none;
+}
+
+.circulo {
+  position:absolute;
+  border-radius:50%;
+  filter:blur(10px);
+}
+
+.circulo.uno {
+  width:550px;
+  height:350px;
+  left:-240px;
+  top:-220px;
+  background:rgba(134,161,106,.25);
+}
+
+.circulo.dos {
+  width:480px;
+  height:350px;
+  right:-200px;
+  bottom:-220px;
+  background:rgba(151,175,128,.28);
+}
+
+.linea {
+  position:absolute;
+  width:650px;
+  height:450px;
+  border:1px solid rgba(255,255,255,.6);
+  border-radius:50%;
+  left:-220px;
+  top:-160px;
+  transform:rotate(-25deg);
+}
+
+/* CONTENIDO */
+
+.contenedor {
+  width:min(850px,100%);
+  margin:auto;
+  padding:23px 18px 80px;
+  position:relative;
+  z-index:2;
+}
+
+.volver {
+  display:inline-flex;
+  align-items:center;
+  padding:11px 19px;
+  text-decoration:none;
+  font-size:13px;
+  border-radius:35px;
+  color:#4d673e;
+  background:rgba(255,250,242,.74);
+  border:1px solid white;
+  backdrop-filter:blur(15px);
+  box-shadow:0 8px 22px #76542e13;
+  transition:transform .25s;
+}
+
+.volver:hover {
+  transform:translateX(-4px);
+}
+
+/* TÍTULO */
+
+.encabezado {
+  text-align:center;
+  padding:28px 8px 25px;
+  animation:subir .9s both;
+}
+
+.etiqueta {
+  font-size:11px;
+  letter-spacing:4px;
+  color:#819771;
+  font-weight:600;
+}
+
+.encabezado h1 {
+  font-family:"Great Vibes",cursive;
+  font-weight:400;
+  font-size:clamp(65px,10vw,105px);
+  margin:12px 0;
+  line-height:1.1;
+}
+
+.encabezado p {
+  color:#84796a;
+  font-size:14px;
+}
+
+/* FRASE DEL DÍA */
+
+.frase-dia {
+  width:min(650px,100%);
+  margin:5px auto 26px;
+  text-align:center;
+  padding:31px 27px;
+
+  background:rgba(255,252,245,.73);
+  border:1px solid rgba(255,255,255,.92);
+  border-radius:30px;
+  backdrop-filter:blur(18px);
+
+  box-shadow:0 18px 50px #7d583718;
+  animation:subir 1s .1s both;
+}
+
+.frase-dia .mini {
+  letter-spacing:3px;
+  font-size:10px;
+  color:#83966d;
+  font-weight:600;
+}
+
+.frase-dia h2 {
+  font-family:"Playfair Display",serif;
+  font-style:italic;
+  font-weight:400;
+  font-size:clamp(20px,4vw,29px);
+  line-height:1.5;
+  color:#506741;
+  margin:17px 0 13px;
+}
+
+.frase-dia p {
+  font-size:14px;
+  line-height:1.9;
+  color:#837969;
+}
+
+/* TARJETA TEMPORIZADOR */
+
+.tarjeta {
+  width:min(650px,100%);
+  margin:0 auto;
+  padding:35px 22px;
+  border-radius:34px;
+  border:1px solid rgba(255,255,255,.95);
+
+  background:linear-gradient(
+    145deg,
+    rgba(255,255,255,.72),
+    rgba(255,249,239,.53)
+  );
+
+  backdrop-filter:blur(18px);
+  box-shadow:0 22px 60px #78553220;
+  text-align:center;
+
+  animation:subir 1s .2s both;
+}
+
+.icono-carta {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto 17px;
+  width:70px;
+  height:70px;
+  border-radius:50%;
+  background:#edf1e6;
+  color:var(--verde);
+  font-size:34px;
+}
+
+.tarjeta h2 {
+  font-family:"Playfair Display",serif;
+  font-weight:400;
+  font-size:25px;
+}
+
+.tarjeta .sub {
+  font-size:13px;
+  margin:11px 0 23px;
+  color:#817766;
+}
+
+/* RELOJ */
+
+.reloj {
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:10px;
+  max-width:430px;
+  margin:0 auto 20px;
+}
+
+.tiempo {
+  border:1px solid #ffffffdb;
+  background:rgba(255,251,244,.9);
+  padding:16px 5px;
+  border-radius:18px;
+  box-shadow:0 6px 20px #886d4810;
+}
+
+.tiempo strong {
+  display:block;
+  font-weight:600;
+  font-size:clamp(23px,5vw,35px);
+  font-variant-numeric:tabular-nums;
+  color:#506b40;
+}
+
+.tiempo span {
+  display:block;
+  margin-top:6px;
+  font-size:10px;
+  letter-spacing:1px;
+  color:#8a8977;
+}
+
+.ayuda {
+  font-size:12px;
+  line-height:1.8;
+  color:#857b6e;
+}
+
+/* SOBRE */
+
+.sobre-bloque {
+  margin:31px auto 4px;
+  max-width:410px;
+}
+
+.sobre {
+  position:relative;
+  display:block;
+  width:220px;
+  height:145px;
+  margin:auto;
+  border:0;
+  background:transparent;
+  perspective:800px;
+  transition:transform .35s;
+}
+
+.sobre:hover:not(:disabled) {
+  transform:translateY(-4px);
+}
+
+.sobre:disabled {
+  cursor:default;
+}
+
+.envelope-back {
+  position:absolute;
+  inset:0;
+  background:#d8c3a3;
+  border-radius:8px;
+  box-shadow:0 12px 28px #80644433;
+}
+
+.envelope-front {
+  position:absolute;
+  inset:0;
+  z-index:3;
+  clip-path:polygon(
+    0 0,
+    50% 57%,
+    100% 0,
+    100% 100%,
+    0 100%
+  );
+  background:#f1e4d0;
+  border-radius:8px;
+}
+
+.envelope-flap {
+  position:absolute;
+  inset:0;
+  z-index:4;
+  background:#e4d2b7;
+  clip-path:polygon(
+    0 0,
+    100% 0,
+    50% 57%
+  );
+  transform-origin:top center;
+  transition:transform .7s;
+}
+
+.envelope-heart {
+  position:absolute;
+  z-index:5;
+  top:57%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  background:#80986b;
+  color:white;
+  width:37px;
+  height:37px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  box-shadow:0 4px 10px #4a62462b;
+  transition:opacity .3s;
+}
+
+.envelope-paper {
+  position:absolute;
+  z-index:2;
+  left:15px;
+  right:15px;
+  top:17px;
+  height:110px;
+  background:#fffaf0;
+  border-radius:5px;
+  display:grid;
+  place-items:center;
+  color:#8e9e7a;
+  font-size:26px;
+  transition:transform .7s .25s;
+}
+
+.sobre.abierto .envelope-flap {
+  transform:rotateX(180deg);
+  z-index:1;
+}
+
+.sobre.abierto .envelope-paper {
+  transform:translateY(-58px);
+}
+
+.sobre.abierto .envelope-heart {
+  opacity:0;
+}
+
+.sobre-texto {
+  margin-top:20px;
+  color:#6a775d;
+  font-size:13px;
+}
+
+/* HISTORIAL */
+
+.historial {
+  width:min(650px,100%);
+  margin:35px auto 0;
+  padding:26px;
+  border-radius:28px;
+  background:rgba(255,250,243,.59);
+  border:1px solid rgba(255,255,255,.85);
+  backdrop-filter:blur(15px);
+}
+
+.historial h2 {
+  text-align:center;
+  font-family:"Playfair Display",serif;
+  font-size:22px;
+  font-weight:400;
+  margin-bottom:10px;
+}
+
+.historial .explicacion {
+  font-size:12px;
+  color:#897d6b;
+  text-align:center;
+  margin-bottom:20px;
+  line-height:1.7;
+}
+
+.lista {
+  display:grid;
+  gap:10px;
+}
+
+.nota-item {
+  width:100%;
+  border-radius:18px;
+  padding:16px 18px;
+  border:1px solid #ffffffbd;
+  background:#fffaf1e0;
+  text-align:left;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  transition:transform .25s,background .25s;
+}
+
+.nota-item:not(:disabled):hover {
+  transform:translateY(-2px);
+  background:#fff;
+}
+
+.nota-item:disabled {
+  opacity:.58;
+  cursor:default;
+}
+
+.nota-item strong {
+  font-size:13px;
+  font-weight:600;
+  color:#506b40;
+}
+
+.nota-item small {
+  display:block;
+  font-size:11px;
+  color:#887e70;
+  margin-top:5px;
+}
+
+.estado-icono {
+  font-size:19px;
+}
+
+/* CARTA ABIERTA */
+
+.modal {
+  position:fixed;
+  z-index:50;
+  inset:0;
+  background:rgba(40,48,35,.42);
+  backdrop-filter:blur(12px);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.modal.visible {
+  display:flex;
+  animation:aparecer .35s both;
+}
+
+.carta {
+  width:min(510px,100%);
+  max-height:90vh;
+  overflow-y:auto;
+  background:#fff9ef;
+  border:1px solid white;
+  border-radius:26px;
+  padding:35px 30px;
+  text-align:center;
+  position:relative;
+  box-shadow:0 25px 70px #2c382c40;
+  animation:cartaEntrada .5s both;
+}
+
+.cerrar {
+  position:absolute;
+  top:12px;
+  right:15px;
+  width:35px;
+  height:35px;
+  border:0;
+  border-radius:50%;
+  background:#ece9dc;
+  color:#586d4b;
+  font-size:22px;
+}
+
+.carta .num {
+  letter-spacing:3px;
+  font-size:10px;
+  color:#8d9d7b;
+  font-weight:600;
+}
+
+.carta h3 {
+  font-family:"Great Vibes",cursive;
+  font-size:55px;
+  font-weight:400;
+  margin:15px 0;
+  color:#526e40;
+}
+
+.carta p {
+  font-family:"Playfair Display",serif;
+  font-size:17px;
+  line-height:2;
+  color:#686454;
+  white-space:pre-line;
+}
+
+.carta .firma {
+  font-family:"Great Vibes",cursive;
+  font-size:32px;
+  color:#718c5a;
+  margin-top:23px;
+}
+
+.carta .fecha {
+  margin-top:9px;
+  font-size:11px;
+  color:#9a8c78;
+}
+
+/* NOTIFICACIÓN */
+
+.toast {
+  position:fixed;
+  z-index:80;
+  top:15px;
+  left:50%;
+  transform:translate(-50%,-150%);
+  opacity:0;
+  width:min(350px,calc(100% - 25px));
+  border:1px solid white;
+  border-radius:18px;
+  background:#fffaf0f2;
+  backdrop-filter:blur(18px);
+  padding:15px;
+  box-shadow:0 15px 40px #4f3d2e36;
+  font-size:13px;
+  color:#526943;
+  text-align:center;
+  transition:.5s ease;
+  pointer-events:none;
+}
+
+.toast.visible {
+  transform:translate(-50%,0);
+  opacity:1;
+}
+
+@keyframes subir {
+  from {
+    opacity:0;
+    transform:translateY(25px);
+  }
+  to {
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@keyframes aparecer {
+  from { opacity:0; }
+  to { opacity:1; }
+}
+
+@keyframes cartaEntrada {
+  from {
+    transform:scale(.9) translateY(20px);
+    opacity:0;
+  }
+  to {
+    transform:scale(1) translateY(0);
+    opacity:1;
+  }
+}
+
+@media(max-width:600px) {
+  .contenedor {
+    padding:17px 12px 50px;
+  }
+
+  .encabezado h1 {
+    font-size:78px;
+  }
+
+  .frase-dia {
+    padding:27px 20px;
+  }
+
+  .tarjeta {
+    padding:28px 14px;
+    border-radius:26px;
+  }
+
+  .reloj {
+    gap:6px;
+  }
+
+  .tiempo {
+    border-radius:12px;
+    padding:13px 3px;
+  }
+
+  .tiempo span {
+    font-size:9px;
+    letter-spacing:0;
+  }
+
+  .historial {
+    padding:20px 14px;
+  }
+
+  .carta {
+    padding:35px 22px;
+  }
+
+  .carta p {
+    font-size:15px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  *,*::before,*::after {
+    animation:none!important;
+    transition:none!important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- FONDO -->
+
+<div class="fondo">
+  <div class="circulo uno"></div>
+  <div class="circulo dos"></div>
+  <div class="linea"></div>
+</div>
+
+<!-- NOTIFICACIÓN -->
+
+<div class="toast" id="toast" role="status">
+  💌 Heydi, tienes una nueva notita esperándote. ♡
+</div>
+
+<main class="contenedor">
+
+  <a href="inicio.html" class="volver">
+    ← Volver al inicio
+  </a>
+
+  <!-- ENCABEZADO -->
+
+  <header class="encabezado">
+    <div class="etiqueta">JUST FOR YOU</div>
+    <h1>Para ti, Heydi ♡</h1>
+    <p>Un pequeño rincón de palabras bonitas.</p>
+  </header>
+
+  <!-- FRASE DIARIA -->
+
+  <section class="frase-dia">
+    <div class="mini">
+      UN RECORDATORIO PARA TI 🌿
+    </div>
+
+    <h2 id="fraseTitulo">
+      Todo lo bonito necesita su tiempo.
+    </h2>
+
+    <p id="fraseTexto">
+      Confía en tu proceso. Cada pequeño paso cuenta.
+    </p>
+  </section>
+
+  <!-- TEMPORIZADOR -->
+
+  <section class="tarjeta">
+
+    <div class="icono-carta">✉</div>
+
+    <h2>Una notita para ti ♡</h2>
+
+    <p class="sub" id="subtituloReloj">
+      La siguiente notita llegará en:
+    </p>
+
+    <div class="reloj">
+
+      <div class="tiempo">
+        <strong id="dias">15</strong>
+        <span>DÍAS</span>
+      </div>
+
+      <div class="tiempo">
+        <strong id="horas">00</strong>
+        <span>HORAS</span>
+      </div>
+
+      <div class="tiempo">
+        <strong id="minutos">00</strong>
+        <span>MIN</span>
+      </div>
+
+      <div class="tiempo">
+        <strong id="segundos">00</strong>
+        <span>SEG</span>
+      </div>
+
+    </div>
+
+    <p class="ayuda">
+      Cada 15 días encontrarás aquí una
+      nueva notita preparada con cariño.
+      Las anteriores siempre estarán disponibles. 💚
+    </p>
+
+    <!-- SOBRE INTERACTIVO -->
+
+    <div class="sobre-bloque">
+
+      <button
+        class="sobre"
+        id="sobre"
+        type="button"
+        aria-label="Abrir notita disponible"
+        disabled
+      >
+
+        <span class="envelope-back"></span>
+
+        <span class="envelope-paper">♡</span>
+
+        <span class="envelope-front"></span>
+
+        <span class="envelope-flap"></span>
+
+        <span class="envelope-heart">♡</span>
+
+      </button>
+
+      <p class="sobre-texto" id="sobreTexto">
+        🔒 Notita especial 01
+      </p>
+
+    </div>
+  </section>
+
+  <!-- HISTORIAL -->
+
+  <section class="historial">
+
+    <h2>Mis notitas guardadas ♡</h2>
+
+    <p class="explicacion">
+      Cada palabra tiene su momento.
+      Aquí podrás volver a leer
+      todas tus notitas anteriores.
+    </p>
+
+    <div class="lista" id="listaNotas"></div>
+
+  </section>
+
+</main>
+
+<!-- MODAL PARA LEER LA CARTA -->
+
+<div
+  class="modal"
+  id="modal"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="tituloCarta"
+  aria-hidden="true"
+>
+
+  <article class="carta">
+
+    <button
+      class="cerrar"
+      id="cerrar"
+      type="button"
+      aria-label="Cerrar carta"
+    >
+      ×
+    </button>
+
+    <div class="num" id="numeroCarta">
+      NOTITA ESPECIAL
+    </div>
+
+    <h3 id="tituloCarta">
+      Para ti, Heydi ♡
+    </h3>
+
+    <p id="contenidoCarta"></p>
+
+    <div class="firma">
+      Con cariño ♡
+    </div>
+
+    <div class="fecha" id="fechaCarta"></div>
+
+  </article>
+
+</div>
+
+<script>
+"use strict";
+
+/* ==========================================
+   CONFIGURACIÓN
+========================================== */
+
+const DIA_MS = 24 * 60 * 60 * 1000;
+const CICLO_MS = 15 * DIA_MS;
+
+/* Misma clave que usa planta.html */
+const CLAVE_PLANTA = "heydi_rosas_2026_v1";
+
+/* Datos propios de la página de mensajes */
+const CLAVE_MENSAJES = "heydi_mensajes_v1";
+
+/* ==========================================
+   FRASES DIARIAS
+========================================== */
+
+const frases = [
+  {
+    titulo:"Todo lo bonito necesita su tiempo.",
+    texto:"Confía en tu proceso, Heydi. Cada pequeño paso cuenta. ♡"
+  },
+  {
+    titulo:"Nunca subestimes lo que eres capaz de lograr.",
+    texto:"Lo que hoy parece difícil puede convertirse mañana en una de tus mayores alegrías."
+  },
+  {
+    titulo:"No tienes que resolverlo todo hoy.",
+    texto:"También está bien descansar, respirar y continuar mañana con nuevas fuerzas."
+  },
+  {
+    titulo:"Los pequeños avances también son victorias.",
+    texto:"Aunque nadie los vea, cada esfuerzo que haces tiene su valor."
+  },
+  {
+    titulo:"Que nunca te falten razones para sonreír.",
+    texto:"Y que cada nuevo día te regale un poquito de tranquilidad y esperanza."
+  },
+  {
+    titulo:"Sigue creyendo en tus sueños.",
+    texto:"Incluso cuando el camino sea lento, recuerda por qué empezaste."
+  },
+  {
+    titulo:"Hay belleza en volver a intentarlo.",
+    texto:"No necesitas ser perfecta para construir cosas extraordinarias."
+  },
+  {
+    titulo:"Dios conoce cada paso de tu camino.",
+    texto:"Confía en su tiempo y sigue haciendo tu parte con amor y paciencia."
+  },
+  {
+    titulo:"Tu esfuerzo de hoy también importa.",
+    texto:"A veces los resultados tardan, pero eso no significa que no estés avanzando."
+  },
+  {
+    titulo:"Date permiso de tener días tranquilos.",
+    texto:"No todos los días deben ser productivos para que sean valiosos."
+  },
+  {
+    titulo:"Siempre puedes comenzar nuevamente.",
+    texto:"Cada amanecer trae consigo una nueva oportunidad."
+  },
+  {
+    titulo:"No pierdas esa luz tan tuya.",
+    texto:"Hay cosas bonitas en ti que merecen seguir creciendo."
+  },
+  {
+    titulo:"Un día a la vez, Heydi.",
+    texto:"Lo importante no es correr, sino continuar caminando."
+  },
+  {
+    titulo:"Que la esperanza te acompañe.",
+    texto:"Incluso los días nublados pueden enseñarnos algo bonito."
+  },
+  {
+    titulo:"Mereces sentirte orgullosa de ti.",
+    texto:"Mira todo lo que ya has superado y sigue adelante con confianza."
+  }
+];
+
+/* ==========================================
+   NOTITAS ESPECIALES
+   UNA CADA 15 DÍAS
+========================================== */
+
+const notitas = [
+  {
+    titulo:"Para ti, Heydi ♡",
+    texto:`Heydi, espero que estés teniendo días bonitos.
+
+Quiero recordarte algo sencillo: no dejes de confiar en ti, incluso cuando las cosas no salgan como esperabas.
+
+Cada esfuerzo que haces por tus sueños cuenta, aunque algunas veces los resultados tarden en llegar.
+
+Que Dios te acompañe en cada paso, te regale tranquilidad en los momentos difíciles y nuevas razones para sonreír.
+
+Sigue adelante, a tu propio ritmo. ♡`
+  },
+
+  {
+    titulo:"Sigue floreciendo ♡",
+    texto:`Hola, Heydi.
+
+Así como las flores necesitan tiempo para crecer, tus sueños también merecen paciencia.
+
+No te preocupes si algunas cosas tardan más de lo que imaginabas.
+
+Lo importante es que sigas aprendiendo, creciendo y creyendo en todo lo que puedes conseguir.
+
+Que nunca te falten motivos para continuar. 🌷`
+  },
+
+  {
+    titulo:"Un poquito de ánimo ♡",
+    texto:`Heydi, recuerda que no todos los días tienen que ser perfectos.
+
+Habrá momentos de cansancio, de dudas y de dificultades. Pero eso no significa que estés retrocediendo.
+
+Descansar también es parte de avanzar.
+
+Cuídate mucho y recuerda que siempre puedes volver a empezar con nuevas fuerzas.
+
+Que Dios llene tus días de paz. ♡`
+  },
+
+  {
+    titulo:"Confía en tu camino ♡",
+    texto:`Hola, Heydi.
+
+Tal vez algunas de las cosas más bonitas de tu vida todavía estén por llegar.
+
+Mientras tanto, disfruta las pequeñas alegrías, aprende de cada experiencia y sigue construyendo tus sueños.
+
+No compares tu camino con el de nadie.
+
+Cada persona tiene sus propios tiempos y sus propias oportunidades.
+
+Sigue adelante con esa esperanza bonita. 🌿`
+  },
+
+  {
+    titulo:"Una sonrisa para ti ♡",
+    texto:`Heydi, ojalá encuentres muchos motivos para sonreír.
+
+Que tengas días tranquilos, personas que te hagan bien y momentos que recuerdes con cariño.
+
+Y cuando las cosas se pongan difíciles, recuerda que ninguna tormenta dura para siempre.
+
+Cuida de ti, de tu corazón y de todo aquello que te hace feliz.
+
+Te deseo cosas muy bonitas. ♡`
+  },
+
+  {
+    titulo:"Todo tiene su momento ♡",
+    texto:`Hola, Heydi.
+
+A veces queremos que las respuestas lleguen inmediatamente, pero hay caminos que necesitan paciencia.
+
+Sigue haciendo tu parte con dedicación y deja espacio para las sorpresas que la vida pueda traer.
+
+Que Dios guíe tus decisiones y te dé sabiduría para reconocer las oportunidades que lleguen.
+
+Nunca abandones tus sueños. ♡`
+  }
+];
+
+/* ==========================================
+   ELEMENTOS HTML
+========================================== */
+
+const $ = id => document.getElementById(id);
+
+const sobre = $("sobre");
+const sobreTexto = $("sobreTexto");
+
+const modal = $("modal");
+const lista = $("listaNotas");
+
+let ultimaCuenta = -1;
+let ultimaFrase = -1;
+let temporizadorToast;
+
+const formatoNumero = n =>
+  String(n).padStart(2,"0");
+
+/* ==========================================
+   FECHA DE INICIO
+   SINCRONIZADA CON PLANTA
+========================================== */
+
+function datosGuardados(clave) {
+  try {
+    return JSON.parse(localStorage.getItem(clave));
+  } catch {
+    return null;
+  }
+}
+
+let mensajes = datosGuardados(CLAVE_MENSAJES);
+
+if (
+  !mensajes ||
+  !Number.isFinite(mensajes.inicio)
+) {
+  mensajes = {
+    inicio:Date.now()
+  };
+}
+
+/*
+  Usamos primero la fecha de planta.html.
+  Si todavía no existe, la de Mensajes.
+
+  De esta forma los dos temporizadores
+  usan el mismo momento de inicio.
+*/
+
+function fechaInicio() {
+  const planta = datosGuardados(CLAVE_PLANTA);
+
+  if (
+    planta &&
+    Number.isFinite(planta.start)
+  ) {
+    if (mensajes.inicio !== planta.start) {
+      mensajes.inicio = planta.start;
+      guardarMensajes();
+    }
+
+    return planta.start;
+  }
+
+  return mensajes.inicio;
+}
+
+function guardarMensajes() {
+  localStorage.setItem(
+    CLAVE_MENSAJES,
+    JSON.stringify(mensajes)
+  );
+}
+
+guardarMensajes();
+
+/* ==========================================
+   CANTIDAD DE CARTAS DESBLOQUEADAS
+========================================== */
+
+function desbloqueadas() {
+  const transcurrido = Math.max(
+    0,
+    Date.now() - fechaInicio()
+  );
+
+  return Math.floor(
+    transcurrido / CICLO_MS
+  );
+}
+
+/*
+  Reutilizamos las 6 cartas existentes
+  si el proyecto continúa muchos meses.
+*/
+
+function obtenerNotita(numero) {
+  return notitas[
+    (numero-1) % notitas.length
+  ];
+}
+
+function fechaDesbloqueo(numero) {
+  return new Date(
+    fechaInicio() + numero*CICLO_MS
+  );
+}
+
+/* ==========================================
+   FRASE QUE CAMBIA CADA DÍA
+========================================== */
+
+function mostrarFraseDiaria() {
+  const ahora = new Date();
+
+  const indiceDia = Math.floor(
+    Date.UTC(
+      ahora.getFullYear(),
+      ahora.getMonth(),
+      ahora.getDate()
+    ) / DIA_MS
+  );
+
+  const indice =
+    ((indiceDia % frases.length) +
+    frases.length) % frases.length;
+
+  if (indice === ultimaFrase) return;
+
+  ultimaFrase = indice;
+
+  $("fraseTitulo").textContent =
+    frases[indice].titulo;
+
+  $("fraseTexto").textContent =
+    frases[indice].texto;
+}
+
+/* ==========================================
+   TEMPORIZADOR EN VIVO
+========================================== */
+
+function actualizarReloj() {
+  const inicio = fechaInicio();
+
+  const transcurrido = Math.max(
+    0,
+    Date.now()-inicio
+  );
+
+  const cicloActual = Math.floor(
+    transcurrido/CICLO_MS
+  );
+
+  const siguiente =
+    inicio+(cicloActual+1)*CICLO_MS;
+
+  let restante = Math.max(
+    0,
+    siguiente-Date.now()
+  );
+
+  const dias = Math.floor(
+    restante/DIA_MS
+  );
+
+  restante %= DIA_MS;
+
+  const horas = Math.floor(
+    restante/3600000
+  );
+
+  restante %= 3600000;
+
+  const minutos = Math.floor(
+    restante/60000
+  );
+
+  restante %= 60000;
+
+  const segundos = Math.floor(
+    restante/1000
+  );
+
+  $("dias").textContent =
+    formatoNumero(dias);
+
+  $("horas").textContent =
+    formatoNumero(horas);
+
+  $("minutos").textContent =
+    formatoNumero(minutos);
+
+  $("segundos").textContent =
+    formatoNumero(segundos);
+
+  $("subtituloReloj").textContent =
+    `Tu próxima notita llegará en:`;
+
+  if (cicloActual !== ultimaCuenta) {
+    const anterior = ultimaCuenta;
+
+    ultimaCuenta = cicloActual;
+
+    actualizarSobres();
+    actualizarHistorial();
+
+    /*
+      Notificar solo cuando se haya
+      desbloqueado una carta nueva.
+    */
+
+    const avisoVisto = Number(
+      localStorage.getItem(
+        "heydi_ultimo_aviso_carta"
+      ) || 0
+    );
+
+    if (cicloActual > avisoVisto) {
+      localStorage.setItem(
+        "heydi_ultimo_aviso_carta",
+        String(cicloActual)
+      );
+
+      if (cicloActual > 0) {
+        setTimeout(mostrarToast,700);
+      }
+    }
+
+    if (
+      anterior >= 0 &&
+      cicloActual > anterior
+    ) {
+      sobre.classList.remove("abierto");
+    }
+  }
+}
+
+/* ==========================================
+   MOSTRAR SOBRE DISPONIBLE
+========================================== */
+
+function actualizarSobres() {
+  const cantidad = desbloqueadas();
+
+  if (cantidad === 0) {
+    sobre.disabled = true;
+
+    sobreTexto.textContent =
+      "🔒 Notita especial 01";
+
+    return;
+  }
+
+  sobre.disabled = false;
+
+  sobreTexto.textContent =
+    `💌 Notita especial ${formatoNumero(cantidad)} · Toca para abrir`;
+}
+
+/* ==========================================
+   HISTORIAL DE NOTITAS
+========================================== */
+
+function actualizarHistorial() {
+  const total = desbloqueadas();
+
+  lista.innerHTML = "";
+
+  /*
+    Mostramos todas las cartas disponibles
+    y una siguiente que todavía está cerrada.
+  */
+
+  const cantidad = total+1;
+
+  for (let i=1;i<=cantidad;i++) {
+    const disponible = i<=total;
+
+    const boton = document.createElement("button");
+
+    boton.className = "nota-item";
+    boton.type = "button";
+    boton.disabled = !disponible;
+
+    const contenido = document.createElement("span");
+    const titulo = document.createElement("strong");
+    const fecha = document.createElement("small");
+    const icono = document.createElement("span");
+
+    titulo.textContent =
+      `Notita especial ${formatoNumero(i)}`;
+
+    fecha.textContent = disponible
+      ? fechaDesbloqueo(i).toLocaleDateString(
+          "es-PE",
+          {
+            day:"numeric",
+            month:"long",
+            year:"numeric"
+          }
+        )
+      : "Aún está esperando su momento";
+
+    icono.className = "estado-icono";
+    icono.textContent = disponible ? "💌" : "🔒";
+
+    contenido.append(titulo,fecha);
+    boton.append(contenido,icono);
+
+    if (disponible) {
+      boton.addEventListener("click",()=>{
+        abrirCarta(i);
+      });
+    }
+
+    lista.appendChild(boton);
+  }
+}
+
+/* ==========================================
+   ABRIR CARTA
+========================================== */
+
+function abrirCarta(numero) {
+  if (
+    numero<1 ||
+    numero>desbloqueadas()
+  ) return;
+
+  const contenido = obtenerNotita(numero);
+
+  $("numeroCarta").textContent =
+    `NOTITA ESPECIAL ${formatoNumero(numero)}`;
+
+  $("tituloCarta").textContent =
+    contenido.titulo;
+
+  $("contenidoCarta").textContent =
+    contenido.texto;
+
+  $("fechaCarta").textContent =
+    fechaDesbloqueo(numero).toLocaleDateString(
+      "es-PE",
+      {
+        day:"numeric",
+        month:"long",
+        year:"numeric"
+      }
+    );
+
+  modal.classList.add("visible");
+  modal.setAttribute("aria-hidden","false");
+  document.body.style.overflow="hidden";
+
+  $("cerrar").focus();
+}
+
+/* ==========================================
+   ABRIR SOBRE CON ANIMACIÓN
+========================================== */
+
+sobre.addEventListener("click",()=>{
+  const cantidad = desbloqueadas();
+
+  if (cantidad<1) return;
+
+  sobre.classList.remove("abierto");
+
+  void sobre.offsetWidth;
+
+  sobre.classList.add("abierto");
+
+  setTimeout(()=>{
+    abrirCarta(cantidad);
+  },750);
+});
+
+/* ==========================================
+   CERRAR CARTA
+========================================== */
+
+function cerrarCarta() {
+  modal.classList.remove("visible");
+  modal.setAttribute("aria-hidden","true");
+  document.body.style.overflow="";
+  sobre.classList.remove("abierto");
+}
+
+$("cerrar").addEventListener(
+  "click",
+  cerrarCarta
+);
+
+modal.addEventListener("click",e=>{
+  if(e.target===modal) cerrarCarta();
+});
+
+document.addEventListener("keydown",e=>{
+  if (
+    e.key==="Escape" &&
+    modal.classList.contains("visible")
+  ) {
+    cerrarCarta();
+  }
+});
+
+/* ==========================================
+   NOTIFICACIÓN
+========================================== */
+
+function mostrarToast() {
+  clearTimeout(temporizadorToast);
+
+  $("toast").classList.add("visible");
+
+  temporizadorToast = setTimeout(()=>{
+    $("toast").classList.remove("visible");
+  },4500);
+}
+
+/* ==========================================
+   INICIAR PÁGINA
+========================================== */
+
+mostrarFraseDiaria();
+actualizarReloj();
+
+setInterval(()=>{
+  mostrarFraseDiaria();
+  actualizarReloj();
+},1000);
+
+/*
+  Cuando Heydi regrese a la pestaña,
+  los datos se actualizan inmediatamente.
+*/
+
+document.addEventListener(
+  "visibilitychange",
+  ()=>{
+    if (!document.hidden) {
+      mostrarFraseDiaria();
+      actualizarReloj();
+    }
+  }
+);
+</script>
+
+</body>
+</html>

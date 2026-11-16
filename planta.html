@@ -1,0 +1,951 @@
+
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mis rositas · Heydi</title>
+
+<style>
+:root {
+  font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+  color:#405735;
+  background:#e8d4b8;
+}
+
+* { box-sizing:border-box; }
+
+body {
+  margin:0;
+  min-height:100vh;
+  background:linear-gradient(135deg,#e4c9a8,#f8eedf);
+}
+
+button,a { font:inherit; }
+button { cursor:pointer; }
+
+/* BARRA SUPERIOR */
+
+header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:8px;
+  max-width:700px;
+  margin:auto;
+  padding:12px;
+}
+
+header a,
+header button {
+  border:1px solid #ffffff99;
+  background:#fff9e8c9;
+  color:#405c37;
+  padding:9px 14px;
+  border-radius:30px;
+  text-decoration:none;
+  font-size:12px;
+}
+
+/* ESCENA PRINCIPAL */
+
+.scene {
+  width:min(700px,100%);
+  aspect-ratio:1/1;
+  position:relative;
+  overflow:hidden;
+  margin:auto;
+  border-radius:24px;
+  background:#d9b692;
+  box-shadow:0 20px 45px #60402225;
+  isolation:isolate;
+}
+
+.picture {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:0;
+  transition:opacity 1s,filter 1s;
+  pointer-events:none;
+}
+
+.picture.active { opacity:1; }
+
+.scene.stressed .picture {
+  filter:saturate(.62);
+}
+
+/* PORCENTAJE Y TEMPORIZADORES */
+
+.stats {
+  position:absolute;
+  right:3%;
+  top:12%;
+  z-index:3;
+  display:grid;
+  justify-items:end;
+  gap:6px;
+}
+
+.chip {
+  background:#fff8e9df;
+  border:1px solid #ffffff99;
+  backdrop-filter:blur(8px);
+  border-radius:16px;
+  padding:6px 10px;
+  box-shadow:0 6px 17px #6743212a;
+  font-size:clamp(9px,1.8vw,12px);
+  white-space:nowrap;
+}
+
+.mainchip {
+  text-align:center;
+  min-width:96px;
+}
+
+.mainchip strong {
+  font-size:clamp(17px,3vw,25px);
+}
+
+.mainchip small {
+  display:block;
+  font-size:clamp(9px,1.5vw,11px);
+}
+
+.track {
+  height:4px;
+  border-radius:9px;
+  background:#d1cdbd;
+  overflow:hidden;
+  margin:4px 0;
+}
+
+.track i {
+  display:block;
+  height:100%;
+  width:65%;
+  background:#749457;
+  transition:width .4s;
+}
+
+/* REGADERA INTERACTIVA */
+
+.water-can {
+  position:absolute;
+  z-index:4;
+  left:69%;
+  top:49%;
+  width:29%;
+  height:38%;
+  border:0;
+  background:transparent;
+  border-radius:25%;
+  touch-action:manipulation;
+}
+
+.water-can:focus-visible {
+  outline:3px solid #dcec88;
+}
+
+.water-can:disabled {
+  cursor:not-allowed;
+}
+
+.water-can.pour {
+  animation:tilt .9s ease;
+}
+
+.water-can::after {
+  content:"Toca la regadera";
+  position:absolute;
+  bottom:0;
+  right:0;
+  color:#45643c;
+  background:#fff8e7c9;
+  padding:4px 7px;
+  border-radius:20px;
+  font-size:clamp(8px,1.4vw,11px);
+}
+
+@keyframes tilt {
+  35% { transform:rotate(-10deg) translateY(-5px); }
+  75% { transform:rotate(-4deg); }
+  100% { transform:none; }
+}
+
+/* GOTITAS ANIMADAS */
+
+.effects {
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  z-index:5;
+}
+
+.drop {
+  position:absolute;
+  left:72%;
+  top:55%;
+  width:7px;
+  height:11px;
+  background:linear-gradient(#f4ffff,#51c1e5);
+  border-radius:70% 70% 70% 10%;
+  transform:rotate(35deg);
+  animation:fall .95s ease-in forwards;
+}
+
+@keyframes fall {
+  to {
+    left:var(--x);
+    top:var(--y);
+    opacity:0;
+    transform:scale(.3) rotate(35deg);
+  }
+}
+
+.plus {
+  position:absolute;
+  left:47%;
+  top:48%;
+  background:#fff9e9ed;
+  color:#397c42;
+  padding:6px 11px;
+  border-radius:18px;
+  font-weight:700;
+  animation:rise 1.5s forwards;
+}
+
+@keyframes rise {
+  to {
+    opacity:0;
+    transform:translateY(-52px);
+  }
+}
+
+/* NOTIFICACIONES */
+
+.toast {
+  position:fixed;
+  z-index:50;
+  top:12px;
+  left:50%;
+  width:min(355px,calc(100% - 24px));
+  transform:translate(-50%,-160%);
+  opacity:0;
+  transition:transform .55s,opacity .55s;
+  border:1px solid white;
+  border-radius:18px;
+  background:#fff9eff2;
+  backdrop-filter:blur(18px);
+  box-shadow:0 14px 33px #5e412b35;
+  color:#3f5936;
+  text-align:left;
+  padding:12px;
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+
+.toast.show {
+  transform:translate(-50%,0);
+  opacity:1;
+}
+
+.toast b {
+  display:block;
+  font-size:12px;
+}
+
+.toast span { font-size:11px; }
+
+.foot {
+  text-align:center;
+  padding:12px;
+  color:#716653;
+  font-size:12px;
+}
+
+/* CELULAR */
+
+@media(max-width:550px) {
+  .scene { border-radius:12px; }
+
+  .stats {
+    top:7%;
+    right:2%;
+    gap:4px;
+  }
+
+  .chip {
+    padding:5px 7px;
+    border-radius:12px;
+  }
+
+  .mainchip { min-width:80px; }
+
+  .water-can {
+    left:69%;
+    top:50%;
+  }
+
+  .water-can::after {
+    font-size:8px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  *,*:before,*:after {
+    animation:none!important;
+    transition:none!important;
+  }
+}
+</style>
+
+<script>
+if(sessionStorage.getItem("accesoHeydi") !== "si") {
+  location.replace("index.html");
+}
+</script>
+
+</head>
+<body>
+
+<!-- NOTIFICACIÓN -->
+
+<button class="toast" id="toast"
+        type="button"
+        aria-label="Cerrar notificación">
+
+  <span style="font-size:22px">🌹</span>
+
+  <span>
+    <b id="toastTitle">Mis rositas</b>
+    <span id="toastText"></span>
+  </span>
+
+</button>
+
+<!-- NAVEGACIÓN -->
+
+<header>
+
+  <a href="inicio.html">← Inicio</a>
+
+  <button id="music" type="button">
+    ♫ Activar música
+  </button>
+
+</header>
+
+<!-- ======================================
+     AQUÍ SE AGREGA LA MÚSICA DE HEYDI
+     ====================================== -->
+
+<audio id="musicaFondo" loop preload="auto">
+
+  <!-- CAMBIA ESTE NOMBRE SI TU MP3 ES DIFERENTE -->
+
+  <source
+    src="musica-heydi.mp3.mpeg"
+    type="audio/mpeg"
+  >
+
+</audio>
+
+<!-- ======================================
+     FIN DE LA MÚSICA
+     ====================================== -->
+
+<!-- PLANTA -->
+
+<main class="scene" id="scene"
+      aria-label="Tres rositas en crecimiento">
+
+  <img
+    class="picture active"
+    id="photo"
+    src="heydi-rosas-1.jpg"
+    alt="Tres pequeñas rositas en una maceta con regadera dorada"
+  >
+
+  <section class="stats"
+           aria-label="Indicadores de las rosas">
+
+    <div class="chip mainchip">
+
+      <strong id="pct">65%</strong>
+
+      <div class="track">
+        <i id="bar"></i>
+      </div>
+
+      <small id="status">Saludables</small>
+
+    </div>
+
+    <div class="chip">
+      ◷ <span id="clock">23:59:59</span>
+    </div>
+
+    <div class="chip">
+      ✉ <span id="letter">15 días</span>
+    </div>
+
+  </section>
+
+  <button
+    class="water-can"
+    id="watering"
+    type="button"
+    aria-label="Regar las tres rosas, más cinco por ciento"
+  ></button>
+
+  <div class="effects" id="effects"
+       aria-hidden="true"></div>
+
+</main>
+
+<footer class="foot" id="foot">
+  Toca la regadera dorada para regar las rosas.
+</footer>
+
+<script>
+"use strict";
+
+/* CONFIGURACIÓN */
+
+const MS_DAY = 86400000;
+const MS_15 = 15 * MS_DAY;
+const KEY = "heydi_rosas_2026_v1";
+
+const el = id =>
+  document.getElementById(id);
+
+const clamp = n =>
+  Math.min(100,Math.max(0,n));
+
+const day = t => {
+  const d = new Date(t);
+
+  return `${d.getFullYear()}-${d.getMonth()+1}-${d.getDate()}`;
+};
+
+/* CREAR PLANTA */
+
+function fresh() {
+  const t = Date.now();
+
+  return {
+    water:65,
+    last:t,
+    start:t,
+    day:day(t),
+    uses:0,
+    care:[],
+    sent:0,
+    stress:0
+  };
+}
+
+/* GUARDAR Y RECUPERAR */
+
+function load() {
+  try {
+    const x = JSON.parse(
+      localStorage.getItem(KEY)
+    );
+
+    if (
+      x &&
+      Number.isFinite(x.water) &&
+      Number.isFinite(x.last) &&
+      Number.isFinite(x.start)
+    ) {
+      return {
+        ...fresh(),
+        ...x,
+        care:Array.isArray(x.care) ? x.care : []
+      };
+    }
+
+    return fresh();
+
+  } catch {
+    return fresh();
+  }
+}
+
+let state = load();
+let imageNo = 0;
+let alertTimer;
+let audioCtx;
+
+function save() {
+  localStorage.setItem(
+    KEY,
+    JSON.stringify(state)
+  );
+}
+
+/* RESTAR 15 % CADA 24 HORAS */
+
+function sync() {
+  const t = Date.now();
+
+  const periods = Math.max(
+    0,
+    Math.floor((t-state.last)/MS_DAY)
+  );
+
+  if (periods) {
+    state.water = clamp(
+      state.water - 15 * periods
+    );
+
+    state.last += periods * MS_DAY;
+
+    state.stress = Math.max(
+      0,
+      state.stress - periods
+    );
+  }
+
+  if (state.day !== day(t)) {
+    state.day = day(t);
+    state.uses = 0;
+  }
+
+  save();
+}
+
+/* ESTADO DE HIDRATACIÓN */
+
+function status() {
+  const v = state.water;
+
+  if (v === 0) return "Sin vida";
+  if (v <= 10) return "Muy marchitas";
+  if (v <= 25) return "Marchitándose";
+
+  if (state.stress >= 2) {
+    return "Exceso de agua";
+  }
+
+  if (v < 45) return "Necesitan cuidado";
+  if (v < 75) return "Saludables";
+
+  return "Muy saludables";
+}
+
+/* SELECCIONAR IMAGEN */
+
+function photoIndex() {
+  if (state.water === 0) return 7;
+  if (state.water <= 10) return 6;
+  if (state.water <= 25) return 5;
+
+  const days = state.care.length;
+
+  if (days >= 7) return 4;
+  if (days >= 5) return 3;
+  if (days >= 3) return 2;
+
+  return 1;
+}
+
+/* FORMATO DE RELOJ */
+
+function format(ms) {
+  let s = Math.max(
+    0,
+    Math.ceil(ms/1000)
+  );
+
+  return [
+    Math.floor(s/3600),
+    Math.floor(s%3600/60),
+    s%60
+  ].map(v=>String(v).padStart(2,"0"))
+   .join(":");
+}
+
+/* DIBUJAR ESTADO ACTUAL */
+
+function render() {
+  const n = photoIndex();
+
+  if (n !== imageNo) {
+    el("photo").src = `heydi-rosas-${n}.jpg`;
+    imageNo = n;
+  }
+
+  el("pct").textContent = state.water + "%";
+  el("bar").style.width = state.water + "%";
+  el("status").textContent = status();
+
+  el("scene").classList.toggle(
+    "stressed",
+    state.stress >= 2
+  );
+
+  el("clock").textContent = format(
+    MS_DAY-(Date.now()-state.last)
+  );
+
+  const elapsed = Math.max(
+    0,
+    Date.now()-state.start
+  );
+
+  const left = MS_15-(elapsed%MS_15);
+
+  el("letter").textContent =
+    `${Math.ceil(left/MS_DAY)} días`;
+
+  el("watering").disabled =
+    state.uses >= 3;
+
+  el("foot").textContent =
+    state.uses >= 3
+    ? "Ya utilizaste las 3 gotitas de hoy."
+    : "Toca la regadera dorada · " +
+      (3-state.uses) +
+      " gotitas disponibles (+5% cada una)";
+}
+
+/* SONIDO DE NOTIFICACIÓN */
+
+function getAudio() {
+  try {
+    audioCtx ??= new (
+      window.AudioContext ||
+      window.webkitAudioContext
+    )();
+
+    if (audioCtx.state === "suspended") {
+      audioCtx.resume();
+    }
+
+    return audioCtx;
+
+  } catch {
+    return null;
+  }
+}
+
+function tone(freq,when,duration,volume) {
+  const c = getAudio();
+
+  if (!c) return;
+
+  const o = c.createOscillator();
+  const g = c.createGain();
+
+  o.type = "sine";
+  o.frequency.value = freq;
+
+  g.gain.setValueAtTime(
+    .0001,
+    c.currentTime + when
+  );
+
+  g.gain.exponentialRampToValueAtTime(
+    volume,
+    c.currentTime + when + .025
+  );
+
+  g.gain.exponentialRampToValueAtTime(
+    .0001,
+    c.currentTime + when + duration
+  );
+
+  o.connect(g).connect(c.destination);
+  o.start(c.currentTime + when);
+  o.stop(c.currentTime + when + duration + .04);
+}
+
+function ding() {
+  tone(783.99,0,.27,.016);
+  tone(987.77,.19,.42,.013);
+}
+
+/* NOTIFICACIÓN PEQUEÑA */
+
+function toast(title,message,beep=false) {
+  clearTimeout(alertTimer);
+
+  el("toastTitle").textContent = title;
+  el("toastText").textContent = message;
+
+  el("toast").classList.add("show");
+
+  if (beep) ding();
+
+  alertTimer = setTimeout(()=>{
+    el("toast").classList.remove("show");
+  },4600);
+}
+
+el("toast").onclick = () => {
+  clearTimeout(alertTimer);
+  el("toast").classList.remove("show");
+};
+
+/* ANIMACIÓN DE AGUA */
+
+function sprinkle() {
+  el("watering").classList.remove("pour");
+
+  void el("watering").offsetWidth;
+
+  el("watering").classList.add("pour");
+
+  for (let i=0;i<12;i++) {
+    setTimeout(()=>{
+      const d = document.createElement("i");
+
+      d.className = "drop";
+
+      d.style.setProperty(
+        "--x",
+        (44+Math.random()*10)+"%"
+      );
+
+      d.style.setProperty(
+        "--y",
+        (60+Math.random()*5)+"%"
+      );
+
+      el("effects").append(d);
+
+      setTimeout(()=>d.remove(),1000);
+    },i*55);
+  }
+
+  const plus = document.createElement("b");
+
+  plus.className = "plus";
+  plus.textContent = "+5%";
+
+  el("effects").append(plus);
+
+  setTimeout(()=>plus.remove(),1500);
+}
+
+/* REGAR LAS ROSAS */
+
+el("watering").addEventListener("click",()=>{
+  sync();
+
+  if (state.uses >= 3) {
+    render();
+
+    toast(
+      "Mis rositas",
+      "Ya recibieron suficiente agua por hoy. 💚",
+      true
+    );
+
+    return;
+  }
+
+  const previous = photoIndex();
+
+  state.uses++;
+
+  /* ADVERTIR SOBRE EXCESO DE AGUA */
+
+  if (state.water >= 90) {
+    state.stress = Math.min(
+      3,
+      state.stress+1
+    );
+
+    toast(
+      "Mis rositas",
+      "La tierra está muy húmeda. Cuida el exceso de agua.",
+      true
+    );
+
+  } else {
+    state.water = clamp(state.water+5);
+  }
+
+  /* REGISTRAR UN DÍA DE CUIDADO */
+
+  const today = day(Date.now());
+
+  if (
+    !state.care.includes(today) &&
+    state.water >= 30 &&
+    state.stress < 2
+  ) {
+    state.care.push(today);
+  }
+
+  save();
+  sprinkle();
+  render();
+  ding();
+
+  /* AVISO AL CRECER */
+
+  if (photoIndex() > previous) {
+    setTimeout(()=>{
+      toast(
+        "Mis rositas 🌹",
+        "¡Las tres rositas han crecido un poquito más!"
+      );
+    },1450);
+  }
+
+  /* NOTITA CADA 15 DÍAS */
+
+  const period = Math.floor(
+    (Date.now()-state.start)/MS_15
+  );
+
+  if (period > state.sent) {
+    state.sent = period;
+    save();
+
+    localStorage.setItem(
+      "heydi_notita_pendiente",
+      "si"
+    );
+
+    setTimeout(()=>{
+      toast(
+        "Una notita para ti ♡",
+        "Tienes una notita especial en Mensajes. 💌",
+        true
+      );
+    },2500);
+  }
+});
+
+/* =====================================
+   MÚSICA MP3 REAL PARA HEYDI
+   ===================================== */
+
+const musicaFondo = el("musicaFondo");
+const botonMusica = el("music");
+
+/* VOLUMEN SUAVE: 35 % */
+
+musicaFondo.volume = 0.35;
+
+/* REPRODUCIR Y PAUSAR */
+
+botonMusica.addEventListener("click",async()=>{
+
+  if (musicaFondo.paused) {
+
+    try {
+      await musicaFondo.play();
+
+      botonMusica.textContent =
+        "♫ Pausar música";
+
+    } catch (error) {
+
+      botonMusica.textContent =
+        "♫ Activar música";
+
+      toast(
+        "Música de Heydi 🎵",
+        "No se pudo reproducir musica-heydi.mp3. Revisa que esté en la carpeta."
+      );
+    }
+
+  } else {
+
+    musicaFondo.pause();
+
+    botonMusica.textContent =
+      "♫ Activar música";
+  }
+
+});
+
+/* ACTUALIZAR BOTÓN AUTOMÁTICAMENTE */
+
+musicaFondo.addEventListener("play",()=>{
+  botonMusica.textContent = "♫ Pausar música";
+});
+
+musicaFondo.addEventListener("pause",()=>{
+  botonMusica.textContent = "♫ Activar música";
+});
+
+/* AVISAR SI EL ARCHIVO MP3 NO EXISTE */
+
+musicaFondo.addEventListener("error",()=>{
+  botonMusica.textContent =
+    "♫ Activar música";
+});
+
+/* DETENER AL SALIR DE LA PÁGINA */
+
+window.addEventListener("pagehide",()=>{
+  musicaFondo.pause();
+});
+
+/* =====================================
+   INICIAR PLANTA
+   ===================================== */
+
+sync();
+render();
+
+setTimeout(()=>{
+  toast(
+    "Mis rositas 🌹",
+    `Heydi, tus rositas están ${status().toLowerCase()}. 💚`,
+    true
+  );
+},850);
+
+setInterval(()=>{
+  sync();
+  render();
+},1000);
+
+/* MODO DEMOSTRACIÓN:
+   planta.html?demo=1 */
+
+if (
+  new URLSearchParams(location.search)
+    .has("demo")
+) {
+  const demo = document.createElement("aside");
+
+  demo.style =
+    "max-width:700px;margin:10px auto;text-align:center";
+
+  for (let i=1;i<=7;i++) {
+    const b = document.createElement("button");
+
+    b.textContent = "Imagen "+i;
+
+    b.style =
+      "margin:3px;padding:8px;border-radius:16px;" +
+      "border:1px solid #aaa;background:#fff8e9";
+
+    b.onclick = () => {
+      el("photo").src = `heydi-rosas-${i}.jpg`;
+      imageNo = i;
+    };
+
+    demo.append(b);
+  }
+
+  document.body.append(demo);
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,604 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#e9d9c4">
+
+<title>Un abracito para Heydi ♡</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<script>
+/* PROTECCIÓN DE ACCESO */
+if (sessionStorage.getItem("accesoHeydi") !== "si") {
+  window.location.replace("index.html");
+}
+</script>
+
+<style>
+:root {
+  --verde:#506b43;
+  --beige:#e9d9c4;
+  --crema:#fff9f0;
+  --texto:#526344;
+}
+
+* {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html {
+  scroll-behavior:smooth;
+}
+
+body {
+  min-height:100vh;
+  min-height:100svh;
+  overflow-x:hidden;
+  font-family:"DM Sans",sans-serif;
+  background:linear-gradient(
+    145deg,
+    #e2cdb4,
+    #f8f0e4 55%,
+    #e8d8c1
+  );
+  color:var(--texto);
+}
+
+/* FONDO DECORATIVO */
+
+.fondo {
+  position:fixed;
+  inset:0;
+  z-index:0;
+  overflow:hidden;
+  pointer-events:none;
+}
+
+.circulo {
+  position:absolute;
+  border-radius:50%;
+  filter:blur(5px);
+}
+
+.circulo.uno {
+  width:450px;
+  height:450px;
+  top:-240px;
+  left:-160px;
+  background:rgba(149,174,124,.28);
+}
+
+.circulo.dos {
+  width:400px;
+  height:400px;
+  right:-180px;
+  bottom:-230px;
+  background:rgba(168,190,143,.3);
+}
+
+.linea {
+  position:absolute;
+  width:600px;
+  height:430px;
+  border:1px solid rgba(255,255,255,.6);
+  border-radius:50%;
+  transform:rotate(-25deg);
+  top:-170px;
+  left:-180px;
+}
+
+/* CONTENIDO */
+
+.contenedor {
+  width:min(850px,100%);
+  margin:auto;
+  padding:22px 18px 65px;
+  position:relative;
+  z-index:2;
+}
+
+/* BOTÓN VOLVER */
+
+.volver {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:11px 18px;
+  border-radius:30px;
+  color:#4c6640;
+  background:rgba(255,251,243,.73);
+  border:1px solid rgba(255,255,255,.9);
+  text-decoration:none;
+  font-size:13px;
+  box-shadow:0 6px 22px rgba(80,55,30,.08);
+  backdrop-filter:blur(12px);
+  transition:.3s ease;
+}
+
+.volver:hover {
+  transform:translateX(-4px);
+  background:white;
+}
+
+/* TÍTULOS */
+
+.encabezado {
+  text-align:center;
+  padding:30px 10px 24px;
+  animation:entrada 1s ease both;
+}
+
+.mini-titulo {
+  font-size:11px;
+  letter-spacing:4px;
+  color:#81956d;
+  font-weight:600;
+}
+
+.encabezado h1 {
+  margin-top:12px;
+  font-family:"Great Vibes",cursive;
+  font-size:clamp(65px,10vw,100px);
+  line-height:1.1;
+  font-weight:400;
+  color:#4b643a;
+}
+
+.descripcion {
+  margin-top:8px;
+  font-size:14px;
+  color:#887b6a;
+}
+
+/* TARJETA PRINCIPAL */
+
+.tarjeta {
+  width:min(580px,100%);
+  margin:8px auto 0;
+  padding:15px;
+
+  border-radius:32px;
+  border:2px solid rgba(255,255,255,.9);
+
+  background:linear-gradient(
+    145deg,
+    rgba(255,255,255,.72),
+    rgba(255,250,240,.45)
+  );
+
+  backdrop-filter:blur(20px);
+  box-shadow:0 24px 65px rgba(86,64,39,.15);
+
+  animation:entrada 1s .15s both;
+}
+
+/* IMAGEN DEL PINGÜINITO */
+
+.imagen-contenedor {
+  position:relative;
+  overflow:hidden;
+  border-radius:23px;
+  background:#a79b91;
+  isolation:isolate;
+}
+
+.imagen-contenedor img {
+  display:block;
+  width:100%;
+  height:auto;
+  user-select:none;
+  -webkit-user-drag:none;
+}
+
+.imagen-contenedor::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:23px;
+  border:1px solid rgba(255,255,255,.4);
+  pointer-events:none;
+}
+
+/* ZONA INTERACTIVA */
+
+.zona-abrazo {
+  position:absolute;
+  left:10%;
+  right:10%;
+  top:37%;
+  bottom:3%;
+  z-index:3;
+  border:0;
+  background:transparent;
+  cursor:pointer;
+  border-radius:30px;
+  -webkit-tap-highlight-color:transparent;
+}
+
+.zona-abrazo:focus-visible {
+  outline:3px solid #dce9b6;
+  outline-offset:-5px;
+}
+
+/* EFECTO DE ABRAZO */
+
+.imagen-contenedor.abrazando {
+  animation:abrazar .75s ease;
+}
+
+@keyframes abrazar {
+  0%   { transform:scale(1); }
+  30%  { transform:scale(1.025); }
+  65%  { transform:scale(.992); }
+  100% { transform:scale(1); }
+}
+
+/* CORAZONES */
+
+.corazon {
+  position:absolute;
+  z-index:5;
+  bottom:24%;
+  left:50%;
+  font-size:22px;
+  color:#f7d3ce;
+  pointer-events:none;
+
+  animation:subir 2.3s ease-out forwards;
+  text-shadow:0 3px 8px rgba(80,30,30,.15);
+}
+
+@keyframes subir {
+  0% {
+    opacity:0;
+    transform:translate(0,0) scale(.5);
+  }
+
+  15% {
+    opacity:1;
+  }
+
+  100% {
+    opacity:0;
+    transform:
+      translate(var(--x),-210px)
+      rotate(var(--rot))
+      scale(1.3);
+  }
+}
+
+/* DETALLES INFERIORES */
+
+.decoracion-inferior {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:18px;
+  margin:20px 0 8px;
+  color:#9bb28a;
+  font-size:22px;
+}
+
+.decoracion-inferior::before,
+.decoracion-inferior::after {
+  content:"";
+  width:70px;
+  height:1px;
+  background:linear-gradient(
+    90deg,
+    transparent,
+    #afbd9b
+  );
+}
+
+.decoracion-inferior::after {
+  transform:rotate(180deg);
+}
+
+/* MENSAJE DEBAJO */
+
+.mensaje {
+  text-align:center;
+  margin:20px auto 0;
+  max-width:550px;
+  padding:20px;
+}
+
+.mensaje p {
+  color:#7a766a;
+  font-size:14px;
+  line-height:1.9;
+}
+
+.mensaje .firma {
+  margin-top:12px;
+  font-family:"Great Vibes",cursive;
+  font-size:33px;
+  color:#526d42;
+}
+
+/* NOTIFICACIÓN */
+
+.notificacion {
+  position:fixed;
+  z-index:30;
+  top:18px;
+  left:50%;
+
+  width:min(350px,calc(100% - 30px));
+  padding:14px 18px;
+
+  border-radius:18px;
+  border:1px solid #fff;
+  background:rgba(255,250,241,.92);
+  backdrop-filter:blur(18px);
+  box-shadow:0 14px 35px rgba(67,48,28,.19);
+
+  text-align:center;
+  font-size:13px;
+  color:#506b43;
+
+  opacity:0;
+  transform:translate(-50%,-130%);
+  transition:.5s ease;
+  pointer-events:none;
+}
+
+.notificacion.visible {
+  opacity:1;
+  transform:translate(-50%,0);
+}
+
+/* ANIMACIONES */
+
+@keyframes entrada {
+  from {
+    opacity:0;
+    transform:translateY(25px);
+  }
+
+  to {
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* CELULAR */
+
+@media(max-width:600px) {
+  .contenedor {
+    padding:17px 12px 40px;
+  }
+
+  .encabezado {
+    padding:25px 5px 20px;
+  }
+
+  .encabezado h1 {
+    font-size:75px;
+  }
+
+  .mini-titulo {
+    font-size:9px;
+    letter-spacing:3px;
+  }
+
+  .tarjeta {
+    padding:9px;
+    border-radius:24px;
+  }
+
+  .imagen-contenedor {
+    border-radius:18px;
+  }
+
+  .descripcion {
+    font-size:13px;
+  }
+
+  .mensaje {
+    padding:16px 10px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  *,*::before,*::after {
+    animation:none!important;
+    transition:none!important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- FONDO -->
+
+<div class="fondo">
+  <div class="circulo uno"></div>
+  <div class="circulo dos"></div>
+  <div class="linea"></div>
+</div>
+
+<!-- NOTIFICACIÓN -->
+
+<div class="notificacion"
+     id="notificacion"
+     role="status"
+     aria-live="polite">
+
+  Un abracito para ti, Heydi. ♡
+
+</div>
+
+<main class="contenedor">
+
+  <!-- VOLVER AL INICIO -->
+
+  <a href="inicio.html" class="volver">
+    ← Volver al inicio
+  </a>
+
+  <!-- ENCABEZADO -->
+
+  <header class="encabezado">
+
+    <div class="mini-titulo">
+      A LITTLE HUG FOR YOU
+    </div>
+
+    <h1>Un abracito ♡</h1>
+
+    <p class="descripcion">
+      Un pequeño espacio para ti, Heydi.
+    </p>
+
+  </header>
+
+  <!-- IMAGEN PRINCIPAL -->
+
+  <section class="tarjeta">
+
+    <div class="imagen-contenedor"
+         id="imagenContenedor">
+
+      <img
+        src="abrazo.png"
+        alt="Pingüinito abrazando a un dinosaurio de peluche con la frase Por si hoy necesitas un abrazo"
+        id="imagenAbrazo"
+      >
+
+      <!-- TOCAR AL PINGÜINITO -->
+
+      <button
+        class="zona-abrazo"
+        type="button"
+        id="botonAbrazo"
+        aria-label="Dar un abrazo al pingüinito"
+      ></button>
+
+    </div>
+
+    <div class="decoracion-inferior">
+      ♡
+    </div>
+
+  </section>
+
+  <!-- TEXTO INFERIOR -->
+
+  <section class="mensaje">
+
+    <p>
+      Hay pequeños detalles que no necesitan
+      muchas palabras. A veces, un abracito
+      es suficiente para alegrar un momento.
+    </p>
+
+    <div class="firma">
+      Para Heydi ♡
+    </div>
+
+  </section>
+
+</main>
+
+<script>
+const botonAbrazo =
+  document.getElementById("botonAbrazo");
+
+const imagenContenedor =
+  document.getElementById("imagenContenedor");
+
+const notificacion =
+  document.getElementById("notificacion");
+
+let temporizadorNotificacion;
+let temporizadorAbrazo;
+
+/* EFECTO AL TOCAR EL PINGÜINITO */
+
+botonAbrazo.addEventListener("click", () => {
+
+  /* REINICIAR ANIMACIÓN */
+
+  imagenContenedor.classList.remove("abrazando");
+
+  void imagenContenedor.offsetWidth;
+
+  imagenContenedor.classList.add("abrazando");
+
+  clearTimeout(temporizadorAbrazo);
+
+  temporizadorAbrazo = setTimeout(() => {
+    imagenContenedor.classList.remove("abrazando");
+  }, 800);
+
+  /* CREAR CORAZONES */
+
+  for (let i = 0; i < 9; i++) {
+
+    setTimeout(() => {
+
+      const corazon =
+        document.createElement("span");
+
+      corazon.className = "corazon";
+
+      corazon.textContent =
+        Math.random() > .5 ? "♡" : "♥";
+
+      const desplazamiento =
+        (Math.random() * 240) - 120;
+
+      const rotacion =
+        (Math.random() * 80) - 40;
+
+      corazon.style.left =
+        (35 + Math.random() * 30) + "%";
+
+      corazon.style.setProperty(
+        "--x",
+        desplazamiento + "px"
+      );
+
+      corazon.style.setProperty(
+        "--rot",
+        rotacion + "deg"
+      );
+
+      corazon.style.fontSize =
+        (17 + Math.random() * 14) + "px";
+
+      imagenContenedor.appendChild(corazon);
+
+      setTimeout(() => {
+        corazon.remove();
+      }, 2400);
+
+    }, i * 95);
+
+  }
+
+  /* NOTIFICACIÓN SUAVE */
+
+  notificacion.classList.add("visible");
+
+  clearTimeout(temporizadorNotificacion);
+
+  temporizadorNotificacion = setTimeout(() => {
+    notificacion.classList.remove("visible");
+  }, 3000);
+
+});
+</script>
+
+</body>
+</html>

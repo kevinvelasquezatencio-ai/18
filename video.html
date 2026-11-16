@@ -1,0 +1,497 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Un detallito para Heydi ♡</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<script>
+if(sessionStorage.getItem("accesoHeydi") !== "si"){
+  location.replace("index.html");
+}
+</script>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  min-height:100vh;
+  font-family:"DM Sans",sans-serif;
+  color:#425536;
+  background:
+    radial-gradient(
+      ellipse at center,
+      #fffaf1 0%,
+      #f5e8d8 55%,
+      #dec2a3 100%
+    );
+  overflow-x:hidden;
+}
+
+.fondo{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  overflow:hidden;
+}
+
+.onda{
+  position:absolute;
+  border-radius:50%;
+}
+
+.onda1{
+  width:550px;
+  height:350px;
+  top:-240px;
+  left:-260px;
+  background:linear-gradient(120deg,#66804e,#a5ba83);
+  transform:rotate(-20deg);
+}
+
+.onda2{
+  width:600px;
+  height:310px;
+  right:-280px;
+  bottom:-220px;
+  background:linear-gradient(125deg,#b5c79c,#64804c);
+  transform:rotate(-20deg);
+}
+
+.contenedor{
+  position:relative;
+  z-index:2;
+  width:min(850px,100%);
+  margin:auto;
+  padding:26px 18px 70px;
+}
+
+.volver{
+  display:inline-flex;
+  align-items:center;
+  padding:11px 19px;
+  text-decoration:none;
+  font-size:13px;
+  color:#4a633a;
+  background:#fff9e8cc;
+  border:1px solid white;
+  border-radius:40px;
+  backdrop-filter:blur(15px);
+}
+
+.encabezado{
+  padding:35px 10px 27px;
+  text-align:center;
+  animation:entrada .9s ease both;
+}
+
+.subtitulo{
+  font-size:11px;
+  letter-spacing:4px;
+  color:#798c64;
+  font-weight:600;
+}
+
+.encabezado h1{
+  margin:14px 0 10px;
+  font-family:"Great Vibes",cursive;
+  font-size:clamp(65px,10vw,105px);
+  font-weight:400;
+  color:#466036;
+}
+
+.descripcion{
+  color:#817463;
+  font-size:15px;
+}
+
+.tarjeta{
+  width:min(620px,100%);
+  margin:10px auto 0;
+  padding:19px;
+  border-radius:35px;
+  border:2px solid #ffffffdd;
+  background:#fffaf0b3;
+  backdrop-filter:blur(20px);
+  box-shadow:0 25px 65px #64492825;
+  animation:entrada 1s .2s both;
+}
+
+.marco-video{
+  position:relative;
+  overflow:hidden;
+  border-radius:25px;
+  background:#d7c6ab;
+}
+
+video{
+  display:block;
+  width:100%;
+  max-height:540px;
+  object-fit:contain;
+  background:#e9ddc9;
+}
+
+/* BOTÓN PARA ACTIVAR AUDIO */
+
+.controles{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin-top:17px;
+  flex-wrap:wrap;
+}
+
+.boton{
+  border:1px solid #ffffffbb;
+  border-radius:30px;
+  padding:12px 20px;
+  font-family:inherit;
+  font-size:13px;
+  font-weight:600;
+  cursor:pointer;
+  transition:transform .25s,background .25s;
+}
+
+.boton:hover{
+  transform:translateY(-2px);
+}
+
+.sonido{
+  background:#607b4d;
+  color:white;
+}
+
+.reproducir{
+  background:#fff8ec;
+  color:#526840;
+}
+
+.indicacion{
+  margin-top:11px;
+  text-align:center;
+  font-size:12px;
+  color:#857967;
+}
+
+.detalle{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:15px;
+  margin:21px 0 5px;
+  color:#8da477;
+  font-size:24px;
+}
+
+.detalle::before,
+.detalle::after{
+  content:"";
+  width:70px;
+  height:1px;
+  background:#aebb9c;
+}
+
+.mensaje{
+  width:min(620px,100%);
+  margin:25px auto 0;
+  padding:28px 27px;
+  text-align:center;
+  border-radius:28px;
+  border:1px solid white;
+  background:#fffaf0a8;
+  backdrop-filter:blur(15px);
+  animation:entrada 1s .4s both;
+}
+
+.mensaje p{
+  font-size:clamp(14px,2vw,16px);
+  line-height:2;
+  color:#716957;
+}
+
+.firma{
+  margin-top:22px;
+  font-family:"Great Vibes",cursive;
+  font-size:36px;
+  color:#4c6739;
+}
+
+.error{
+  display:none;
+  padding:30px;
+  text-align:center;
+  font-size:13px;
+  line-height:1.8;
+}
+
+.error.visible{
+  display:block;
+}
+
+@keyframes entrada{
+  from{
+    opacity:0;
+    transform:translateY(20px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@media(max-width:600px){
+  .contenedor{
+    padding:17px 12px 45px;
+  }
+
+  .encabezado h1{
+    font-size:76px;
+  }
+
+  .tarjeta{
+    padding:11px;
+    border-radius:25px;
+  }
+
+  .marco-video{
+    border-radius:18px;
+  }
+
+  video{
+    max-height:470px;
+  }
+
+  .mensaje{
+    padding:24px 19px;
+  }
+
+  .mensaje p{
+    font-size:14px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation:none!important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="fondo">
+  <div class="onda onda1"></div>
+  <div class="onda onda2"></div>
+</div>
+
+<main class="contenedor">
+
+  <a href="inicio.html" class="volver">
+    ← Volver al inicio
+  </a>
+
+  <header class="encabezado">
+    <div class="subtitulo">
+      ONE LAST LITTLE THING
+    </div>
+
+    <h1>Para ti, Heydi ♡</h1>
+
+    <p class="descripcion">
+      Un último detallito 🌻
+    </p>
+  </header>
+
+  <section class="tarjeta">
+
+    <div class="marco-video">
+
+      <video
+        id="videoPerrito"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+      >
+        <source
+          src="video-heydi.mp4"
+          type="video/mp4"
+        >
+      </video>
+
+      <div class="error" id="error">
+        🐶 No se encontró el video.
+        Revisa el archivo perrito-flor.mp4
+      </div>
+
+    </div>
+
+    <div class="controles">
+
+      <button
+        class="boton sonido"
+        id="botonSonido"
+        type="button"
+      >
+        🔊 Activar sonido
+      </button>
+
+      <button
+        class="boton reproducir"
+        id="botonReproducir"
+        type="button"
+      >
+        ⏸ Pausar
+      </button>
+
+    </div>
+
+    <p class="indicacion" id="indicacion">
+      Toca «Activar sonido» para escuchar el video ♡
+    </p>
+
+    <div class="detalle">♡</div>
+
+  </section>
+
+  <section class="mensaje">
+
+    <p>
+      Espero que estés muy bien, Heydi.
+      Que sigas encontrando motivos para sonreír,
+      que Dios cuide cada paso que des
+      y que nunca te falten fuerzas para
+      seguir construyendo todo aquello que sueñas.
+      Sé muy feliz. ♡
+    </p>
+
+    <div class="firma">
+      Con cariño ♡
+    </div>
+
+  </section>
+
+</main>
+
+<script>
+const video =
+  document.getElementById("videoPerrito");
+
+const botonSonido =
+  document.getElementById("botonSonido");
+
+const botonReproducir =
+  document.getElementById("botonReproducir");
+
+const indicacion =
+  document.getElementById("indicacion");
+
+const error =
+  document.getElementById("error");
+
+/* ACTIVAR O DESACTIVAR SONIDO */
+
+botonSonido.addEventListener("click", async () => {
+
+  video.muted = !video.muted;
+  video.volume = 1;
+
+  if(video.muted){
+
+    botonSonido.textContent = "🔊 Activar sonido";
+
+    indicacion.textContent =
+      "El sonido está apagado ♡";
+
+  }else{
+
+    try{
+      await video.play();
+
+      botonSonido.textContent = "🔇 Silenciar";
+
+      indicacion.textContent =
+        "Ahora puedes escuchar el video ♡";
+
+    }catch(e){
+
+      video.muted = true;
+
+      botonSonido.textContent = "🔊 Activar sonido";
+
+      indicacion.textContent =
+        "Toca nuevamente para activar el audio.";
+    }
+  }
+
+});
+
+/* PAUSAR O REPRODUCIR */
+
+botonReproducir.addEventListener("click", async () => {
+
+  if(video.paused){
+
+    try{
+      await video.play();
+    }catch(e){
+      indicacion.textContent =
+        "No se pudo reproducir el video.";
+    }
+
+  }else{
+
+    video.pause();
+
+  }
+
+});
+
+/* ACTUALIZAR BOTÓN */
+
+video.addEventListener("play", () => {
+  botonReproducir.textContent = "⏸ Pausar";
+});
+
+video.addEventListener("pause", () => {
+  botonReproducir.textContent = "▶ Reproducir";
+});
+
+/* ERROR AL CARGAR */
+
+video.addEventListener("error", () => {
+
+  video.style.display = "none";
+
+  error.classList.add("visible");
+
+});
+
+/* INICIAR AUTOMÁTICAMENTE SIN AUDIO */
+
+window.addEventListener("load", () => {
+
+  video.muted = true;
+
+  video.play().catch(() => {
+    botonReproducir.textContent = "▶ Reproducir";
+  });
+
+});
+</script>
+
+</body>
+</html>

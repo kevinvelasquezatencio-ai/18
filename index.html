@@ -1,0 +1,695 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#e9d6bf">
+<title>ACT. 2 — Heydi ♡</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --verde:#45632f;
+  --oliva:#a2b980;
+  --beige:#e9d6bf;
+  --texto:#425733;
+}
+
+* {
+  box-sizing:border-box;
+}
+
+html,body {
+  margin:0;
+  min-height:100%;
+}
+
+body {
+  min-height:100svh;
+  display:grid;
+  place-items:center;
+  padding:75px 20px 35px;
+  overflow-x:hidden;
+  position:relative;
+  font-family:"DM Sans",sans-serif;
+  color:var(--texto);
+  background:#ead5be;
+}
+
+/* FONDO FOTOGRÁFICO */
+
+.fondo-foto {
+  position:fixed;
+  inset:0;
+  z-index:0;
+  background-image:url("fondo-contrasena-heydi.jpg");
+  background-size:cover;
+  background-position:center;
+}
+
+/* OSCURECIMIENTO AL APAGAR */
+
+.sombra-luz {
+  position:fixed;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  background:rgba(36,32,25,.26);
+  opacity:0;
+  transition:opacity 1s ease;
+}
+
+body.luz-apagada .sombra-luz {
+  opacity:1;
+}
+
+/* ILUMINACIÓN INTERACTIVA */
+
+.halo-lampara {
+  position:fixed;
+  top:10%;
+  right:0;
+  width:48vw;
+  height:65vh;
+  z-index:1;
+  pointer-events:none;
+  background:radial-gradient(
+    ellipse at 65% 20%,
+    rgba(255,228,151,.28),
+    rgba(255,221,145,.09) 35%,
+    transparent 75%
+  );
+  opacity:1;
+  transition:opacity 1s ease;
+}
+
+body.luz-apagada .halo-lampara {
+  opacity:0;
+}
+
+/* BOTÓN SOBRE LA LÁMPARA */
+
+.interruptor {
+  position:fixed;
+  top:24%;
+  right:10%;
+  z-index:8;
+  border:1px solid rgba(255,255,255,.8);
+  background:rgba(255,251,233,.73);
+  color:#52663b;
+  backdrop-filter:blur(10px);
+  border-radius:40px;
+  padding:10px 15px;
+  font:600 12px "DM Sans",sans-serif;
+  cursor:pointer;
+  box-shadow:0 4px 20px rgba(72,55,30,.13);
+  transition:transform .3s,background .4s;
+}
+
+.interruptor:hover {
+  transform:scale(1.06);
+  background:#fff7e8;
+}
+
+.interruptor:focus-visible {
+  outline:3px solid #55783f;
+  outline-offset:3px;
+}
+
+/* TARJETA DE CRISTAL */
+
+.tarjeta {
+  position:relative;
+  z-index:3;
+  width:min(590px,100%);
+  padding:103px 44px 47px;
+  border-radius:45px;
+  border:2px solid rgba(255,255,255,.91);
+  text-align:center;
+
+  background:linear-gradient(
+    145deg,
+    rgba(255,250,239,.79),
+    rgba(247,230,207,.61)
+  );
+
+  -webkit-backdrop-filter:blur(22px);
+  backdrop-filter:blur(22px);
+
+  box-shadow:
+    0 30px 75px rgba(93,66,36,.19),
+    inset 0 1px 18px rgba(255,255,255,.72);
+
+  animation:entrada .9s ease both;
+  transition:
+    background .8s ease,
+    box-shadow .8s ease;
+}
+
+.tarjeta::before {
+  content:"";
+  position:absolute;
+  inset:5px;
+  border-radius:40px;
+  border:1px solid rgba(255,255,255,.23);
+  pointer-events:none;
+}
+
+.tarjeta::after {
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:100%;
+  height:80px;
+  border-radius:0 0 43px 43px;
+  background:linear-gradient(
+    120deg,
+    rgba(167,187,129,.57),
+    rgba(224,225,171,.15),
+    rgba(165,189,130,.52)
+  );
+  clip-path:polygon(
+    0 35%,15% 27%,35% 48%,
+    60% 75%,82% 35%,100% 48%,
+    100% 100%,0 100%
+  );
+  pointer-events:none;
+}
+
+body.luz-apagada .tarjeta {
+  background:rgba(236,224,205,.78);
+  box-shadow:0 20px 65px rgba(48,42,30,.2);
+}
+
+@keyframes entrada {
+  from {
+    opacity:0;
+    transform:translateY(25px) scale(.97);
+  }
+  to {
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
+}
+
+/* CANDADO */
+
+.candado {
+  width:118px;
+  height:118px;
+  position:absolute;
+  top:-61px;
+  left:50%;
+  transform:translateX(-50%);
+  border-radius:50%;
+
+  display:grid;
+  place-items:center;
+
+  border:3px solid #fff9e8;
+  background:linear-gradient(135deg,#fff8e8,#ecddc5);
+
+  box-shadow:
+    0 0 36px rgba(255,239,174,.82),
+    0 10px 30px rgba(107,83,41,.12);
+}
+
+.candado svg {
+  width:65px;
+  height:75px;
+  overflow:visible;
+}
+
+.arco-candado {
+  fill:none;
+  stroke:#4d6936;
+  stroke-width:6;
+  stroke-linecap:round;
+  transform-origin:20px 30px;
+  transition:transform .8s ease;
+}
+
+.base-candado {
+  fill:#4d6936;
+  transition:fill .4s;
+}
+
+.cerradura {
+  fill:#fff7e8;
+}
+
+.check {
+  position:absolute;
+  width:68px;
+  height:68px;
+  display:grid;
+  place-items:center;
+  background:#3d9d5d;
+  color:white;
+  border-radius:50%;
+  font-size:43px;
+  box-shadow:0 0 30px rgba(60,188,100,.5);
+  opacity:0;
+  transform:scale(.3);
+  transition:opacity .4s,transform .5s;
+}
+
+.tarjeta.correcto .arco-candado {
+  transform:translateY(-13px) rotate(-32deg);
+}
+
+.tarjeta.correcto .base-candado {
+  fill:#399458;
+}
+
+.tarjeta.mostrar-check .candado svg {
+  opacity:0;
+  transition:opacity .3s;
+}
+
+.tarjeta.mostrar-check .check {
+  opacity:1;
+  transform:scale(1);
+}
+
+/* TIPOGRAFÍA */
+
+.mini {
+  font-size:14px;
+  font-weight:600;
+  letter-spacing:8px;
+  color:#4c6737;
+}
+
+.nombre {
+  font-family:"Great Vibes",cursive;
+  font-weight:400;
+  font-size:clamp(79px,11vw,115px);
+  line-height:1.12;
+  margin:15px 0;
+  color:#3e5d2c;
+}
+
+.divisor {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:17px;
+  font-size:26px;
+  color:#91a776;
+  margin:16px auto 33px;
+}
+
+.divisor::before,
+.divisor::after {
+  content:"";
+  width:90px;
+  height:1px;
+  background:linear-gradient(
+    90deg,transparent,#94a67a
+  );
+}
+
+.divisor::after {
+  transform:rotate(180deg);
+}
+
+/* CONTRASEÑA */
+
+.campo {
+  height:66px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:0 19px;
+  border-radius:40px;
+  border:1px solid rgba(255,255,255,.9);
+  background:rgba(255,251,242,.85);
+  box-shadow:0 7px 20px rgba(96,72,42,.1);
+}
+
+.campo input {
+  flex:1;
+  min-width:0;
+  border:0;
+  outline:0;
+  background:transparent;
+  color:#455b33;
+  font:500 16px "DM Sans",sans-serif;
+}
+
+.campo input::placeholder {
+  color:#8c8376;
+}
+
+.campo svg {
+  width:23px;
+  height:23px;
+  flex:none;
+  fill:none;
+  stroke:#4f6a3c;
+  stroke-width:2;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+.ojo {
+  border:0;
+  padding:5px;
+  background:none;
+  cursor:pointer;
+}
+
+.ojo svg {
+  display:block;
+}
+
+/* BOTÓN */
+
+.entrar {
+  width:min(365px,100%);
+  height:64px;
+  margin-top:30px;
+  border-radius:40px;
+  border:1px solid rgba(255,255,255,.7);
+  background:linear-gradient(110deg,#a4bb78,#41652d);
+  color:white;
+  font:500 22px "DM Sans",sans-serif;
+  box-shadow:0 15px 30px rgba(75,95,46,.23);
+  cursor:pointer;
+  transition:transform .3s,filter .3s;
+}
+
+.entrar:hover {
+  transform:translateY(-3px);
+  filter:brightness(1.07);
+}
+
+.entrar:disabled {
+  cursor:default;
+}
+
+#mensaje {
+  position:relative;
+  z-index:2;
+  min-height:24px;
+  margin:16px 0 0;
+  color:#786b57;
+  font-size:13px;
+}
+
+.tarjeta.error {
+  animation:sacudir .45s ease;
+}
+
+.tarjeta.error .campo {
+  border-color:#cb5e5e;
+}
+
+.tarjeta.error #mensaje {
+  color:#bc4848;
+}
+
+@keyframes sacudir {
+  0%,100% {transform:translateX(0)}
+  25% {transform:translateX(-8px)}
+  50% {transform:translateX(8px)}
+  75% {transform:translateX(-4px)}
+}
+
+.tarjeta.saliendo {
+  opacity:0;
+  transform:translateY(-24px) scale(.96);
+  transition:opacity .7s,transform .7s;
+}
+
+/* CELULAR */
+
+@media(max-width:700px) {
+  body {
+    padding:90px 16px 30px;
+  }
+
+  .fondo-foto {
+    background-position:37% center;
+  }
+
+  .tarjeta {
+    width:min(430px,100%);
+    padding:88px 22px 36px;
+    border-radius:34px;
+  }
+
+  .tarjeta::after {
+    border-radius:0 0 32px 32px;
+  }
+
+  .candado {
+    width:102px;
+    height:102px;
+    top:-52px;
+  }
+
+  .candado svg {
+    width:56px;
+    height:66px;
+  }
+
+  .nombre {
+    font-size:clamp(74px,17vw,94px);
+  }
+
+  .mini {
+    font-size:11px;
+    letter-spacing:6px;
+  }
+
+  .campo {
+    height:61px;
+  }
+
+  .campo input {
+    font-size:14px;
+  }
+
+  .entrar {
+    height:60px;
+    font-size:20px;
+  }
+
+  .interruptor {
+    top:14px;
+    right:15px;
+    padding:9px 12px;
+  }
+
+  .halo-lampara {
+    width:80vw;
+    right:-25%;
+    top:0;
+  }
+}
+
+@media(max-height:650px) {
+  body {
+    overflow-y:auto;
+    padding-top:80px;
+    padding-bottom:30px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  *,*::before,*::after {
+    animation:none!important;
+    transition:none!important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="fondo-foto" aria-hidden="true"></div>
+<div class="halo-lampara" aria-hidden="true"></div>
+<div class="sombra-luz" aria-hidden="true"></div>
+
+<!-- ENCENDER Y APAGAR LÁMPARA -->
+<button
+  class="interruptor"
+  id="interruptor"
+  type="button"
+  aria-pressed="true"
+  title="Encender o apagar la lámpara"
+>
+  ☀ Luz encendida
+</button>
+
+<!-- TARJETA DE CONTRASEÑA -->
+<main class="tarjeta" id="tarjeta">
+
+  <div class="candado" aria-hidden="true">
+
+    <svg viewBox="0 0 70 80">
+      <path
+        class="arco-candado"
+        d="M19 34V23a16 16 0 0 1 32 0v11"
+      />
+      <rect
+        class="base-candado"
+        x="11" y="31"
+        width="48" height="43" rx="8"
+      />
+      <circle
+        class="cerradura"
+        cx="35" cy="49" r="5"
+      />
+      <path
+        class="cerradura"
+        d="M33 51h4v10h-4z"
+      />
+    </svg>
+
+    <div class="check">✓</div>
+  </div>
+
+  <div class="mini">ACT. 2</div>
+
+  <h1 class="nombre">Heydi ♡</h1>
+
+  <div class="divisor">♡</div>
+
+  <form id="formulario">
+
+    <div class="campo">
+
+      <svg viewBox="0 0 24 24">
+        <circle cx="8" cy="15" r="5"/>
+        <path d="M11.5 11.5 21 2l2 2-3 3-2-2-3 3"/>
+      </svg>
+
+      <input
+        id="clave"
+        type="password"
+        inputmode="numeric"
+        maxlength="2"
+        autocomplete="off"
+        placeholder="Ingresa la contraseña"
+        aria-label="Contraseña"
+        required
+      >
+
+      <button
+        type="button"
+        class="ojo"
+        id="verClave"
+        aria-label="Mostrar contraseña"
+      >
+        <svg viewBox="0 0 24 24">
+          <path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/>
+          <circle cx="12" cy="12" r="3"/>
+        </svg>
+      </button>
+
+    </div>
+
+    <button class="entrar" id="boton" type="submit">
+      Entrar &nbsp; →
+    </button>
+
+    <p id="mensaje" role="status" aria-live="polite"></p>
+
+  </form>
+</main>
+
+<script>
+const tarjeta=document.getElementById("tarjeta");
+const formulario=document.getElementById("formulario");
+const clave=document.getElementById("clave");
+const boton=document.getElementById("boton");
+const mensaje=document.getElementById("mensaje");
+const verClave=document.getElementById("verClave");
+const interruptor=document.getElementById("interruptor");
+
+/* LÁMPARA INTERACTIVA */
+
+interruptor.addEventListener("click",()=>{
+  const apagada=document.body.classList.toggle("luz-apagada");
+
+  interruptor.textContent=apagada
+    ? "☾ Luz apagada"
+    : "☀ Luz encendida";
+
+  interruptor.setAttribute("aria-pressed",String(!apagada));
+});
+
+/* MOSTRAR Y OCULTAR CLAVE */
+
+verClave.addEventListener("click",()=>{
+  const oculto=clave.type==="password";
+
+  clave.type=oculto?"text":"password";
+
+  verClave.setAttribute(
+    "aria-label",
+    oculto?"Ocultar contraseña":"Mostrar contraseña"
+  );
+});
+
+/* VERIFICAR CONTRASEÑA */
+
+formulario.addEventListener("submit",event=>{
+  event.preventDefault();
+
+  if(boton.disabled)return;
+
+  tarjeta.classList.remove("error");
+  boton.disabled=true;
+  boton.textContent="Verificando...";
+  mensaje.textContent="Comprobando acceso...";
+
+  setTimeout(()=>{
+    if(clave.value.trim()==="18"){
+
+      sessionStorage.setItem("accesoHeydi","si");
+
+      tarjeta.classList.add("correcto");
+      boton.textContent="✓ Acceso correcto";
+      mensaje.textContent="Bienvenida, Heydi ♡";
+
+      setTimeout(()=>{
+        tarjeta.classList.add("mostrar-check");
+      },900);
+
+      setTimeout(()=>{
+        tarjeta.classList.add("saliendo");
+
+        setTimeout(()=>{
+          window.location.href="inicio.html";
+        },700);
+
+      },2300);
+
+    }else{
+
+      tarjeta.classList.remove("error");
+      void tarjeta.offsetWidth;
+      tarjeta.classList.add("error");
+
+      mensaje.textContent="Contraseña incorrecta. Inténtalo otra vez.";
+      boton.textContent="Intentar otra vez";
+      boton.disabled=false;
+
+      clave.value="";
+      clave.focus();
+    }
+  },900);
+});
+</script>
+
+</body>
+</html>
